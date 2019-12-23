@@ -1,4 +1,4 @@
-baseURL = "https://luet-lab.github.io/docs/"
+baseURL = "https://luet-lab.github.io/"
 title = "Luet docs"
 
 enableRobotsTXT = true
