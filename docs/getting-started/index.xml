@@ -1,0 +1,49 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Luet docs – Getting Started</title>
+    <link>https://luet-lab.github.io/docs/docs/getting-started/</link>
+    <description>Recent content in Getting Started on Luet docs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://luet-lab.github.io/docs/docs/getting-started/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Build requirements</title>
+      <link>https://luet-lab.github.io/docs/docs/getting-started/requirements/</link>
+      <pubDate>Sat, 14 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://luet-lab.github.io/docs/docs/getting-started/requirements/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;Luet currently supports &lt;a href=&#34;https://www.docker.com/&#34; target=&#34;_blank&#34;&gt;Docker&lt;/a&gt; and &lt;a href=&#34;https://github.com/genuinetools/img&#34; target=&#34;_blank&#34;&gt;Img&lt;/a&gt;. Both backend can be used, and they can be switched in runtime.&lt;/p&gt;
+
+&lt;h2 id=&#34;docker&#34;&gt;Docker&lt;/h2&gt;
+
+&lt;p&gt;Docker is the (less) experimental Luet engine supported. Be sure in your system to have Docker installed and the daemon running.
+The user which is running &lt;code&gt;luet&lt;/code&gt; commands needs the permission to execute the &lt;code&gt;docker&lt;/code&gt; executable, and to connect to a &lt;code&gt;docker&lt;/code&gt; daemon.
+The only feature needed by the daemon is the ability to build images, so it fully supports remote daemon as well. (They can be specified with the &lt;code&gt;DOCKER_HOST&lt;/code&gt; environment variable, that is respected by &lt;code&gt;luet&lt;/code&gt;)&lt;/p&gt;
+
+&lt;h2 id=&#34;img&#34;&gt;Img&lt;/h2&gt;
+
+&lt;p&gt;Luet supports &lt;a href=&#34;https://github.com/genuinetools/img&#34; target=&#34;_blank&#34;&gt;Img&lt;/a&gt;. To use it, simply install it in your system, and while running &lt;code&gt;luet build&lt;/code&gt;, you can switch the backend by providing it as a parameter: &lt;code&gt;luet build --backend img&lt;/code&gt;. For small packages it is particularly powerful, as doesn&amp;rsquo;t require any docker daemon running in the host.&lt;/p&gt;
+
+&lt;h2 id=&#34;container-diff&#34;&gt;Container-diff&lt;/h2&gt;
+
+&lt;p&gt;Luet requires &lt;a href=&#34;https://github.com/GoogleContainerTools/container-diff&#34; target=&#34;_blank&#34;&gt;Container-diff&lt;/a&gt; installed in your system. It is used to construct your package if it is composed by image diffs.&lt;/p&gt;
+
+&lt;p&gt;Check out the &lt;a href=&#34;https://github.com/GoogleContainerTools/container-diff#installation&#34; target=&#34;_blank&#34;&gt;installation&lt;/a&gt; notes of container-diff, depending on your platform.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>
