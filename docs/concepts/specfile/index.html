@@ -25,14 +25,14 @@
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luet-lab.github.io/docs/docs/concepts/specfile/" />
-<meta property="article:modified_time" content="2019-12-23T16:02:41+01:00" /><meta property="og:site_name" content="Luet docs" />
+<meta property="article:modified_time" content="2020-02-01T16:14:55+01:00" /><meta property="og:site_name" content="Luet docs" />
 <meta itemprop="name" content="Specfile">
 <meta itemprop="description" content="Luet specfile syntax
 ">
 
 
-<meta itemprop="dateModified" content="2019-12-23T16:02:41&#43;01:00" />
-<meta itemprop="wordCount" content="239">
+<meta itemprop="dateModified" content="2020-02-01T16:14:55&#43;01:00" />
+<meta itemprop="wordCount" content="519">
 
 
 
@@ -237,6 +237,12 @@ if (!doNotTrack) {
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-examples-arm" href="/docs/docs/examples/arm/">ARM images</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-examples-scratch" href="/docs/docs/examples/scratch/">ScratchImages</a>
       
       
@@ -272,7 +278,7 @@ if (!doNotTrack) {
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-concepts-requirement" href="/docs/docs/concepts/requirement/">Packages requires</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-concepts-packages" href="/docs/docs/concepts/packages/">Package definition</a>
       
       
       
@@ -424,8 +430,15 @@ if (!doNotTrack) {
 <ul>
 <li><a href="#build-specs">Build specs</a>
 <ul>
-<li><a href="#steps">Steps</a></li>
-<li><a href="#prelude">Prelude</a></li>
+<li><a href="#keywords">Keywords</a></li>
+</ul></li>
+<li><a href="#rutime-specs">Rutime specs</a>
+<ul>
+<li><a href="#keywords-1">Keywords</a></li>
+</ul></li>
+<li><a href="#finalizers">Finalizers</a>
+<ul>
+<li><a href="#keywords-2">Keywords</a></li>
 </ul></li>
 </ul></li>
 </ul></li>
@@ -478,51 +491,146 @@ if (!doNotTrack) {
 
 <h2 id="specfiles">Specfiles</h2>
 
-<p>Luet has its own specfiles. They define the runtime and builtime requirements of a package.
+<p>Luet packages are defined by specfiles. They define the runtime and builtime requirements of a package.
 There is an hard distinction between runtime and buildtime. A spec is composed at least by the runtime (<code>definition.yaml</code>) and the buildtime specification (<code>build.yaml</code>).</p>
 
-<p>A Folder containing a <code>build.yaml</code> and a <code>definition.yaml</code> form a specfile. A Luet tree is merely a composition of specfile(s), but you can also have trees formed by only one.  There is no constriction on folder naming or hierarchy either.</p>
+<p>A Folder containing a <code>build.yaml</code> and a <code>definition.yaml</code> form a specfile. A Luet tree is merely a composition of specfile(s).  There is no constriction on folder naming or hierarchy either.</p>
 
-<p>You can look at them as an extension to Dockerfile(s), but it is reducing and expanding its syntax at the same time.</p>
-
-<p>A build specification for our example (<code>awesome</code>) package looks like this:</p>
-
-<p><em>awesome/build.yaml</em>:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">steps<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>echo<span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;Luet is awesome&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span>&gt;<span style="color:#f8f8f8;text-decoration:underline"> </span>/awesome<span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span>requires<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>name<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;echo&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span>version<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;&gt;=1.0&#34;</span></code></pre></div>
-<p><em>awesome/definition.yaml</em>:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">name<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;awesome&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span>version<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;0.1&#34;</span></code></pre></div>
-<p>As you can see in a glance, you can notice it depens on a package, <code>echo</code>!</p>
-
-<p>Let&rsquo;s see the build definition of <code>echo</code>:</p>
-
-<p><em>echo/build.yaml</em>:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">image<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>alpine<span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span>unpack<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span>includes<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>/bin/echo</code></pre></div>
-<p>Where the definition is
-<em>echo/definition.yaml</em>:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">name<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;echo&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span>version<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;1.3&#34;</span></code></pre></div>
-<p><code>echo</code> is packaged from the <code>alpine</code> image, which our <code>awesome</code> package depends on. Easy, no?</p>
-
-<p>Now we can build <code>awesome</code>:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; luet build --tree /tree/path /awesome-0.1</code></pre></div>
+<p><em>Example of a <a href="https://github.com/Luet-lab/luet-embedded/tree/master/distro" target="_blank">tree folder hierarchy</a></em></p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">tree distro                                                      
+distro
+├── funtoo              
+│   ├── <span style="color:#0000cf;font-weight:bold">1</span>.4
+│   │   ├── build.sh        
+│   │   ├── build.yaml                                             
+│   │   ├── definition.yaml
+│   │   └── finalize.yaml
+│   ├── docker
+│   │   ├── build.yaml
+│   │   ├── definition.yaml
+│   │   └── finalize.yaml
+│   └── meta
+│       └── rpi
+│           └── <span style="color:#0000cf;font-weight:bold">0</span>.1
+│               ├── build.yaml
+│               └── definition.yaml
+├── packages
+│   ├── container-diff
+│   │   └── <span style="color:#0000cf;font-weight:bold">0</span>.15.0
+│   │       ├── build.yaml
+│   │       └── definition.yaml
+│   └── luet
+│       ├── build.yaml
+│       └── definition.yaml
+├── raspbian
+│   ├── buster
+│   │   ├── build.sh
+│   │   ├── build.yaml
+│   │   ├── definition.yaml
+│   │   └── finalize.yaml
+│   ├── buster-boot
+│   │   ├── build.sh
+│   │   ├── build.yaml
+│   │   ├── definition.yaml
+│   │   └── finalize.yaml</code></pre></div>
 <h3 id="build-specs">Build specs</h3>
 
 <p>Build specs are defined in <code>build.yaml</code> files. They denote the build-time <code>dependencies</code> and <code>conflicts</code> along with a definition of the content of the package.</p>
 
-<h4 id="steps">Steps</h4>
+<p><em>Example of a <code>build.yaml</code> file</em>:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">steps<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>echo<span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;Luet is awesome&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span>&gt;<span style="color:#f8f8f8;text-decoration:underline"> </span>/awesome<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>prelude<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>echo<span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;nooops!&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>requires<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>name<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;echo&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span>version<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;&gt;=1.0&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>conflicts<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>name<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;foo&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span>version<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;&gt;=1.0&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>provides<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>name<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;bar&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span>version<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;&gt;=1.0&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>environment<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>FOO=bar<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>includes<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>/awesome<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>unpack<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span></code></pre></div>
+<h4 id="keywords">Keywords</h4>
 
-<p>It is a list of commands to run into the container to install the package, and are actually translated as <code>RUN</code> keywords for <code>Dockerfiles</code>.
-They represent the <em>steps</em> to install a package in the system.</p>
+<p>Global:</p>
 
-<h4 id="prelude">Prelude</h4>
+<ul>
+<li><code>environment</code>: List of environment variables ( in <code>NAME=value</code> format ) that are expanded in <code>step</code> and in <code>prelude</code>. ( e.g. <code>${NAME}</code> )</li>
+<li><code>step</code>: List of commands to perform in the build container</li>
+<li><code>prelude</code>: List of commands to perform in the build container before building</li>
+<li><code>unpack</code>: Boolean which indicates if the package content <strong>is</strong> the whole container content.</li>
+<li><code>includes</code>: List of strings which are encoded in logical AND, they denote the content to filter from the container image to be packed. Wildcards and golang regexes are supported. If specified, files that don&rsquo;t much any of the regex in the list won&rsquo;t be included in the final package.</li>
+</ul>
+
+<p>Source from external image (e.g. Docker):</p>
+
+<ul>
+<li><code>image</code>: List of packages which it provides</li>
+</ul>
+
+<p>From a tree dependency:</p>
+
+<ul>
+<li><code>requires</code>: List of packages which it depends on</li>
+<li><code>conflicts</code>: List of packages which it conflicts with</li>
+<li><code>provides</code>: List of packages which it provides</li>
+</ul>
+
+<h3 id="rutime-specs">Rutime specs</h3>
+
+<p>Runtime specification are denoted in a <code>definition.yaml</code> sibiling file. It identifies the package and the runtime contraints.</p>
+
+<p><em>definition.yaml</em>:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">name<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;awesome&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>version<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;0.1&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>category<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;foo&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>requires<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>name<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;echo&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span>version<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;&gt;=1.0&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span>category<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;bar&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>conflicts<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>name<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;foo&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span>version<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;1.0&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>provides<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>name<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;bar&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span>version<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;&lt;1.0&#34;</span></code></pre></div>
+<h4 id="keywords-1">Keywords</h4>
+
+<p>Global:</p>
+
+<ul>
+<li><code>name</code>: Name of the package <strong>required</strong></li>
+<li><code>version</code>: Version of the package in semver notation. Selectors here are not supported. You can use selectors (<code>&gt;=</code>,<code>&lt;</code>,<code>&gt;</code>,<code>&lt;=</code>) only in dependency lists.</li>
+<li><code>category</code>: Category of the package</li>
+</ul>
+
+<p>Runtime dependency list:</p>
+
+<ul>
+<li><code>requires</code>: List of packages which it depends on runtime</li>
+<li><code>conflicts</code>: List of packages which it conflicts with in runtime</li>
+<li><code>provides</code>: List of packages which it provides in runtime</li>
+</ul>
+
+<h3 id="finalizers">Finalizers</h3>
+
+<p>Finalizers are denoted in a <code>finalize.yaml</code> file which is a sibiling of <code>definition.yaml</code> and <code>build.yaml</code> file. It contains a list of commands that finalize the package when it is installed in the machine.</p>
+
+<p><em>finalize.yaml</em>:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">install<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>rc-update<span style="color:#f8f8f8;text-decoration:underline"> </span>add<span style="color:#f8f8f8;text-decoration:underline"> </span>docker<span style="color:#f8f8f8;text-decoration:underline"> </span>default<span style="color:#f8f8f8;text-decoration:underline"> </span>||<span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span></code></pre></div>
+<h4 id="keywords-2">Keywords</h4>
+
+<ul>
+<li><code>install</code>: List of commands to run in the host machine. They are all fatal by default.</li>
+</ul>
 
 	
 		<style>
@@ -586,7 +694,7 @@ They represent the <em>steps</em> to install a package in the system.</p>
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified December 23, 2019: <a  href="https://github.com/google/docsy-example/commit/3c39a84b46cb93a552fbf08f0d46f43760a85401">Initial import (3c39a84)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified February 1, 2020: <a  href="https://github.com/google/docsy-example/commit/bc9a0a1a1e3dbee3e24390eae21631904ef0eaa2">Update content, drop default content (bc9a0a1)</a>
 </div>
 </div>
 
@@ -621,7 +729,7 @@ They represent the <em>steps</em> to install a package in the system.</p>
         
       </div>
       <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
-        <small class="text-white">&copy; 2019 Ettore Di Giacinto All Rights Reserved</small>
+        <small class="text-white">&copy; 2020 Ettore Di Giacinto All Rights Reserved</small>
         <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a></small>
 	
 		<p class="mt-2"><a href="/docs/about/">About Luet</a></p>

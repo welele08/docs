@@ -15,6 +15,32 @@
     
     
     <item>
+      <title>Docs: ARM images</title>
+      <link>https://luet-lab.github.io/docs/docs/examples/arm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://luet-lab.github.io/docs/docs/examples/arm/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;We will see an example on how to build burnable SD images for Raspberry PI with Luet. This approach let you describe and version OTA upgrades for your embedded devices, delivering upgrades as layer upgrades on the pi.&lt;/p&gt;
+
+&lt;p&gt;The other good side of the medal is that you can build a Luet package repository with multiple distributions (e.g. &lt;code&gt;Raspbian&lt;/code&gt;, &lt;code&gt;OpenSUSE&lt;/code&gt;, &lt;code&gt;Gentoo&lt;/code&gt;, &amp;hellip; ) and switch among them in runtime. In the above example &lt;code&gt;Raspbian&lt;/code&gt; and &lt;code&gt;Funtoo&lt;/code&gt; (at the time of writing) are available.&lt;/p&gt;
+
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+
+&lt;p&gt;You have to run the following steps inside an ARM board to produce arm-compatible binaries. Whatever distribution with Docker will work. Note that the same steps could be done in a cross-compilation approach, or either with qemu-binfmt in a amd64 host.&lt;/p&gt;
+
+&lt;h2 id=&#34;build-the-packages&#34;&gt;Build the packages&lt;/h2&gt;
+
+&lt;p&gt;Clone the repository &lt;a href=&#34;https://github.com/Luet-lab/luet-embedded&#34; target=&#34;_blank&#34;&gt;https://github.com/Luet-lab/luet-embedded&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Docs: Images from scratch</title>
       <link>https://luet-lab.github.io/docs/docs/examples/scratch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
