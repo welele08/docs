@@ -7,7 +7,6 @@
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
-<link rel="alternate" type="application/rss&#43;xml" href="https://luet-lab.github.io/docs/docs/concepts/index.xml">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -21,19 +20,28 @@
 <link rel="icon" type="image/png" href="/docs/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/docs/favicons/android-192x192.png" sizes="192x192">
 
-<title>Concepts | Luet docs</title><meta property="og:title" content="Concepts" />
-<meta property="og:description" content="Grasp the basic to get the most out of Luet
+<title>Package repositories | Luet docs</title><meta property="og:title" content="Package repositories" />
+<meta property="og:description" content="How to create Luet repositories
 " />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://luet-lab.github.io/docs/docs/concepts/" />
-<meta property="og:site_name" content="Luet docs" />
-<meta itemprop="name" content="Concepts">
-<meta itemprop="description" content="Grasp the basic to get the most out of Luet
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luet-lab.github.io/docs/docs/overview/repositories/" />
+<meta property="article:published_time" content="2019-12-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-02-02T12:08:44+01:00" /><meta property="og:site_name" content="Luet docs" />
+<meta itemprop="name" content="Package repositories">
+<meta itemprop="description" content="How to create Luet repositories
 ">
 
+
+<meta itemprop="datePublished" content="2019-12-14T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-02-02T12:08:44&#43;01:00" />
+<meta itemprop="wordCount" content="470">
+
+
+
+<meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Concepts"/>
-<meta name="twitter:description" content="Grasp the basic to get the most out of Luet
+<meta name="twitter:title" content="Package repositories"/>
+<meta name="twitter:description" content="How to create Luet repositories
 "/>
 
 
@@ -63,9 +71,9 @@ if (!doNotTrack) {
   crossorigin="anonymous"></script>
 
 
-    <title>Concepts | Luet docs</title>
+    <title>Package repositories | Luet docs</title>
   </head>
-  <body class="td-section">
+  <body class="td-page">
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -169,10 +177,10 @@ if (!doNotTrack) {
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/docs/overview/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Overview</a>
+    <a  href="/docs/docs/overview/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Overview</a>
   </li>
   <ul>
-    <li class="collapse " id="docs-docs-overview">
+    <li class="collapse show" id="docs-docs-overview">
       
       
       
@@ -185,7 +193,7 @@ if (!doNotTrack) {
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-overview-repositories" href="/docs/docs/overview/repositories/">Package repositories</a>
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docs-docs-overview-repositories" href="/docs/docs/overview/repositories/">Package repositories</a>
       
       
     </li>
@@ -274,10 +282,10 @@ if (!doNotTrack) {
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/docs/concepts/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Concepts</a>
+    <a  href="/docs/docs/concepts/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Concepts</a>
   </li>
   <ul>
-    <li class="collapse show" id="docs-docs-concepts">
+    <li class="collapse " id="docs-docs-concepts">
       
       
       
@@ -421,8 +429,8 @@ if (!doNotTrack) {
 
 
 
-<a href="https://github.com/google/docsy-example/edit/master/content/en/docs/Concepts/_index.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-<a href="https://github.com/google/docsy-example/issues/new?title=Concepts" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+<a href="https://github.com/google/docsy-example/edit/master/content/en/docs/Overview/repositories.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/google/docsy-example/issues/new?title=Package%20repositories" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
 
 
 <a href="https://github.com/mudler/luet/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
@@ -431,6 +439,21 @@ if (!doNotTrack) {
 
 
 
+
+
+
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#create-a-repository">Create a repository</a>
+<ul>
+<li><a href="#flags">Flags</a></li>
+</ul></li>
+<li><a href="#example">Example</a></li>
+</ul></li>
+</ul>
+</nav>
 
 
 
@@ -446,6 +469,9 @@ if (!doNotTrack) {
 
 
 
+
+
+
 <li class="breadcrumb-item" >
 	<a href="https://luet-lab.github.io/docs/docs/">Documentation</a>
 </li>
@@ -453,8 +479,15 @@ if (!doNotTrack) {
 
 
 
+<li class="breadcrumb-item" >
+	<a href="https://luet-lab.github.io/docs/docs/overview/">Overview</a>
+</li>
+
+
+
+
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="https://luet-lab.github.io/docs/docs/concepts/">Concepts</a>
+	<a href="https://luet-lab.github.io/docs/docs/overview/repositories/">Package repositories</a>
 </li>
 
 	</ol>
@@ -462,75 +495,96 @@ if (!doNotTrack) {
 
             
 <div class="td-content">
-	<h1>Concepts</h1>
-	<div class="lead">Grasp the basic to get the most out of Luet</div>
+	<h1>Package repositories</h1>
+	<div class="lead">How to create Luet repositories</div>
 	
-        <div class="section-index">
-    
-    
-    
-    
-    <hr class="panel-line">
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/docs/concepts/constraints/">CSP and SAT</a>
-                    </h5>
-                    <p>How Luet turns Image resolution into CSP</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/docs/concepts/packages/">Package</a>
-                    </h5>
-                    <p>How to define packages and relations between packages</p>
-                </div>
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/docs/concepts/specfile/">Specfile</a>
-                    </h5>
-                    <p>Luet specfile syntax</p>
-                </div>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-    
-</div>
+
+<p>After a set of packages was built, a repository must be created to make them accessible by Luet clients. A Repository can be served either locally or via http(s) (at the moment of writing). Luet supports multiple-repositories with priorities by default.</p>
+
+<h2 id="create-a-repository">Create a repository</h2>
+
+<pre><code>Generate and renew repository metadata
+
+Usage:
+  luet create-repo [flags]
+
+Flags:
+      --descr string              Repository description (default &quot;luet&quot;)
+  -h, --help                      help for create-repo
+      --name string               Repository name (default &quot;luet&quot;)
+      --output string             Destination folder (default current dir)
+      --packages string           Packages folder (output from build) (default current dir)
+      --reset-revision            Reset repository revision.
+      --tree string               Source luet tree (default &quot;/home/mudler/_git/luet/test&quot;)
+      --tree-compression string   Compression alg: none, gzip (default &quot;none&quot;)
+      --tree-path string          Repository tree filename (default &quot;tree.tar&quot;)
+      --type string               Repository type (disk) (default &quot;disk&quot;)
+      --urls strings              Repository URLs
+
+Global Flags:
+      --concurrency int   Concurrency (default 8)
+      --config string     config file (default is $HOME/.luet.yaml)
+      --fatal             Enables Warnings to exit
+  -v, --verbose           verbose output
+
+</code></pre>
+
+<p>After issuing a <code>luet build</code>, the packages are present in the output build folder. The <code>create-repo</code> step is needed to generate a portable tree which is read by the clients, and a <code>repository.yaml</code> which contains the repository metadata.</p>
+
+<p>Note that the output of create-repo is <em>additive</em> so it integrates with the current build content. The repository is composed by the <code>build</code> output command and the <code>create-repo</code> metadata.</p>
+
+<h3 id="flags">Flags</h3>
+
+<ul>
+<li><strong>&ndash;descr</strong>: Repository description</li>
+<li><strong>&ndash;name</strong>: Repository name</li>
+<li><strong>&ndash;output</strong>: Metadata output folder (while a different path can be specified, it&rsquo;s prefered to output the metadata files directly to the package directory).This most of the time matches the packages path for convenience.</li>
+<li><strong>&ndash;packages</strong>: Directory where built packages are stored. This most of the time is also the output path.</li>
+<li><strong>&ndash;reset-revision</strong>: Reset the repository revision number</li>
+<li><strong>&ndash;tree-path</strong>: Specify a custom name for the tree path. (Defaults to tree.tar)</li>
+<li><strong>&ndash;tree-compression</strong>: Specify a compression algorithm for the tree. (Available: gzip, Defaults: none)</li>
+<li><strong>&ndash;tree</strong>: Path of the tree which was used to generate the packages.</li>
+<li><strong>&ndash;type</strong>: Repository type (http/local). It is just descriptive, the clients will be able to consume the repo in whatsoever way it is served.</li>
+<li><strong>&ndash;urls</strong>: List of URIS where the repository is available</li>
+</ul>
+
+<h2 id="example">Example</h2>
+
+<p>Build a package and generate the repository metadata:</p>
+
+<pre><code>$&gt; mkdir package
+
+$&gt; cat &lt;&lt;EOF &gt; package/build.yaml
+image: busybox
+steps:
+- echo &quot;foo&quot; &gt; /foo
+EOF
+
+$&gt; cat &lt;&lt;EOF &gt; package/definition.yaml
+name: &quot;foo&quot;
+version: &quot;0.1&quot;
+category: &quot;bar&quot; # optional!
+EOF
+
+$&gt; luet build --all --destination $PWD/out/ --tree $PWD/package
+
+📦  Selecting  foo 0.1
+📦  Compiling foo version 0.1 .... ☕
+🐋  Downloading image luet/cache-foo-bar-0.1-builder
+🐋  Downloading image luet/cache-foo-bar-0.1
+📦   foo Generating 🐋  definition for builder image from busybox
+🐋  Building image luet/cache-foo-bar-0.1-builder
+🐋  Building image luet/cache-foo-bar-0.1-builder done
+ Sending build context to Docker daemon  4.096kB
+ ...
+
+$&gt; luet create-repo --name &quot;test&quot; --output $PWD/out --packages $PWD/out --tree $PWD/package
+ For repository test creating revision 1 and last update 1580641614...
+
+$&gt; ls out
+foo-bar-0.1-builder.image.tar  foo-bar-0.1.image.tar  foo-bar-0.1.metadata.yaml  foo-bar-0.1.package.tar  repository.yaml  tree.tar
+
+</code></pre>
 
 	
 		<style>
@@ -594,9 +648,10 @@ if (!doNotTrack) {
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified February 1, 2020: <a  href="https://github.com/google/docsy-example/commit/bc9a0a1a1e3dbee3e24390eae21631904ef0eaa2">Update content, drop default content (bc9a0a1)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified February 2, 2020: <a  href="https://github.com/google/docsy-example/commit/54a55f62ddabbda0a6680e3a1c903cee9f4cfe16">Add repository docs (54a55f6)</a>
 </div>
 </div>
+
 
           </main>
         </div>

@@ -33,9 +33,57 @@
 
 &lt;p&gt;You have to run the following steps inside an ARM board to produce arm-compatible binaries. Whatever distribution with Docker will work. Note that the same steps could be done in a cross-compilation approach, or either with qemu-binfmt in a amd64 host.&lt;/p&gt;
 
+&lt;p&gt;You will also need in your host:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Docker&lt;/li&gt;
+&lt;li&gt;luet installed (+container-diff) in &lt;code&gt;/usr/bin/luet&lt;/code&gt; (arm build)&lt;/li&gt;
+&lt;li&gt;make&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h2 id=&#34;build-the-packages&#34;&gt;Build the packages&lt;/h2&gt;
 
 &lt;p&gt;Clone the repository &lt;a href=&#34;https://github.com/Luet-lab/luet-embedded&#34; target=&#34;_blank&#34;&gt;https://github.com/Luet-lab/luet-embedded&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$&amp;gt; git clone https://github.com/Luet-lab/luet-embedded
+$&amp;gt; cd luet-embedded
+$&amp;gt; sudo make build-all
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;While to rebuild, after doing changes, just do: &lt;code&gt;sudo make rebuild-all&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;create-the-repository&#34;&gt;Create the repository&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;$&amp;gt; sudo make create-repo
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;serve-the-repo-locally&#34;&gt;Serve the repo locally&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;$&amp;gt; make serve-repo
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;create-the-flashable-image&#34;&gt;Create the flashable image&lt;/h2&gt;
+
+&lt;h3 id=&#34;funtoo-based-system&#34;&gt;Funtoo based system&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$&amp;gt; sudo LUET_PACKAGES=&#39;distro/funtoo-1.4 distro/raspbian-boot-0.20191208 system/luet-develop-0.5&#39; make image
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;raspbian-based-system&#34;&gt;Raspbian based system&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$&amp;gt; sudo LUET_PACKAGES=&#39;distro/raspbian-0.20191208 distro/raspbian-boot-0.20191208 system/luet-develop-0.5&#39; make image
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;At the end of the process, a file &lt;code&gt;luet_os.img&lt;/code&gt; should be present in the current folder, ready to be flashed to an SD.&lt;/p&gt;
+
+&lt;h2 id=&#34;add-packages&#34;&gt;Add packages&lt;/h2&gt;
+
+&lt;p&gt;In order to build and add packages to the exiting repository, simply add or edit the specfiles under the &lt;code&gt;distro&lt;/code&gt; folder. When doing &lt;code&gt;make rebuild-all&lt;/code&gt; they will be automatically compiled and made available to the local repository.&lt;/p&gt;
 
       </description>
     </item>

@@ -26,15 +26,15 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luet-lab.github.io/docs/docs/overview/build_packages/" />
 <meta property="article:published_time" content="2019-12-14T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-02-02T11:43:43+01:00" /><meta property="og:site_name" content="Luet docs" />
+<meta property="article:modified_time" content="2020-02-02T11:54:58+01:00" /><meta property="og:site_name" content="Luet docs" />
 <meta itemprop="name" content="Build packages">
 <meta itemprop="description" content="How to build packages with luet
 ">
 
 
 <meta itemprop="datePublished" content="2019-12-14T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-02-02T11:43:43&#43;01:00" />
-<meta itemprop="wordCount" content="478">
+<meta itemprop="dateModified" content="2020-02-02T11:54:58&#43;01:00" />
+<meta itemprop="wordCount" content="495">
 
 
 
@@ -188,6 +188,12 @@ if (!doNotTrack) {
       
       
       <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docs-docs-overview-build-packages" href="/docs/docs/overview/build_packages/">Build packages</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-overview-repositories" href="/docs/docs/overview/repositories/">Package repositories</a>
       
       
     </li>
@@ -520,9 +526,10 @@ Global Flags:
 <li><strong>&ndash;clean</strong>: Boolean that when enabled perform a clean build without taking in consideration already existing artifacts</li>
 <li><strong>&ndash;compression</strong>: Specify a compression algorithm. Currently available only tgz. Defaults to no compression</li>
 <li><strong>&ndash;database</strong>: Type of database which is used for solving. This setting is particularly helpful for big trees composed of many packages on small devices where available memory is limited. Currently available <code>boltdb</code> and <code>memory</code>. Defaults to <code>memory</code>.</li>
-<li><strong>&ndash;destination</strong>: Output folder where the generated artifacts are generated.</li>
+<li><strong>&ndash;destination</strong>: Output folder where the generated artifacts are written.</li>
 <li><strong>&ndash;privileged</strong>: Boolean which indicates that the build is privileged and file permission bits in the packages are copeid as-is.</li>
-<li><strong>&ndash;revdeps</strong>: Boolean which indicates to build also all the packages which depends on the</li>
+<li><strong>&ndash;revdeps</strong>: Boolean which indicates to build also all the packages which depends on the targets</li>
+<li><strong>&ndash;tree</strong>: Path to the tree specfiles, it defaults to the current directory.</li>
 </ul>
 
 <p>General flags:</p>
@@ -549,10 +556,10 @@ EOF
 $&gt; cat &lt;&lt;EOF &gt; package/definition.yaml
 name: &quot;foo&quot;
 version: &quot;0.1&quot;
+category: &quot;bar&quot; # optional!
 EOF
 
 $&gt; luet build --all
-
 
 📦  Selecting  foo 0.1
 📦  Compiling foo version 0.1 .... ☕
@@ -636,7 +643,7 @@ $&gt; luet build --all
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified February 2, 2020: <a  href="https://github.com/google/docsy-example/commit/d6bc57f132f2f813cd924ec645648749eb38a8d4">Add other docs (d6bc57f)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified February 2, 2020: <a  href="https://github.com/google/docsy-example/commit/3f1f91f87c27dc8f5774d3dfcb3c926f30159534">Integrate existing docs (3f1f91f)</a>
 </div>
 </div>
 

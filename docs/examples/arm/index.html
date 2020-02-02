@@ -25,14 +25,14 @@
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luet-lab.github.io/docs/docs/examples/arm/" />
-<meta property="article:modified_time" content="2020-02-01T16:14:55+01:00" /><meta property="og:site_name" content="Luet docs" />
+<meta property="article:modified_time" content="2020-02-02T11:54:58+01:00" /><meta property="og:site_name" content="Luet docs" />
 <meta itemprop="name" content="ARM images">
 <meta itemprop="description" content="Use Luet to build, track, and release OTA update for your embedded devices.
 ">
 
 
-<meta itemprop="dateModified" content="2020-02-01T16:14:55&#43;01:00" />
-<meta itemprop="wordCount" content="132">
+<meta itemprop="dateModified" content="2020-02-02T11:54:58&#43;01:00" />
+<meta itemprop="wordCount" content="275">
 
 
 
@@ -186,6 +186,12 @@ if (!doNotTrack) {
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-overview-build-packages" href="/docs/docs/overview/build_packages/">Build packages</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-overview-repositories" href="/docs/docs/overview/repositories/">Package repositories</a>
       
       
     </li>
@@ -434,6 +440,24 @@ if (!doNotTrack) {
 
 
 
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#build-the-packages">Build the packages</a></li>
+<li><a href="#create-the-repository">Create the repository</a></li>
+<li><a href="#serve-the-repo-locally">Serve the repo locally</a></li>
+<li><a href="#create-the-flashable-image">Create the flashable image</a>
+<ul>
+<li><a href="#funtoo-based-system">Funtoo based system</a></li>
+<li><a href="#raspbian-based-system">Raspbian based system</a></li>
+</ul></li>
+<li><a href="#add-packages">Add packages</a></li>
+</ul></li>
+</ul>
+</nav>
+
 
 
           </div>
@@ -486,9 +510,57 @@ if (!doNotTrack) {
 
 <p>You have to run the following steps inside an ARM board to produce arm-compatible binaries. Whatever distribution with Docker will work. Note that the same steps could be done in a cross-compilation approach, or either with qemu-binfmt in a amd64 host.</p>
 
+<p>You will also need in your host:</p>
+
+<ul>
+<li>Docker</li>
+<li>luet installed (+container-diff) in <code>/usr/bin/luet</code> (arm build)</li>
+<li>make</li>
+</ul>
+
 <h2 id="build-the-packages">Build the packages</h2>
 
 <p>Clone the repository <a href="https://github.com/Luet-lab/luet-embedded" target="_blank">https://github.com/Luet-lab/luet-embedded</a></p>
+
+<pre><code>$&gt; git clone https://github.com/Luet-lab/luet-embedded
+$&gt; cd luet-embedded
+$&gt; sudo make build-all
+...
+</code></pre>
+
+<p>While to rebuild, after doing changes, just do: <code>sudo make rebuild-all</code></p>
+
+<h2 id="create-the-repository">Create the repository</h2>
+
+<pre><code>$&gt; sudo make create-repo
+...
+</code></pre>
+
+<h2 id="serve-the-repo-locally">Serve the repo locally</h2>
+
+<pre><code>$&gt; make serve-repo
+...
+</code></pre>
+
+<h2 id="create-the-flashable-image">Create the flashable image</h2>
+
+<h3 id="funtoo-based-system">Funtoo based system</h3>
+
+<pre><code>$&gt; sudo LUET_PACKAGES='distro/funtoo-1.4 distro/raspbian-boot-0.20191208 system/luet-develop-0.5' make image
+...
+</code></pre>
+
+<h3 id="raspbian-based-system">Raspbian based system</h3>
+
+<pre><code>$&gt; sudo LUET_PACKAGES='distro/raspbian-0.20191208 distro/raspbian-boot-0.20191208 system/luet-develop-0.5' make image
+...
+</code></pre>
+
+<p>At the end of the process, a file <code>luet_os.img</code> should be present in the current folder, ready to be flashed to an SD.</p>
+
+<h2 id="add-packages">Add packages</h2>
+
+<p>In order to build and add packages to the exiting repository, simply add or edit the specfiles under the <code>distro</code> folder. When doing <code>make rebuild-all</code> they will be automatically compiled and made available to the local repository.</p>
 
 	
 		<style>
@@ -552,7 +624,7 @@ if (!doNotTrack) {
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified February 1, 2020: <a  href="https://github.com/google/docsy-example/commit/bc9a0a1a1e3dbee3e24390eae21631904ef0eaa2">Update content, drop default content (bc9a0a1)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified February 2, 2020: <a  href="https://github.com/google/docsy-example/commit/3f1f91f87c27dc8f5774d3dfcb3c926f30159534">Integrate existing docs (3f1f91f)</a>
 </div>
 </div>
 

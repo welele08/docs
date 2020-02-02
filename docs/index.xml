@@ -32,9 +32,57 @@
 
 &lt;p&gt;You have to run the following steps inside an ARM board to produce arm-compatible binaries. Whatever distribution with Docker will work. Note that the same steps could be done in a cross-compilation approach, or either with qemu-binfmt in a amd64 host.&lt;/p&gt;
 
+&lt;p&gt;You will also need in your host:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Docker&lt;/li&gt;
+&lt;li&gt;luet installed (+container-diff) in &lt;code&gt;/usr/bin/luet&lt;/code&gt; (arm build)&lt;/li&gt;
+&lt;li&gt;make&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h2 id=&#34;build-the-packages&#34;&gt;Build the packages&lt;/h2&gt;
 
 &lt;p&gt;Clone the repository &lt;a href=&#34;https://github.com/Luet-lab/luet-embedded&#34; target=&#34;_blank&#34;&gt;https://github.com/Luet-lab/luet-embedded&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$&amp;gt; git clone https://github.com/Luet-lab/luet-embedded
+$&amp;gt; cd luet-embedded
+$&amp;gt; sudo make build-all
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;While to rebuild, after doing changes, just do: &lt;code&gt;sudo make rebuild-all&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;create-the-repository&#34;&gt;Create the repository&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;$&amp;gt; sudo make create-repo
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;serve-the-repo-locally&#34;&gt;Serve the repo locally&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;$&amp;gt; make serve-repo
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;create-the-flashable-image&#34;&gt;Create the flashable image&lt;/h2&gt;
+
+&lt;h3 id=&#34;funtoo-based-system&#34;&gt;Funtoo based system&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$&amp;gt; sudo LUET_PACKAGES=&#39;distro/funtoo-1.4 distro/raspbian-boot-0.20191208 system/luet-develop-0.5&#39; make image
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;raspbian-based-system&#34;&gt;Raspbian based system&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$&amp;gt; sudo LUET_PACKAGES=&#39;distro/raspbian-0.20191208 distro/raspbian-boot-0.20191208 system/luet-develop-0.5&#39; make image
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;At the end of the process, a file &lt;code&gt;luet_os.img&lt;/code&gt; should be present in the current folder, ready to be flashed to an SD.&lt;/p&gt;
+
+&lt;h2 id=&#34;add-packages&#34;&gt;Add packages&lt;/h2&gt;
+
+&lt;p&gt;In order to build and add packages to the exiting repository, simply add or edit the specfiles under the &lt;code&gt;distro&lt;/code&gt; folder. When doing &lt;code&gt;make rebuild-all&lt;/code&gt; they will be automatically compiled and made available to the local repository.&lt;/p&gt;
 
       </description>
     </item>
@@ -422,9 +470,10 @@ Global Flags:
 &lt;li&gt;&lt;strong&gt;&amp;ndash;clean&lt;/strong&gt;: Boolean that when enabled perform a clean build without taking in consideration already existing artifacts&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;&amp;ndash;compression&lt;/strong&gt;: Specify a compression algorithm. Currently available only tgz. Defaults to no compression&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;&amp;ndash;database&lt;/strong&gt;: Type of database which is used for solving. This setting is particularly helpful for big trees composed of many packages on small devices where available memory is limited. Currently available &lt;code&gt;boltdb&lt;/code&gt; and &lt;code&gt;memory&lt;/code&gt;. Defaults to &lt;code&gt;memory&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&amp;ndash;destination&lt;/strong&gt;: Output folder where the generated artifacts are generated.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;destination&lt;/strong&gt;: Output folder where the generated artifacts are written.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;&amp;ndash;privileged&lt;/strong&gt;: Boolean which indicates that the build is privileged and file permission bits in the packages are copeid as-is.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&amp;ndash;revdeps&lt;/strong&gt;: Boolean which indicates to build also all the packages which depends on the&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;revdeps&lt;/strong&gt;: Boolean which indicates to build also all the packages which depends on the targets&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;tree&lt;/strong&gt;: Path to the tree specfiles, it defaults to the current directory.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;General flags:&lt;/p&gt;
@@ -451,10 +500,10 @@ EOF
 $&amp;gt; cat &amp;lt;&amp;lt;EOF &amp;gt; package/definition.yaml
 name: &amp;quot;foo&amp;quot;
 version: &amp;quot;0.1&amp;quot;
+category: &amp;quot;bar&amp;quot; # optional!
 EOF
 
 $&amp;gt; luet build --all
-
 
 📦  Selecting  foo 0.1
 📦  Compiling foo version 0.1 .... ☕
@@ -507,6 +556,107 @@ The only feature needed by the daemon is the ability to build images, so it full
 &lt;p&gt;Luet requires &lt;a href=&#34;https://github.com/GoogleContainerTools/container-diff&#34; target=&#34;_blank&#34;&gt;Container-diff&lt;/a&gt; installed in your system. It is used to construct your package if it is composed by image diffs.&lt;/p&gt;
 
 &lt;p&gt;Check out the &lt;a href=&#34;https://github.com/GoogleContainerTools/container-diff#installation&#34; target=&#34;_blank&#34;&gt;installation&lt;/a&gt; notes of container-diff, depending on your platform.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Package repositories</title>
+      <link>https://luet-lab.github.io/docs/docs/overview/repositories/</link>
+      <pubDate>Sat, 14 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://luet-lab.github.io/docs/docs/overview/repositories/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;After a set of packages was built, a repository must be created to make them accessible by Luet clients. A Repository can be served either locally or via http(s) (at the moment of writing). Luet supports multiple-repositories with priorities by default.&lt;/p&gt;
+
+&lt;h2 id=&#34;create-a-repository&#34;&gt;Create a repository&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;Generate and renew repository metadata
+
+Usage:
+  luet create-repo [flags]
+
+Flags:
+      --descr string              Repository description (default &amp;quot;luet&amp;quot;)
+  -h, --help                      help for create-repo
+      --name string               Repository name (default &amp;quot;luet&amp;quot;)
+      --output string             Destination folder (default current dir)
+      --packages string           Packages folder (output from build) (default current dir)
+      --reset-revision            Reset repository revision.
+      --tree string               Source luet tree (default &amp;quot;/home/mudler/_git/luet/test&amp;quot;)
+      --tree-compression string   Compression alg: none, gzip (default &amp;quot;none&amp;quot;)
+      --tree-path string          Repository tree filename (default &amp;quot;tree.tar&amp;quot;)
+      --type string               Repository type (disk) (default &amp;quot;disk&amp;quot;)
+      --urls strings              Repository URLs
+
+Global Flags:
+      --concurrency int   Concurrency (default 8)
+      --config string     config file (default is $HOME/.luet.yaml)
+      --fatal             Enables Warnings to exit
+  -v, --verbose           verbose output
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After issuing a &lt;code&gt;luet build&lt;/code&gt;, the packages are present in the output build folder. The &lt;code&gt;create-repo&lt;/code&gt; step is needed to generate a portable tree which is read by the clients, and a &lt;code&gt;repository.yaml&lt;/code&gt; which contains the repository metadata.&lt;/p&gt;
+
+&lt;p&gt;Note that the output of create-repo is &lt;em&gt;additive&lt;/em&gt; so it integrates with the current build content. The repository is composed by the &lt;code&gt;build&lt;/code&gt; output command and the &lt;code&gt;create-repo&lt;/code&gt; metadata.&lt;/p&gt;
+
+&lt;h3 id=&#34;flags&#34;&gt;Flags&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;descr&lt;/strong&gt;: Repository description&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;name&lt;/strong&gt;: Repository name&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;output&lt;/strong&gt;: Metadata output folder (while a different path can be specified, it&amp;rsquo;s prefered to output the metadata files directly to the package directory).This most of the time matches the packages path for convenience.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;packages&lt;/strong&gt;: Directory where built packages are stored. This most of the time is also the output path.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;reset-revision&lt;/strong&gt;: Reset the repository revision number&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;tree-path&lt;/strong&gt;: Specify a custom name for the tree path. (Defaults to tree.tar)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;tree-compression&lt;/strong&gt;: Specify a compression algorithm for the tree. (Available: gzip, Defaults: none)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;tree&lt;/strong&gt;: Path of the tree which was used to generate the packages.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;type&lt;/strong&gt;: Repository type (http/local). It is just descriptive, the clients will be able to consume the repo in whatsoever way it is served.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;urls&lt;/strong&gt;: List of URIS where the repository is available&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;example&#34;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;Build a package and generate the repository metadata:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$&amp;gt; mkdir package
+
+$&amp;gt; cat &amp;lt;&amp;lt;EOF &amp;gt; package/build.yaml
+image: busybox
+steps:
+- echo &amp;quot;foo&amp;quot; &amp;gt; /foo
+EOF
+
+$&amp;gt; cat &amp;lt;&amp;lt;EOF &amp;gt; package/definition.yaml
+name: &amp;quot;foo&amp;quot;
+version: &amp;quot;0.1&amp;quot;
+category: &amp;quot;bar&amp;quot; # optional!
+EOF
+
+$&amp;gt; luet build --all --destination $PWD/out/ --tree $PWD/package
+
+📦  Selecting  foo 0.1
+📦  Compiling foo version 0.1 .... ☕
+🐋  Downloading image luet/cache-foo-bar-0.1-builder
+🐋  Downloading image luet/cache-foo-bar-0.1
+📦   foo Generating 🐋  definition for builder image from busybox
+🐋  Building image luet/cache-foo-bar-0.1-builder
+🐋  Building image luet/cache-foo-bar-0.1-builder done
+ Sending build context to Docker daemon  4.096kB
+ ...
+
+$&amp;gt; luet create-repo --name &amp;quot;test&amp;quot; --output $PWD/out --packages $PWD/out --tree $PWD/package
+ For repository test creating revision 1 and last update 1580641614...
+
+$&amp;gt; ls out
+foo-bar-0.1-builder.image.tar  foo-bar-0.1.image.tar  foo-bar-0.1.metadata.yaml  foo-bar-0.1.package.tar  repository.yaml  tree.tar
+
+&lt;/code&gt;&lt;/pre&gt;
 
       </description>
     </item>
