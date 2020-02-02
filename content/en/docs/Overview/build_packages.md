@@ -46,9 +46,10 @@ Flags available for the build command
 - **--clean**: Boolean that when enabled perform a clean build without taking in consideration already existing artifacts
 - **--compression**: Specify a compression algorithm. Currently available only tgz. Defaults to no compression
 - **--database**: Type of database which is used for solving. This setting is particularly helpful for big trees composed of many packages on small devices where available memory is limited. Currently available `boltdb` and `memory`. Defaults to `memory`.
-- **--destination**: Output folder where the generated artifacts are generated.
+- **--destination**: Output folder where the generated artifacts are written.
 - **--privileged**: Boolean which indicates that the build is privileged and file permission bits in the packages are copeid as-is. 
-- **--revdeps**: Boolean which indicates to build also all the packages which depends on the 
+- **--revdeps**: Boolean which indicates to build also all the packages which depends on the targets
+- **--tree**: Path to the tree specfiles, it defaults to the current directory.
 
 General flags:
 
@@ -73,10 +74,10 @@ EOF
 $> cat <<EOF > package/definition.yaml
 name: "foo"
 version: "0.1"
+category: "bar" # optional!
 EOF
 
 $> luet build --all
-
 
 📦  Selecting  foo 0.1
 📦  Compiling foo version 0.1 .... ☕
