@@ -7,7 +7,6 @@
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
-<link rel="alternate" type="application/rss&#43;xml" href="https://luet-lab.github.io/docs/docs/getting-started/index.xml">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -21,19 +20,26 @@
 <link rel="icon" type="image/png" href="/docs/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/docs/favicons/android-192x192.png" sizes="192x192">
 
-<title>Getting Started | Luet docs</title><meta property="og:title" content="Getting Started" />
-<meta property="og:description" content="First steps with Luet
+<title>Building | Luet docs</title><meta property="og:title" content="Building" />
+<meta property="og:description" content="Examples to build with luet
 " />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://luet-lab.github.io/docs/docs/getting-started/" />
-<meta property="og:site_name" content="Luet docs" />
-<meta itemprop="name" content="Getting Started">
-<meta itemprop="description" content="First steps with Luet
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luet-lab.github.io/docs/docs/examples/building/" />
+<meta property="article:modified_time" content="2020-02-02T11:43:43+01:00" /><meta property="og:site_name" content="Luet docs" />
+<meta itemprop="name" content="Building">
+<meta itemprop="description" content="Examples to build with luet
 ">
 
+
+<meta itemprop="dateModified" content="2020-02-02T11:43:43&#43;01:00" />
+<meta itemprop="wordCount" content="200">
+
+
+
+<meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Getting Started"/>
-<meta name="twitter:description" content="First steps with Luet
+<meta name="twitter:title" content="Building"/>
+<meta name="twitter:description" content="Examples to build with luet
 "/>
 
 
@@ -63,9 +69,9 @@ if (!doNotTrack) {
   crossorigin="anonymous"></script>
 
 
-    <title>Getting Started | Luet docs</title>
+    <title>Building | Luet docs</title>
   </head>
-  <body class="td-section">
+  <body class="td-page">
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -198,10 +204,10 @@ if (!doNotTrack) {
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/docs/getting-started/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Getting Started</a>
+    <a  href="/docs/docs/getting-started/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Getting Started</a>
   </li>
   <ul>
-    <li class="collapse show" id="docs-docs-getting-started">
+    <li class="collapse " id="docs-docs-getting-started">
       
       
       
@@ -227,10 +233,10 @@ if (!doNotTrack) {
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/docs/examples/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Examples</a>
+    <a  href="/docs/docs/examples/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Examples</a>
   </li>
   <ul>
-    <li class="collapse " id="docs-docs-examples">
+    <li class="collapse show" id="docs-docs-examples">
       
       
       
@@ -243,7 +249,7 @@ if (!doNotTrack) {
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-examples-building" href="/docs/docs/examples/building/">Building</a>
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docs-docs-examples-building" href="/docs/docs/examples/building/">Building</a>
       
       
       
@@ -415,8 +421,8 @@ if (!doNotTrack) {
 
 
 
-<a href="https://github.com/google/docsy-example/edit/master/content/en/docs/Getting%20started/_index.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-<a href="https://github.com/google/docsy-example/issues/new?title=Getting%20Started" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+<a href="https://github.com/google/docsy-example/edit/master/content/en/docs/Examples/building.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/google/docsy-example/issues/new?title=Building" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
 
 
 <a href="https://github.com/mudler/luet/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
@@ -427,29 +433,6 @@ if (!doNotTrack) {
 
 
 
-
-<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#prerequisites">Prerequisites</a>
-<ul>
-<li><a href="#building-luet">Building Luet</a></li>
-</ul></li>
-<li><a href="#installation">Installation</a>
-<ul>
-<li><a href="#building-luet-from-source">Building Luet from source</a></li>
-<li><a href="#from-release">From release</a></li>
-</ul></li>
-<li><a href="#setup">Setup</a></li>
-<li><a href="#try-it-out">Try it out!</a></li>
-<li><a href="#installation-notes-for-linux-distributions">Installation notes for Linux Distributions</a>
-<ul>
-<li><a href="#sabayon">Sabayon</a></li>
-</ul></li>
-</ul></li>
-</ul>
-</nav>
 
 
 
@@ -465,6 +448,9 @@ if (!doNotTrack) {
 
 
 
+
+
+
 <li class="breadcrumb-item" >
 	<a href="https://luet-lab.github.io/docs/docs/">Documentation</a>
 </li>
@@ -472,8 +458,15 @@ if (!doNotTrack) {
 
 
 
+<li class="breadcrumb-item" >
+	<a href="https://luet-lab.github.io/docs/docs/examples/">Examples</a>
+</li>
+
+
+
+
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="https://luet-lab.github.io/docs/docs/getting-started/">Getting Started</a>
+	<a href="https://luet-lab.github.io/docs/docs/examples/building/">Building</a>
 </li>
 
 	</ol>
@@ -481,152 +474,73 @@ if (!doNotTrack) {
 
             
 <div class="td-content">
-	<h1>Getting Started</h1>
-	<div class="lead">First steps with Luet</div>
+	<h1>Building</h1>
+	<div class="lead">Examples to build with luet</div>
 	
 
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="simple-package-build">Simple package build</h2>
 
-<h3 id="building-luet">Building Luet</h3>
+<p>Create a simple package definition and build it:</p>
 
-<ul>
-<li>Golang installed in your system</li>
-</ul>
+<pre><code>$&gt; mkdir package
 
-<h2 id="installation">Installation</h2>
-
-<h3 id="building-luet-from-source">Building Luet from source</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; git clone https://github.com/mudler/luet
-$&gt; <span style="color:#204a87">cd</span> luet
-$&gt; make build <span style="color:#8f5902;font-style:italic"># or just go build</span></code></pre></div>
-<h3 id="from-release">From release</h3>
-
-<p>Just grab a release from <a href="https://github.com/mudler/luet/releases" target="_blank">the release page on GitHub</a>.</p>
-
-<h2 id="setup">Setup</h2>
-
-<p>To build packages <strong>with</strong> Luet you need to have installed in your system:</p>
-
-<ul>
-<li><a href="https://www.docker.com/" target="_blank">Docker</a> (or <a href="https://github.com/genuinetools/img" target="_blank">Img</a>)</li>
-<li><a href="https://github.com/GoogleContainerTools/container-diff#installation" target="_blank">container-diff</a></li>
-</ul>
-
-<h2 id="try-it-out">Try it out!</h2>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; ./luet --version</code></pre></div>
-<h2 id="installation-notes-for-linux-distributions">Installation notes for Linux Distributions</h2>
-
-<h3 id="sabayon">Sabayon</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic">## Install golang</span>
-$&gt; equo install dev-lang/go
-
-<span style="color:#8f5902;font-style:italic">## install git</span>
-$&gt; equo install dev-vcs/git
-
-<span style="color:#8f5902;font-style:italic">## install docker</span>
-$&gt; equo install app-emulation/docker
-
-<span style="color:#8f5902;font-style:italic"># Get container-diff (you can also install the binary from their release page on github and skip this section)</span>
-$&gt; sudo equo i enman
-$&gt; sudo enman add devel
-$&gt; sudo equo up
-$&gt; sudo equo install app-emulation/container-diff-0.15.0
-
-<span style="color:#8f5902;font-style:italic">## enable docker</span>
-$&gt; systemctl start docker
-
-<span style="color:#8f5902;font-style:italic">## clone the luet git repository</span>
-$&gt; git clone https://github.com/mudler/luet.git
-
-<span style="color:#8f5902;font-style:italic">## compile luet</span>
-$&gt; <span style="color:#204a87">cd</span> luet <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> make build
-
-<span style="color:#8f5902;font-style:italic">## Test it</span>
-$&gt; ./luet --version
-$&gt; ./luet --help
---&gt; gets you <span style="color:#204a87">help</span>
-
-<span style="color:#8f5902;font-style:italic">##</span>
-<span style="color:#8f5902;font-style:italic">## Create your first repository</span>
-<span style="color:#8f5902;font-style:italic">##</span>
-
-<span style="color:#8f5902;font-style:italic">## Create a root directory for your repository, it will contain all the package definitions ?</span>
-$&gt; mkdir ~/my_repo
-
-<span style="color:#8f5902;font-style:italic">## As an example we are going to build the game freedoom, wich is in Gentoo Portage tree</span>
-$&gt; mkdir freedom
-
-$&gt; <span style="color:#204a87">cd</span> freedom
-
-<span style="color:#8f5902;font-style:italic">## Go into the directory and create 2 yaml files</span>
-<span style="color:#8f5902;font-style:italic">## build.yaml tells how to build it, and definitions.yaml tells what package def is</span>
-$&gt; touch definition.yaml <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> touch build.yaml
-
-<span style="color:#8f5902;font-style:italic">## Edit definition.yaml</span>
-category: <span style="color:#4e9a06">&#34;games&#34;</span>
-name: <span style="color:#4e9a06">&#34;freedoom&#34;</span>
-version: <span style="color:#4e9a06">&#34;0.12.0&#34;</span>
-
-<span style="color:#8f5902;font-style:italic">## Edit build.yaml</span>
-image: sabayon/builder-amd64
-prelude:
-- equo install i freedoom --onlydeps <span style="color:#8f5902;font-style:italic"># Because we don’t have all the deps already as specs</span>
+$&gt; cat &lt;&lt;EOF &gt; package/build.yaml
+image: busybox
 steps:
-- emerge freedoom
+- echo &quot;foo&quot; &gt; /foo
+EOF
 
-<span style="color:#8f5902;font-style:italic">## Now instruct luet to build the package</span>
-Inside ~/my_repo
-$&gt; luet build games/freedoom-0.12.0</code></pre></div>
-        <div class="section-index">
-    
-    
-    
-    
-    <hr class="panel-line">
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/docs/getting-started/requirements/">Build requirements</a>
-                    </h5>
-                    <p>What Luet needs to build your packages</p>
-                </div>
-            
-        
-    
-</div>
+$&gt; cat &lt;&lt;EOF &gt; package/definition.yaml
+name: &quot;foo&quot;
+version: &quot;0.1&quot;
+EOF
+
+$&gt; luet build --all
+
+📦  Selecting  foo 0.1
+📦  Compiling foo version 0.1 .... ☕
+🐋  Downloading image luet/cache-foo-bar-0.1-builder
+🐋  Downloading image luet/cache-foo-bar-0.1
+📦   foo Generating 🐋  definition for builder image from busybox
+🐋  Building image luet/cache-foo-bar-0.1-builder
+🐋  Building image luet/cache-foo-bar-0.1-builder done
+ Sending build context to Docker daemon  4.096kB
+ ...
+
+</code></pre>
+
+<h3 id="build-packages">Build packages</h3>
+
+<p>To build a specific version, the full package definition (triple of <code>category</code>, <code>name</code> and <code>version</code>) has to be specified.
+In this example we will also enable package compression (gzip).</p>
+
+<pre><code>$&gt; mkdir package
+
+$&gt; cat &lt;&lt;EOF &gt; package/build.yaml
+image: busybox
+steps:
+- echo &quot;foo&quot; &gt; /foo
+EOF
+
+$&gt; cat &lt;&lt;EOF &gt; package/definition.yaml
+name: &quot;foo&quot;
+version: &quot;0.1&quot;
+category: &quot;bar&quot;
+EOF
+
+$&gt; luet build bar/foo-0.1 --compression gzip
+
+📦  Selecting  foo 0.1
+📦  Compiling foo version 0.1 .... ☕
+🐋  Downloading image luet/cache-foo-bar-0.1-builder
+🐋  Downloading image luet/cache-foo-bar-0.1
+📦   foo Generating 🐋  definition for builder image from busybox
+🐋  Building image luet/cache-foo-bar-0.1-builder
+🐋  Building image luet/cache-foo-bar-0.1-builder done
+ Sending build context to Docker daemon  4.096kB
+ ...
+
+</code></pre>
 
 	
 		<style>
@@ -690,9 +604,10 @@ $&gt; luet build games/freedoom-0.12.0</code></pre></div>
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified December 23, 2019: <a  href="https://github.com/google/docsy-example/commit/3c39a84b46cb93a552fbf08f0d46f43760a85401">Initial import (3c39a84)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified February 2, 2020: <a  href="https://github.com/google/docsy-example/commit/d6bc57f132f2f813cd924ec645648749eb38a8d4">Add other docs (d6bc57f)</a>
 </div>
 </div>
+
 
           </main>
         </div>

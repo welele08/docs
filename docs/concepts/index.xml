@@ -74,7 +74,9 @@ distro/raspbian/buster
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;-&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;sh&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;build.sh&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;package-provides&#34;&gt;Package provides&lt;/h2&gt;
 
-&lt;p&gt;Packages can specify a list of &lt;code&gt;provides&lt;/code&gt;. It is a list of packages in &lt;em&gt;package form&lt;/em&gt; which indicates that the current definition &lt;em&gt;replaces&lt;/em&gt; every occurrence of the packages in this list in the same context (&lt;em&gt;build&lt;/em&gt; or &lt;em&gt;runtime&lt;/em&gt;). This mechanism is particularly helpful for handling package moves or to have virtual packages.&lt;/p&gt;
+&lt;p&gt;Packages can specify a list of &lt;code&gt;provides&lt;/code&gt;. It is a list of packages in &lt;em&gt;package form&lt;/em&gt; which indicates that the current definition &lt;em&gt;replaces&lt;/em&gt; every occurrence of the packages in this list (both in &lt;em&gt;build&lt;/em&gt; and &lt;em&gt;runtime&lt;/em&gt;). This mechanism is particularly helpful for handling package moves or to have virtual packages.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note: packages that in the &lt;code&gt;provides&lt;/code&gt; list don&amp;rsquo;t have to necessarly exist or either have a valid build definition.&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -181,7 +183,6 @@ distro
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;requires&lt;/code&gt;: List of packages which it depends on&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;conflicts&lt;/code&gt;: List of packages which it conflicts with&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;provides&lt;/code&gt;: List of packages which it provides&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;rutime-specs&#34;&gt;Rutime specs&lt;/h3&gt;
@@ -210,6 +211,7 @@ distro
 &lt;li&gt;&lt;code&gt;name&lt;/code&gt;: Name of the package &lt;strong&gt;required&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;version&lt;/code&gt;: Version of the package in semver notation. Selectors here are not supported. You can use selectors (&lt;code&gt;&amp;gt;=&lt;/code&gt;,&lt;code&gt;&amp;lt;&lt;/code&gt;,&lt;code&gt;&amp;gt;&lt;/code&gt;,&lt;code&gt;&amp;lt;=&lt;/code&gt;) only in dependency lists.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;category&lt;/code&gt;: Category of the package&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;provides&lt;/code&gt;: List of packages which it replaces&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Runtime dependency list:&lt;/p&gt;
@@ -217,7 +219,6 @@ distro
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;requires&lt;/code&gt;: List of packages which it depends on runtime&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;conflicts&lt;/code&gt;: List of packages which it conflicts with in runtime&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;provides&lt;/code&gt;: List of packages which it provides in runtime&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;finalizers&#34;&gt;Finalizers&lt;/h3&gt;

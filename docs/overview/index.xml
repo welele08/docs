@@ -13,5 +13,113 @@
       
     
     
+    <item>
+      <title>Docs: Build packages</title>
+      <link>https://luet-lab.github.io/docs/docs/overview/build_packages/</link>
+      <pubDate>Sat, 14 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://luet-lab.github.io/docs/docs/overview/build_packages/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;Building a package with Luet requires a definition only. It can be self-contained and be only composed of one spec, or a group of them, forming a Luet tree.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;build&lt;/code&gt; help command is the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;build packages or trees from luet tree definitions. Packages are in [category]/[name]-[version] form
+
+Usage:
+  luet build &amp;lt;package name&amp;gt; &amp;lt;package name&amp;gt; &amp;lt;package name&amp;gt; ... [flags]
+
+Flags:
+      --all                  Build all packages in the tree
+      --backend string       backend used (docker,img) (default &amp;quot;docker&amp;quot;)
+      --clean                Build all packages without considering the packages present in the build directory (default true)
+      --compression string   Compression alg: none, gzip (default &amp;quot;none&amp;quot;)
+      --database string      database used for solving (memory,boltdb) (default &amp;quot;memory&amp;quot;)
+      --destination string   Destination folder (default currentpath)
+  -h, --help                 help for build
+      --privileged           Privileged (Keep permissions)
+      --revdeps              Build with revdeps
+      --tree string          Source luet tree
+
+Global Flags:
+      --concurrency int   Concurrency (default 8)
+      --config string     config file (default is $HOME/.luet.yaml)
+      --fatal             Enables Warnings to exit
+  -v, --verbose           verbose output
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Build accepts a list of packages to build, which syntax is in the &lt;code&gt;category/name-version&lt;/code&gt; format (following Gentoo syntax).&lt;/p&gt;
+
+&lt;h2 id=&#34;flags&#34;&gt;Flags&lt;/h2&gt;
+
+&lt;p&gt;Flags available for the build command&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;all&lt;/strong&gt;: Boolean which instruct Luet to build all the specs contained in a tree&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;backend&lt;/strong&gt;: String that specifies the backend to use. Currently supported are : &lt;code&gt;docker&lt;/code&gt; and &lt;code&gt;img&lt;/code&gt;. Defaults to &lt;code&gt;docker&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;clean&lt;/strong&gt;: Boolean that when enabled perform a clean build without taking in consideration already existing artifacts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;compression&lt;/strong&gt;: Specify a compression algorithm. Currently available only tgz. Defaults to no compression&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;database&lt;/strong&gt;: Type of database which is used for solving. This setting is particularly helpful for big trees composed of many packages on small devices where available memory is limited. Currently available &lt;code&gt;boltdb&lt;/code&gt; and &lt;code&gt;memory&lt;/code&gt;. Defaults to &lt;code&gt;memory&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;destination&lt;/strong&gt;: Output folder where the generated artifacts are generated.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;privileged&lt;/strong&gt;: Boolean which indicates that the build is privileged and file permission bits in the packages are copeid as-is.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;revdeps&lt;/strong&gt;: Boolean which indicates to build also all the packages which depends on the&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;General flags:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;concurrency&lt;/strong&gt;: Indicates the number of concurrent package builds&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;config&lt;/strong&gt;: Indicates a config file to read&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;fatal&lt;/strong&gt;: Treats all warnings as fatal&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;verbose&lt;/strong&gt;: Enables verbose output&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;examples&#34;&gt;Examples&lt;/h2&gt;
+
+&lt;p&gt;Create a simple package definition and build it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$&amp;gt; mkdir package
+
+$&amp;gt; cat &amp;lt;&amp;lt;EOF &amp;gt; package/build.yaml
+image: busybox
+steps:
+- echo &amp;quot;foo&amp;quot; &amp;gt; /foo
+EOF
+
+$&amp;gt; cat &amp;lt;&amp;lt;EOF &amp;gt; package/definition.yaml
+name: &amp;quot;foo&amp;quot;
+version: &amp;quot;0.1&amp;quot;
+EOF
+
+$&amp;gt; luet build --all
+
+
+📦  Selecting  foo 0.1
+📦  Compiling foo version 0.1 .... ☕
+🐋  Downloading image luet/cache-foo-bar-0.1-builder
+🐋  Downloading image luet/cache-foo-bar-0.1
+📦   foo Generating 🐋  definition for builder image from busybox
+🐋  Building image luet/cache-foo-bar-0.1-builder
+🐋  Building image luet/cache-foo-bar-0.1-builder done
+ Sending build context to Docker daemon  4.096kB
+ ...
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In order to consume the repository by a client, it is sufficient to create the repository:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$&amp;gt; luet create-repo
+ For repository luet creating revision 1 and last update 1580640083...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Which generates a &lt;code&gt;repository.yaml&lt;/code&gt; file containing the repository metadata needed by the client when consuming the packages.&lt;/p&gt;
+
+      </description>
+    </item>
+    
   </channel>
 </rss>

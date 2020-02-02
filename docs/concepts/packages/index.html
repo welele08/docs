@@ -25,14 +25,14 @@
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luet-lab.github.io/docs/docs/concepts/packages/" />
-<meta property="article:modified_time" content="2020-02-01T16:14:55+01:00" /><meta property="og:site_name" content="Luet docs" />
+<meta property="article:modified_time" content="2020-02-02T11:43:43+01:00" /><meta property="og:site_name" content="Luet docs" />
 <meta itemprop="name" content="Package">
 <meta itemprop="description" content="How to define packages and relations between packages
 ">
 
 
-<meta itemprop="dateModified" content="2020-02-01T16:14:55&#43;01:00" />
-<meta itemprop="wordCount" content="234">
+<meta itemprop="dateModified" content="2020-02-02T11:43:43&#43;01:00" />
+<meta itemprop="wordCount" content="251">
 
 
 
@@ -182,6 +182,12 @@ if (!doNotTrack) {
       
       
       
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-overview-build-packages" href="/docs/docs/overview/build_packages/">Build packages</a>
+      
+      
     </li>
   </ul>
 </ul>
@@ -238,6 +244,12 @@ if (!doNotTrack) {
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-examples-arm" href="/docs/docs/examples/arm/">ARM images</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-examples-building" href="/docs/docs/examples/building/">Building</a>
       
       
       
@@ -503,7 +515,9 @@ distro/raspbian/buster
 </span><span style="color:#f8f8f8;text-decoration:underline"></span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>sh<span style="color:#f8f8f8;text-decoration:underline"> </span>build.sh</code></pre></div>
 <h2 id="package-provides">Package provides</h2>
 
-<p>Packages can specify a list of <code>provides</code>. It is a list of packages in <em>package form</em> which indicates that the current definition <em>replaces</em> every occurrence of the packages in this list in the same context (<em>build</em> or <em>runtime</em>). This mechanism is particularly helpful for handling package moves or to have virtual packages.</p>
+<p>Packages can specify a list of <code>provides</code>. It is a list of packages in <em>package form</em> which indicates that the current definition <em>replaces</em> every occurrence of the packages in this list (both in <em>build</em> and <em>runtime</em>). This mechanism is particularly helpful for handling package moves or to have virtual packages.</p>
+
+<p><em>Note: packages that in the <code>provides</code> list don&rsquo;t have to necessarly exist or either have a valid build definition.</em></p>
 
 	
 		<style>
@@ -567,7 +581,7 @@ distro/raspbian/buster
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified February 1, 2020: <a  href="https://github.com/google/docsy-example/commit/bc9a0a1a1e3dbee3e24390eae21631904ef0eaa2">Update content, drop default content (bc9a0a1)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified February 2, 2020: <a  href="https://github.com/google/docsy-example/commit/d6bc57f132f2f813cd924ec645648749eb38a8d4">Add other docs (d6bc57f)</a>
 </div>
 </div>
 

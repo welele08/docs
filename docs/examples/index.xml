@@ -41,6 +41,84 @@
     </item>
     
     <item>
+      <title>Docs: Building</title>
+      <link>https://luet-lab.github.io/docs/docs/examples/building/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://luet-lab.github.io/docs/docs/examples/building/</guid>
+      <description>
+        
+        
+        
+
+&lt;h2 id=&#34;simple-package-build&#34;&gt;Simple package build&lt;/h2&gt;
+
+&lt;p&gt;Create a simple package definition and build it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$&amp;gt; mkdir package
+
+$&amp;gt; cat &amp;lt;&amp;lt;EOF &amp;gt; package/build.yaml
+image: busybox
+steps:
+- echo &amp;quot;foo&amp;quot; &amp;gt; /foo
+EOF
+
+$&amp;gt; cat &amp;lt;&amp;lt;EOF &amp;gt; package/definition.yaml
+name: &amp;quot;foo&amp;quot;
+version: &amp;quot;0.1&amp;quot;
+EOF
+
+$&amp;gt; luet build --all
+
+📦  Selecting  foo 0.1
+📦  Compiling foo version 0.1 .... ☕
+🐋  Downloading image luet/cache-foo-bar-0.1-builder
+🐋  Downloading image luet/cache-foo-bar-0.1
+📦   foo Generating 🐋  definition for builder image from busybox
+🐋  Building image luet/cache-foo-bar-0.1-builder
+🐋  Building image luet/cache-foo-bar-0.1-builder done
+ Sending build context to Docker daemon  4.096kB
+ ...
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;build-packages&#34;&gt;Build packages&lt;/h3&gt;
+
+&lt;p&gt;To build a specific version, the full package definition (triple of &lt;code&gt;category&lt;/code&gt;, &lt;code&gt;name&lt;/code&gt; and &lt;code&gt;version&lt;/code&gt;) has to be specified.
+In this example we will also enable package compression (gzip).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$&amp;gt; mkdir package
+
+$&amp;gt; cat &amp;lt;&amp;lt;EOF &amp;gt; package/build.yaml
+image: busybox
+steps:
+- echo &amp;quot;foo&amp;quot; &amp;gt; /foo
+EOF
+
+$&amp;gt; cat &amp;lt;&amp;lt;EOF &amp;gt; package/definition.yaml
+name: &amp;quot;foo&amp;quot;
+version: &amp;quot;0.1&amp;quot;
+category: &amp;quot;bar&amp;quot;
+EOF
+
+$&amp;gt; luet build bar/foo-0.1 --compression gzip
+
+📦  Selecting  foo 0.1
+📦  Compiling foo version 0.1 .... ☕
+🐋  Downloading image luet/cache-foo-bar-0.1-builder
+🐋  Downloading image luet/cache-foo-bar-0.1
+📦   foo Generating 🐋  definition for builder image from busybox
+🐋  Building image luet/cache-foo-bar-0.1-builder
+🐋  Building image luet/cache-foo-bar-0.1-builder done
+ Sending build context to Docker daemon  4.096kB
+ ...
+
+&lt;/code&gt;&lt;/pre&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Docs: Images from scratch</title>
       <link>https://luet-lab.github.io/docs/docs/examples/scratch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
