@@ -98,7 +98,6 @@ From a tree dependency:
 
 - `requires`: List of packages which it depends on
 - `conflicts`: List of packages which it conflicts with
-- `provides`: List of packages which it provides
 
 ### Rutime specs
 
@@ -127,13 +126,12 @@ Global:
 - `name`: Name of the package **required**
 - `version`: Version of the package in semver notation. Selectors here are not supported. You can use selectors (`>=`,`<`,`>`,`<=`) only in dependency lists.
 - `category`: Category of the package
+- `provides`: List of packages which it replaces
 
 Runtime dependency list:
 
 - `requires`: List of packages which it depends on runtime
 - `conflicts`: List of packages which it conflicts with in runtime
-- `provides`: List of packages which it provides in runtime
-
 
 ### Finalizers
 

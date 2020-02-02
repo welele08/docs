@@ -58,4 +58,6 @@ steps:
 
 ## Package provides
 
-Packages can specify a list of `provides`. It is a list of packages in *package form* which indicates that the current definition *replaces* every occurrence of the packages in this list in the same context (*build* or *runtime*). This mechanism is particularly helpful for handling package moves or to have virtual packages. 
+Packages can specify a list of `provides`. It is a list of packages in *package form* which indicates that the current definition *replaces* every occurrence of the packages in this list (both in *build* and *runtime*). This mechanism is particularly helpful for handling package moves or to have virtual packages. 
+
+*Note: packages that in the `provides` list don't have to necessarly exist or either have a valid build definition.*
