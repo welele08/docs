@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Luet docs – Luet docs</title>
+    <title>Luet – Luet docs</title>
     <link>https://luet-lab.github.io/docs/</link>
-    <description>Recent content on Luet docs</description>
+    <description>Recent content in Luet docs on Luet</description>
     <generator>Hugo -- gohugo.io</generator>
     
 	  <atom:link href="https://luet-lab.github.io/docs/index.xml" rel="self" type="application/rss+xml" />

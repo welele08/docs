@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Luet docs – Contribution Guidelines</title>
+    <title>Luet – Contribution Guidelines</title>
     <link>https://luet-lab.github.io/docs/docs/contribution-guidelines/</link>
-    <description>Recent content in Contribution Guidelines on Luet docs</description>
+    <description>Recent content in Contribution Guidelines on Luet</description>
     <generator>Hugo -- gohugo.io</generator>
     
 	  <atom:link href="https://luet-lab.github.io/docs/docs/contribution-guidelines/index.xml" rel="self" type="application/rss+xml" />

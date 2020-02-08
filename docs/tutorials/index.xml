@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Luet docs – Tutorials</title>
+    <title>Luet – Tutorials</title>
     <link>https://luet-lab.github.io/docs/docs/tutorials/</link>
-    <description>Recent content in Tutorials on Luet docs</description>
+    <description>Recent content in Tutorials on Luet</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 04 Jan 2017 00:00:00 +0000</lastBuildDate>
     
