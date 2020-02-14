@@ -147,11 +147,11 @@ no = 'Sorry to hear that. Please <a href="https://github.com/Luet-lab/docs/issue
 	url = "https://github.com/mudler/luet"
 	icon = "fab fa-github"
         desc = "Development takes place here!"
-# [[params.links.developer]]
-# 	name = "Slack"
-# 	url = "https://example.org/slack"
-# 	icon = "fab fa-slack"
-#         desc = "Chat with other project developers"
+[[params.links.developer]]
+	name = "Slack"
+	url = "https://join.slack.com/t/luet/shared_invite/enQtOTQxMjcyNDQ0MDUxLWQ5ODVlNTI1MTYzNDRkYzkyYmM1YWE5YjM0NTliNDEzNmQwMTkxNDRhNDIzM2Y5NDBlOTZjZTYxYWQyNDE4YzY"
+	icon = "fab fa-slack"
+        desc = "Join us on Slack!"
 # [[params.links.developer]]
 # 	name = "Developer mailing list"
 # 	url = "https://example.org/mail"
