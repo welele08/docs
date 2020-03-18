@@ -6,7 +6,7 @@ description: >
   How to build packages with luet
 ---
 
-Building a package with Luet requires a definition only. It can be self-contained and be only composed of one spec, or a group of them, forming a Luet tree.
+Building a package with Luet requires a [definition](/docs/concepts/specfile) only. It can be self-contained and be only composed of one [specfile](/docs/concepts/specfile), or a group of them, forming a Luet tree.
 
 The `build` help command is the following:
 
@@ -60,7 +60,7 @@ General flags:
 
 ## Examples
 
-Create a simple package definition and build it:
+Create a simple [package definition](/docs/concepts/specfile) and build it:
 
 ```
 $> mkdir package
