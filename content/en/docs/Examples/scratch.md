@@ -3,7 +3,7 @@ title: "Images from scratch"
 linkTitle: "ScratchImages"
 weight: 4
 description: >
-  Use Luet to compose images from scratch
+  Using Luet to compose images from scratch
 ---
 
 

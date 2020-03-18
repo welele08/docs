@@ -6,17 +6,15 @@ description: >
   What Luet needs to build your packages
 ---
 
-Luet currently supports [Docker](https://www.docker.com/) and [Img](https://github.com/genuinetools/img). Both backend can be used, and they can be switched in runtime.
+Luet currently supports [Docker](https://www.docker.com/) and [Img](https://github.com/genuinetools/img). Both back-ends can be used and switched in runtime.
 
 ## Docker
 
-Docker is the (less) experimental Luet engine supported. Be sure in your system to have Docker installed and the daemon running.
-The user which is running `luet` commands needs the permission to execute the `docker` executable, and to connect to a `docker` daemon. 
-The only feature needed by the daemon is the ability to build images, so it fully supports remote daemon as well. (They can be specified with the `DOCKER_HOST` environment variable, that is respected by `luet`)
+Docker is the (less) experimental Luet engine supported. Be sure to have Docker installed and the daemon running. The user running `luet` commands needs the corresponding permissions to run the `docker` executable, and to connect to a `docker` daemon. The only feature needed by the daemon is the ability to build images, so it fully supports remote daemon as well (this can be specified with the `DOCKER_HOST` environment variable, that is respected by `luet`)
 
 ## Img
 
-Luet supports [Img](https://github.com/genuinetools/img). To use it, simply install it in your system, and while running `luet build`, you can switch the backend by providing it as a parameter: `luet build --backend img`. For small packages it is particularly powerful, as doesn't require any docker daemon running in the host.
+Luet supports [Img](https://github.com/genuinetools/img). To use it, simply install it in your system, and while running `luet build`, you can switch the backend by providing it as a parameter: `luet build --backend img`. For small packages it is particularly powerful, as it doesn't require any docker daemon running in the host.
 
 ## Container-diff
 

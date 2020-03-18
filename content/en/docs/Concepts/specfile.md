@@ -8,10 +8,9 @@ description: >
 
 ## Specfiles
 
-Luet [packages](/docs/docs/concepts/packages/) are defined by specfiles. They define the runtime and builtime requirements of a package.
-There is an hard distinction between runtime and buildtime. A spec is composed at least by the runtime (`definition.yaml`) and the buildtime specification (`build.yaml`).
+Luet [packages](/docs/docs/concepts/packages/) are defined by specfiles. Specfiles define the runtime and builtime requirements of a package.  There is an hard distinction between runtime and buildtime. A spec is composed at least by the runtime (`definition.yaml`) and the buildtime specification (`build.yaml`).
 
-A Folder containing a `build.yaml` and a `definition.yaml` form a specfile. A Luet tree is merely a composition of specfile(s).  There is no constriction on folder naming or hierarchy either.
+A directory containing a `build.yaml` and a `definition.yaml` forms a specfile <!--it sounds a little bit weird that a directory (or folder) a spec"file""-->. A Luet tree is merely a composition of specfile(s).  There is no constriction on either folder naming or hierarchy.
 
 *Example of a [tree folder hierarchy](https://github.com/Luet-lab/luet-embedded/tree/master/distro)*
 ```bash
@@ -55,7 +54,7 @@ distro
 
 ### Build specs
 
-Build specs are defined in `build.yaml` files. They denote the build-time `dependencies` and `conflicts` along with a definition of the content of the package.
+Build specs are defined in `build.yaml` files. They denote the build-time `dependencies` and `conflicts`, together with a definition of the content of the package.
 
 *Example of a `build.yaml` file*:
 ```yaml
@@ -84,20 +83,20 @@ unpack: true
 
 Global:
 
-- `environment`: List of environment variables ( in `NAME=value` format ) that are expanded in `step` and in `prelude`. ( e.g. `${NAME}` )
-- `step`: List of commands to perform in the build container
-- `prelude`: List of commands to perform in the build container before building
+- `environment`: List of environment variables ( in `NAME=value` format ) that are expanded in `step` and in `prelude`. ( e.g. `${NAME}` ).
+- `step`: List of commands to perform in the build container.
+- `prelude`: List of commands to perform in the build container before building.
 - `unpack`: Boolean which indicates if the package content **is** the whole container content.
-- `includes`: List of strings which are encoded in logical AND, they denote the content to filter from the container image to be packed. Wildcards and golang regexes are supported. If specified, files that don't much any of the regex in the list won't be included in the final package.
+- `includes`: List of strings which are encoded in logical AND, they denote the content to filter from the container image to be packed. Wildcards and golang regular expressions are supported. If specified, files not matching any of the regular expressions in the list won't be included in the final package.
 
 Source from external image (e.g. Docker):
 
-- `image`: List of packages which it provides
+- `image`: List of packages which it provides.
 
 From a tree dependency:
 
-- `requires`: List of packages which it depends on
-- `conflicts`: List of packages which it conflicts with
+- `requires`: List of packages which it depends on.
+- `conflicts`: List of packages which it conflicts with.
 
 ### Rutime specs
 
@@ -125,17 +124,17 @@ Global:
 
 - `name`: Name of the package **required**
 - `version`: Version of the package in semver notation. Selectors here are not supported. You can use selectors (`>=`,`<`,`>`,`<=`) only in dependency lists.
-- `category`: Category of the package
-- `provides`: List of packages which it replaces
+- `category`: Category of the package.
+- `provides`: List of packages which it replaces.
 
 Runtime dependency list:
 
-- `requires`: List of packages which it depends on runtime
-- `conflicts`: List of packages which it conflicts with in runtime
+- `requires`: List of packages which it depends on, in runtime.
+- `conflicts`: List of packages which it conflicts with, in runtime.
 
 ### Finalizers
 
-Finalizers are denoted in a `finalize.yaml` file which is a sibiling of `definition.yaml` and `build.yaml` file. It contains a list of commands that finalize the package when it is installed in the machine.
+Finalizers are denoted in a `finalize.yaml` file, which is a sibiling of `definition.yaml` and `build.yaml` file. It contains a list of commands that finalize the package when it is installed in the machine.
 
 *finalize.yaml*:
 ```yaml

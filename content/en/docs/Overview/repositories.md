@@ -6,7 +6,7 @@ description: >
   How to create Luet repositories
 ---
 
-After a set of packages was built, a repository must be created to make them accessible by Luet clients. A Repository can be served either locally or via http(s) (at the moment of writing). Luet supports multiple-repositories with priorities by default.
+After a set of packages has been built, a repository must be created in order to make them accessible by Luet clients. A Repository can be served either local files or via http(s) (at the moment of writing). Luet, by default, supports multiple-repositories with priorities.
 
 ## Create a repository
 
@@ -37,9 +37,9 @@ Global Flags:
 
 ```
 
-After issuing a `luet build`, the packages are present in the output build folder. The `create-repo` step is needed to generate a portable tree which is read by the clients, and a `repository.yaml` which contains the repository metadata.
+After issuing a `luet build`, the built packages are present in the output build directory. The `create-repo` step is needed to generate a portable tree, which is read by the clients, and a `repository.yaml` which contains the repository metadata.
 
-Note that the output of create-repo is *additive* so it integrates with the current build content. The repository is composed by the `build` output command and the `create-repo` metadata. 
+Note that the output of `create-repo` is *additive* so it integrates with the current build content. The repository is composed by the `build` output command and the `create-repo` metadata. 
 
 ### Flags
 
