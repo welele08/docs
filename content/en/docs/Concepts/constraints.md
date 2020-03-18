@@ -8,7 +8,7 @@ description: >
 
 Luet uses SAT under the hood and Reinforcement learning techniques to solve package constraints.
 
-Luet allows you to specify 3 kind of set of contraints on a [package](/docs/concepts/packages/) definition:
+Luet allows you to specify 3 kind of set of contraints on a [package](/docs/docs/concepts/packages/) definition:
 
 - Requires
 - Conflicts
@@ -18,7 +18,7 @@ The package definition in your tree definition along with its Requires and Confl
 
 ## Requires and Conflicts
 
-A list of requires and conflicts, composed of one or more [packages](/docs/concepts/packages/), becomes a SAT formula. The formula is then given to the SAT solver to compute a finite state set of packages that must be installed in the system to met the requirements.
+A list of requires and conflicts, composed of one or more [packages](/docs/docs/concepts/packages/), becomes a SAT formula. The formula is then given to the SAT solver to compute a finite state set of packages that must be installed in the system to met the requirements.
 
 Along, Luet builds the ALO (At least one) and AMO (At most one) constraints. That means that given requirements as selectors in semver notation (e.g. `>1.0`) it builds additional formulas to restrict the constraints of the given solution.
 

@@ -20,7 +20,7 @@ There is no known package manager that has zero dependency and that fully levera
 
 # How
 
-By defining a yaml specification format, Luet parses the [requirements](/docs/concepts/constraints) to build [packages](/docs/concepts/packages), so Luet clients can consume them.
+By defining a yaml specification format, Luet parses the [requirements](/docs/docs/concepts/constraints) to build [packages](/docs/docs/concepts/packages), so Luet clients can consume them.
 As Luet has 0 dependency while being used for installation of packages, this have the nice effect that doesn't depend on the package tree that is available for installation inside a Luet repository.
 
 Here below you can find links to tutorials on how to build packages, images and repositories.

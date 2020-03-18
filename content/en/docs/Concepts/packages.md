@@ -71,7 +71,7 @@ By a combination of keywords in `build.yaml`, you end up with categories of pack
 - Package layers
 - Package with includes
 
-Check the [Specfile concept](/docs/concepts/specfile) page for a full overview of the available keywords in the Luet specfile format.
+Check the [Specfile concept](/docs/docs/concepts/specfile) page for a full overview of the available keywords in the Luet specfile format.
 
 ### Seed packages
 
@@ -231,7 +231,6 @@ version: "1.0"
 ```
 
 This can be combined with other keywords to manipulate the resulting package (layer), for example:
-
 
 
 **foo/build.yaml**

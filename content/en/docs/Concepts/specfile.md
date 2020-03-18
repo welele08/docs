@@ -8,7 +8,7 @@ description: >
 
 ## Specfiles
 
-Luet [packages](/docs/concepts/packages/) are defined by specfiles. They define the runtime and builtime requirements of a package.
+Luet [packages](/docs/docs/concepts/packages/) are defined by specfiles. They define the runtime and builtime requirements of a package.
 There is an hard distinction between runtime and buildtime. A spec is composed at least by the runtime (`definition.yaml`) and the buildtime specification (`build.yaml`).
 
 A Folder containing a `build.yaml` and a `definition.yaml` form a specfile. A Luet tree is merely a composition of specfile(s).  There is no constriction on folder naming or hierarchy either.

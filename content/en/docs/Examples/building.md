@@ -8,7 +8,7 @@ description: >
 
 ## Simple package build
 
-Create a simple [package](/docs/concepts/packages/) definition and build it:
+Create a simple [package](/docs/docs/concepts/packages/) definition and build it:
 
 ```
 $> mkdir package
@@ -40,7 +40,7 @@ $> luet build --all
 
 ### Build packages
 
-To build a specific version, the full [package](/docs/concepts/packages/) definition (triple of `category`, `name` and `version`) has to be specified.
+To build a specific version, the full [package](/docs/docs/concepts/packages/) definition (triple of `category`, `name` and `version`) has to be specified.
 In this example we will also enable package compression (gzip).
 
 ```
