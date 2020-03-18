@@ -20,25 +20,25 @@
 <link rel="icon" type="image/png" href="/docs/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/docs/favicons/android-192x192.png" sizes="192x192">
 
-<title>CSP and SAT | Luet</title><meta property="og:title" content="CSP and SAT" />
+<title>CSP, SAT &amp;&amp; RL | Luet</title><meta property="og:title" content="CSP, SAT &amp;&amp; RL" />
 <meta property="og:description" content="How Luet turns Image resolution into CSP
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luet-lab.github.io/docs/docs/concepts/constraints/" />
-<meta property="article:modified_time" content="2019-12-23T16:02:41+01:00" /><meta property="og:site_name" content="Luet" />
-<meta itemprop="name" content="CSP and SAT">
+<meta property="article:modified_time" content="2020-03-18T19:09:42+01:00" /><meta property="og:site_name" content="Luet" />
+<meta itemprop="name" content="CSP, SAT &amp;&amp; RL">
 <meta itemprop="description" content="How Luet turns Image resolution into CSP
 ">
 
 
-<meta itemprop="dateModified" content="2019-12-23T16:02:41&#43;01:00" />
-<meta itemprop="wordCount" content="0">
+<meta itemprop="dateModified" content="2020-03-18T19:09:42&#43;01:00" />
+<meta itemprop="wordCount" content="288">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="CSP and SAT"/>
+<meta name="twitter:title" content="CSP, SAT &amp;&amp; RL"/>
 <meta name="twitter:description" content="How Luet turns Image resolution into CSP
 "/>
 
@@ -69,7 +69,7 @@ if (!doNotTrack) {
   crossorigin="anonymous"></script>
 
 
-    <title>CSP and SAT | Luet</title>
+    <title>CSP, SAT &amp;&amp; RL | Luet</title>
   </head>
   <body class="td-page">
     <header>
@@ -290,7 +290,7 @@ if (!doNotTrack) {
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docs-docs-concepts-constraints" href="/docs/docs/concepts/constraints/">CSP and SAT</a>
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docs-docs-concepts-constraints" href="/docs/docs/concepts/constraints/">CSP, SAT &amp;&amp; RL</a>
       
       
       
@@ -428,7 +428,7 @@ if (!doNotTrack) {
 
 
 <a href="https://github.com/Luet-lab/docs/edit/master/content/en/docs/Concepts/constraints.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-<a href="https://github.com/Luet-lab/docs/issues/new?title=CSP%20and%20SAT" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+<a href="https://github.com/Luet-lab/docs/issues/new?title=CSP,%20SAT%20&amp;amp;&amp;amp;%20RL" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
 
 
 <a href="https://github.com/mudler/luet/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
@@ -437,6 +437,19 @@ if (!doNotTrack) {
 
 
 
+
+
+
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#requires-and-conflicts">Requires and Conflicts</a></li>
+<li><a href="#provides">Provides</a></li>
+<li><a href="#references">References</a></li>
+</ul></li>
+</ul>
+</nav>
 
 
 
@@ -470,7 +483,7 @@ if (!doNotTrack) {
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="https://luet-lab.github.io/docs/docs/concepts/constraints/">CSP and SAT</a>
+	<a href="https://luet-lab.github.io/docs/docs/concepts/constraints/">CSP, SAT &amp;&amp; RL</a>
 </li>
 
 	</ol>
@@ -478,9 +491,43 @@ if (!doNotTrack) {
 
             
 <div class="td-content">
-	<h1>CSP and SAT</h1>
+	<h1>CSP, SAT &amp;&amp; RL</h1>
 	<div class="lead">How Luet turns Image resolution into CSP</div>
 	
+
+<p>Luet uses SAT under the hood and Reinforcement learning techniques to solve package constraints.</p>
+
+<p>Luet allows you to specify 3 kind of set of contraints on a <a href="/docs/concepts/packages/">package</a> definition:</p>
+
+<ul>
+<li>Requires</li>
+<li>Conflicts</li>
+<li>Provides</li>
+</ul>
+
+<p>The package definition in your tree definition along with its Requires and Conflicts are turned into Boolean formulas that are consumed by the solver to compute a solution. The solution represent the state of your system after a particular query is asked to the solver (Install, Uninstall, Upgrade).</p>
+
+<h2 id="requires-and-conflicts">Requires and Conflicts</h2>
+
+<p>A list of requires and conflicts, composed of one or more <a href="/docs/concepts/packages/">packages</a>, becomes a SAT formula. The formula is then given to the SAT solver to compute a finite state set of packages that must be installed in the system to met the requirements.</p>
+
+<p>Along, Luet builds the ALO (At least one) and AMO (At most one) constraints. That means that given requirements as selectors in semver notation (e.g. <code>&gt;1.0</code>) it builds additional formulas to restrict the constraints of the given solution.</p>
+
+<p>At the moment of writing Luet is not encoding any order, but relies on the SAT solver and tries to enforce the order by forcing the engine to look at the &ldquo;best&rdquo; pick among a set of package. This is a known issue that we will address in the near future.</p>
+
+<h2 id="provides">Provides</h2>
+
+<p>Provides are not encoded in a SAT formula. Instead they are <code>expanded</code> into in-place substitution of the packages that they have to be replaced with.
+They share the same SAT logic of expansion, allowing to swap entire version ranges (e.g. <code>&gt;=1.0</code>), allowing to handle package rename, removals, and virtuals.</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+<li>OPIUM (Luet is inspired by it): <a href="https://ranjitjhala.github.io/static/opium.pdf" target="_blank">https://ranjitjhala.github.io/static/opium.pdf</a></li>
+<li>FROM TRACTABLE CSP TO TRACTABLE SAT: <a href="https://www.cs.ox.ac.uk/files/4014/maxclosed_orderencoding_v16_TR.pdf" target="_blank">https://www.cs.ox.ac.uk/files/4014/maxclosed_orderencoding_v16_TR.pdf</a></li>
+<li>Solver concepts applied to packages (<code>zypper</code>): <a href="https://en.opensuse.org/openSUSE:Libzypp_satsolver_basics" target="_blank">https://en.opensuse.org/openSUSE:Libzypp_satsolver_basics</a></li>
+</ul>
+
 	
 		<style>
   .feedback--answer {
@@ -543,7 +590,7 @@ if (!doNotTrack) {
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified December 23, 2019: <a  href="https://github.com/Luet-lab/docs/commit/3c39a84b46cb93a552fbf08f0d46f43760a85401">Initial import (3c39a84)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified March 18, 2020: <a  href="https://github.com/Luet-lab/docs/commit/207d608c96f1a9b38d22de902cfd329b26c9a24d">Update docs (207d608)</a>
 </div>
 </div>
 

@@ -83,7 +83,7 @@ $&amp;gt; sudo make build-all
 
 &lt;h2 id=&#34;add-packages&#34;&gt;Add packages&lt;/h2&gt;
 
-&lt;p&gt;In order to build and add packages to the exiting repository, simply add or edit the specfiles under the &lt;code&gt;distro&lt;/code&gt; folder. When doing &lt;code&gt;make rebuild-all&lt;/code&gt; they will be automatically compiled and made available to the local repository.&lt;/p&gt;
+&lt;p&gt;In order to build and add &lt;a href=&#34;https://luet-lab.github.io/docs/docs/concepts/packages/&#34;&gt;packages&lt;/a&gt; to the exiting repository, simply add or edit the &lt;a href=&#34;https://luet-lab.github.io/docs/docs/concepts/specfile&#34;&gt;specfiles&lt;/a&gt; under the &lt;code&gt;distro&lt;/code&gt; folder. When doing &lt;code&gt;make rebuild-all&lt;/code&gt; they will be automatically compiled and made available to the local repository.&lt;/p&gt;
 
       </description>
     </item>
@@ -101,7 +101,7 @@ $&amp;gt; sudo make build-all
 
 &lt;h2 id=&#34;simple-package-build&#34;&gt;Simple package build&lt;/h2&gt;
 
-&lt;p&gt;Create a simple package definition and build it:&lt;/p&gt;
+&lt;p&gt;Create a simple &lt;a href=&#34;https://luet-lab.github.io/docs/docs/concepts/packages/&#34;&gt;package&lt;/a&gt; definition and build it:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$&amp;gt; mkdir package
 
@@ -132,7 +132,7 @@ $&amp;gt; luet build --all
 
 &lt;h3 id=&#34;build-packages&#34;&gt;Build packages&lt;/h3&gt;
 
-&lt;p&gt;To build a specific version, the full package definition (triple of &lt;code&gt;category&lt;/code&gt;, &lt;code&gt;name&lt;/code&gt; and &lt;code&gt;version&lt;/code&gt;) has to be specified.
+&lt;p&gt;To build a specific version, the full &lt;a href=&#34;https://luet-lab.github.io/docs/docs/concepts/packages/&#34;&gt;package&lt;/a&gt; definition (triple of &lt;code&gt;category&lt;/code&gt;, &lt;code&gt;name&lt;/code&gt; and &lt;code&gt;version&lt;/code&gt;) has to be specified.
 In this example we will also enable package compression (gzip).&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$&amp;gt; mkdir package

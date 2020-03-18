@@ -284,7 +284,7 @@ if (!doNotTrack) {
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-concepts-constraints" href="/docs/docs/concepts/constraints/">CSP and SAT</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-concepts-constraints" href="/docs/docs/concepts/constraints/">CSP, SAT &amp;&amp; RL</a>
       
       
       
@@ -434,6 +434,8 @@ if (!doNotTrack) {
 
 
 
+
+
           </div>
           <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
             <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
@@ -464,7 +466,26 @@ if (!doNotTrack) {
 <div class="td-content">
 	<h1>Overview</h1>
 	<div class="lead">See Luet in action.</div>
-	<p>Here you can find informations on how to build packages, images and repositories.</p>
+	
+
+<h1 id="what">What</h1>
+
+<p>Luet brings the containers ecosystem to standard package management software and delivery. It is fully built around the container concept, and leverages the huge catalog already present in the wild. It lets you use Docker images from docker hub, or from private registry to build packages, and helps you to redistribute them.</p>
+
+<p>Luet clients ( here in after called &ldquo;Luet native clients&rdquo; ) can consume Luet repositories with 0-dependency installs. No dependency is required by the Package manager, giving you the full control on what you install or not in your system. While it can be used to generate <em>Linux from Scratch</em> distributions, it can be used also to build Docker images, or simply build standalone packages that you might want to redistribute.</p>
+
+<p>The syntax which is proposed it aims to be KISS - you define a set of steps that has to be run while you build your image, and a set of constraints that denotes the requirements, or conflicts of your package.</p>
+
+<h1 id="why">Why</h1>
+
+<p>There is no known package manager that has zero dependency and that fully leverages the container ecosystem. This gap forces current package managers to depend on a specific system layout and by the depencies that it has to care about. This is somehow prone to situations that could lead to a broken system. We want to fix that by giving you ways to define your system that can span from a layered system (just composed of &ldquo;layers&rdquo;), or a fully atomized one (a set of packages, that depends on each other and at the end compose up your system), without having a Package manager that depends on what you ask to install.</p>
+
+<h1 id="how">How</h1>
+
+<p>By defining a yaml specification format, Luet parses the <a href="/docs/concepts/constraints">requirements</a> to build <a href="/docs/concepts/packages">packages</a>, so Luet clients can consume them.
+As Luet has 0 dependency while being used for installation of packages, this have the nice effect that doesn&rsquo;t depend on the package tree that is available for installation inside a Luet repository.</p>
+
+<p>Here below you can find links to tutorials on how to build packages, images and repositories.</p>
 
         <div class="section-index">
     
@@ -588,7 +609,7 @@ if (!doNotTrack) {
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified February 2, 2020: <a  href="https://github.com/Luet-lab/docs/commit/d6bc57f132f2f813cd924ec645648749eb38a8d4">Add other docs (d6bc57f)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified March 18, 2020: <a  href="https://github.com/Luet-lab/docs/commit/207d608c96f1a9b38d22de902cfd329b26c9a24d">Update docs (207d608)</a>
 </div>
 </div>
 
