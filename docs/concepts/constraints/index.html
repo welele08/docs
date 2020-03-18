@@ -25,13 +25,13 @@
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luet-lab.github.io/docs/docs/concepts/constraints/" />
-<meta property="article:modified_time" content="2020-03-18T19:09:42+01:00" /><meta property="og:site_name" content="Luet" />
+<meta property="article:modified_time" content="2020-03-18T19:17:09+01:00" /><meta property="og:site_name" content="Luet" />
 <meta itemprop="name" content="CSP, SAT &amp;&amp; RL">
 <meta itemprop="description" content="How Luet turns Image resolution into CSP
 ">
 
 
-<meta itemprop="dateModified" content="2020-03-18T19:09:42&#43;01:00" />
+<meta itemprop="dateModified" content="2020-03-18T19:17:09&#43;01:00" />
 <meta itemprop="wordCount" content="288">
 
 
@@ -497,7 +497,7 @@ if (!doNotTrack) {
 
 <p>Luet uses SAT under the hood and Reinforcement learning techniques to solve package constraints.</p>
 
-<p>Luet allows you to specify 3 kind of set of contraints on a <a href="/docs/concepts/packages/">package</a> definition:</p>
+<p>Luet allows you to specify 3 kind of set of contraints on a <a href="/docs/docs/concepts/packages/">package</a> definition:</p>
 
 <ul>
 <li>Requires</li>
@@ -509,7 +509,7 @@ if (!doNotTrack) {
 
 <h2 id="requires-and-conflicts">Requires and Conflicts</h2>
 
-<p>A list of requires and conflicts, composed of one or more <a href="/docs/concepts/packages/">packages</a>, becomes a SAT formula. The formula is then given to the SAT solver to compute a finite state set of packages that must be installed in the system to met the requirements.</p>
+<p>A list of requires and conflicts, composed of one or more <a href="/docs/docs/concepts/packages/">packages</a>, becomes a SAT formula. The formula is then given to the SAT solver to compute a finite state set of packages that must be installed in the system to met the requirements.</p>
 
 <p>Along, Luet builds the ALO (At least one) and AMO (At most one) constraints. That means that given requirements as selectors in semver notation (e.g. <code>&gt;1.0</code>) it builds additional formulas to restrict the constraints of the given solution.</p>
 
@@ -590,7 +590,7 @@ They share the same SAT logic of expansion, allowing to swap entire version rang
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified March 18, 2020: <a  href="https://github.com/Luet-lab/docs/commit/207d608c96f1a9b38d22de902cfd329b26c9a24d">Update docs (207d608)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified March 18, 2020: <a  href="https://github.com/Luet-lab/docs/commit/3289c380b6c2ba43a5d666af74801386a5d77892">Fix cross-links docs (3289c38)</a>
 </div>
 </div>
 

@@ -24,7 +24,7 @@
         
         
 
-&lt;p&gt;Building a package with Luet requires a &lt;a href=&#34;https://luet-lab.github.io/docs/docs/concepts/specfile&#34;&gt;definition&lt;/a&gt; only. It can be self-contained and be only composed of one &lt;a href=&#34;https://luet-lab.github.io/docs/docs/concepts/specfile&#34;&gt;specfile&lt;/a&gt;, or a group of them, forming a Luet tree.&lt;/p&gt;
+&lt;p&gt;Building a package with Luet requires a &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/specfile&#34;&gt;definition&lt;/a&gt; only. It can be self-contained and be only composed of one &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/specfile&#34;&gt;specfile&lt;/a&gt;, or a group of them, forming a Luet tree.&lt;/p&gt;
 
 &lt;p&gt;The &lt;code&gt;build&lt;/code&gt; help command is the following:&lt;/p&gt;
 
@@ -81,7 +81,7 @@ Global Flags:
 
 &lt;h2 id=&#34;examples&#34;&gt;Examples&lt;/h2&gt;
 
-&lt;p&gt;Create a simple &lt;a href=&#34;https://luet-lab.github.io/docs/docs/concepts/specfile&#34;&gt;package definition&lt;/a&gt; and build it:&lt;/p&gt;
+&lt;p&gt;Create a simple &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/specfile&#34;&gt;package definition&lt;/a&gt; and build it:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$&amp;gt; mkdir package
 

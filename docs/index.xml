@@ -82,7 +82,7 @@ $&amp;gt; sudo make build-all
 
 &lt;h2 id=&#34;add-packages&#34;&gt;Add packages&lt;/h2&gt;
 
-&lt;p&gt;In order to build and add &lt;a href=&#34;https://luet-lab.github.io/docs/docs/concepts/packages/&#34;&gt;packages&lt;/a&gt; to the exiting repository, simply add or edit the &lt;a href=&#34;https://luet-lab.github.io/docs/docs/concepts/specfile&#34;&gt;specfiles&lt;/a&gt; under the &lt;code&gt;distro&lt;/code&gt; folder. When doing &lt;code&gt;make rebuild-all&lt;/code&gt; they will be automatically compiled and made available to the local repository.&lt;/p&gt;
+&lt;p&gt;In order to build and add &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/packages/&#34;&gt;packages&lt;/a&gt; to the exiting repository, simply add or edit the &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/specfile&#34;&gt;specfiles&lt;/a&gt; under the &lt;code&gt;distro&lt;/code&gt; folder. When doing &lt;code&gt;make rebuild-all&lt;/code&gt; they will be automatically compiled and made available to the local repository.&lt;/p&gt;
 
       </description>
     </item>
@@ -100,7 +100,7 @@ $&amp;gt; sudo make build-all
 
 &lt;h2 id=&#34;simple-package-build&#34;&gt;Simple package build&lt;/h2&gt;
 
-&lt;p&gt;Create a simple &lt;a href=&#34;https://luet-lab.github.io/docs/docs/concepts/packages/&#34;&gt;package&lt;/a&gt; definition and build it:&lt;/p&gt;
+&lt;p&gt;Create a simple &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/packages/&#34;&gt;package&lt;/a&gt; definition and build it:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$&amp;gt; mkdir package
 
@@ -131,7 +131,7 @@ $&amp;gt; luet build --all
 
 &lt;h3 id=&#34;build-packages&#34;&gt;Build packages&lt;/h3&gt;
 
-&lt;p&gt;To build a specific version, the full &lt;a href=&#34;https://luet-lab.github.io/docs/docs/concepts/packages/&#34;&gt;package&lt;/a&gt; definition (triple of &lt;code&gt;category&lt;/code&gt;, &lt;code&gt;name&lt;/code&gt; and &lt;code&gt;version&lt;/code&gt;) has to be specified.
+&lt;p&gt;To build a specific version, the full &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/packages/&#34;&gt;package&lt;/a&gt; definition (triple of &lt;code&gt;category&lt;/code&gt;, &lt;code&gt;name&lt;/code&gt; and &lt;code&gt;version&lt;/code&gt;) has to be specified.
 In this example we will also enable package compression (gzip).&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$&amp;gt; mkdir package
@@ -178,7 +178,7 @@ $&amp;gt; luet build bar/foo-0.1 --compression gzip
 
 &lt;p&gt;Luet uses SAT under the hood and Reinforcement learning techniques to solve package constraints.&lt;/p&gt;
 
-&lt;p&gt;Luet allows you to specify 3 kind of set of contraints on a &lt;a href=&#34;https://luet-lab.github.io/docs/docs/concepts/packages/&#34;&gt;package&lt;/a&gt; definition:&lt;/p&gt;
+&lt;p&gt;Luet allows you to specify 3 kind of set of contraints on a &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/packages/&#34;&gt;package&lt;/a&gt; definition:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Requires&lt;/li&gt;
@@ -190,7 +190,7 @@ $&amp;gt; luet build bar/foo-0.1 --compression gzip
 
 &lt;h2 id=&#34;requires-and-conflicts&#34;&gt;Requires and Conflicts&lt;/h2&gt;
 
-&lt;p&gt;A list of requires and conflicts, composed of one or more &lt;a href=&#34;https://luet-lab.github.io/docs/docs/concepts/packages/&#34;&gt;packages&lt;/a&gt;, becomes a SAT formula. The formula is then given to the SAT solver to compute a finite state set of packages that must be installed in the system to met the requirements.&lt;/p&gt;
+&lt;p&gt;A list of requires and conflicts, composed of one or more &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/packages/&#34;&gt;packages&lt;/a&gt;, becomes a SAT formula. The formula is then given to the SAT solver to compute a finite state set of packages that must be installed in the system to met the requirements.&lt;/p&gt;
 
 &lt;p&gt;Along, Luet builds the ALO (At least one) and AMO (At most one) constraints. That means that given requirements as selectors in semver notation (e.g. &lt;code&gt;&amp;gt;1.0&lt;/code&gt;) it builds additional formulas to restrict the constraints of the given solution.&lt;/p&gt;
 
@@ -275,7 +275,7 @@ distro/raspbian/buster
 &lt;li&gt;Package with includes&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Check the &lt;a href=&#34;https://luet-lab.github.io/docs/docs/concepts/specfile&#34;&gt;Specfile concept&lt;/a&gt; page for a full overview of the available keywords in the Luet specfile format.&lt;/p&gt;
+&lt;p&gt;Check the &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/specfile&#34;&gt;Specfile concept&lt;/a&gt; page for a full overview of the available keywords in the Luet specfile format.&lt;/p&gt;
 
 &lt;h3 id=&#34;seed-packages&#34;&gt;Seed packages&lt;/h3&gt;
 
@@ -474,7 +474,7 @@ docker run -ti --entrypoint /bin/sh --rm luet-runtime-test-image&lt;/code&gt;&lt
 
 &lt;h2 id=&#34;specfiles&#34;&gt;Specfiles&lt;/h2&gt;
 
-&lt;p&gt;Luet &lt;a href=&#34;https://luet-lab.github.io/docs/docs/concepts/packages/&#34;&gt;packages&lt;/a&gt; are defined by specfiles. They define the runtime and builtime requirements of a package.
+&lt;p&gt;Luet &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/packages/&#34;&gt;packages&lt;/a&gt; are defined by specfiles. They define the runtime and builtime requirements of a package.
 There is an hard distinction between runtime and buildtime. A spec is composed at least by the runtime (&lt;code&gt;definition.yaml&lt;/code&gt;) and the buildtime specification (&lt;code&gt;build.yaml&lt;/code&gt;).&lt;/p&gt;
 
 &lt;p&gt;A Folder containing a &lt;code&gt;build.yaml&lt;/code&gt; and a &lt;code&gt;definition.yaml&lt;/code&gt; form a specfile. A Luet tree is merely a composition of specfile(s).  There is no constriction on folder naming or hierarchy either.&lt;/p&gt;
@@ -628,7 +628,7 @@ distro
         
         
 
-&lt;p&gt;Building a package with Luet requires a &lt;a href=&#34;https://luet-lab.github.io/docs/docs/concepts/specfile&#34;&gt;definition&lt;/a&gt; only. It can be self-contained and be only composed of one &lt;a href=&#34;https://luet-lab.github.io/docs/docs/concepts/specfile&#34;&gt;specfile&lt;/a&gt;, or a group of them, forming a Luet tree.&lt;/p&gt;
+&lt;p&gt;Building a package with Luet requires a &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/specfile&#34;&gt;definition&lt;/a&gt; only. It can be self-contained and be only composed of one &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/specfile&#34;&gt;specfile&lt;/a&gt;, or a group of them, forming a Luet tree.&lt;/p&gt;
 
 &lt;p&gt;The &lt;code&gt;build&lt;/code&gt; help command is the following:&lt;/p&gt;
 
@@ -685,7 +685,7 @@ Global Flags:
 
 &lt;h2 id=&#34;examples&#34;&gt;Examples&lt;/h2&gt;
 
-&lt;p&gt;Create a simple &lt;a href=&#34;https://luet-lab.github.io/docs/docs/concepts/specfile&#34;&gt;package definition&lt;/a&gt; and build it:&lt;/p&gt;
+&lt;p&gt;Create a simple &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/specfile&#34;&gt;package definition&lt;/a&gt; and build it:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$&amp;gt; mkdir package
 
