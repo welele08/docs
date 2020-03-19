@@ -14,7 +14,7 @@ version: "0.1"
 category: "foo"
 ```
 
-While `category` and `version` can be omitted, the name is required. Note that in `build.yaml` and in `definition.yaml` files, list of packages are represented by the same triple:
+While `category` and `version` can be omitted, the name is required. Note that in the `build.yaml` and `definition.yaml` files, list of packages are represented by the same triplet:
 
 ```yaml
 requires:
@@ -36,9 +36,9 @@ requires:
 
 ## Package building process
 
-When a package is required to be built, Luet resolves the dependency trees and it orders the spec files to satisfy the given contraints.
+When a package is required to be built, Luet resolves the dependency trees and orders the spec files to satisfy the given contraints.
 
-Each package has a build context which corresponds where the spec files are found (`definition.yaml` and `build.yaml`), this means that in the container which is running the build process are accessible the sources refered to the build. *Note: you can use this mechanism to provide helper scripts or even static binaries to seed your images from scratch*
+Each package has a build context which corresponds to where the spec files are found (`definition.yaml` and `build.yaml`). This means that in the container, which is running the build process, the resources referred to the build are accessible. *Note: you can use this mechanism to provide helper scripts or even static binaries to seed your images from scratch*
 
 ```
 ❯ tree distro/raspbian/buster
@@ -48,9 +48,7 @@ distro/raspbian/buster
 ├── definition.yaml
 └── finalize.yaml
 ```
-In the example above, build.sh is accessible in build time. 
-
-It can be invoked easily in build time by specifying in `build.yaml`:
+In the example above, `build.sh` is accessible in build time and can be invoked easily in build time in `build.yaml`:
 ```yaml
 steps:
 - sh build.sh
@@ -58,9 +56,9 @@ steps:
 
 ## Package provides
 
-Packages can specify a list of `provides`. It is a list of packages in *package form* which indicates that the current definition *replaces* every occurrence of the packages in this list (both in *build* and *runtime*). This mechanism is particularly helpful for handling package moves or to have virtual packages. 
+Packages can specify a list of `provides`. This is a list of packages in *package form*, which indicates that the current definition *replaces* every occurrence of the packages in the list (both at *build* and *runtime*). This mechanism is particularly helpful for handling package moves or for enabling virtual packages (e.g., [gentoo virtual packages](https://packages.gentoo.org/categories/virtual)).
 
-*Note: packages that in the `provides` list don't have to necessarly exist or either have a valid build definition.*
+*Note: packages in the `provides` list don't need to exist or have a valid build definition either.*
 
 ## Package types
 
@@ -75,9 +73,9 @@ Check the [Specfile concept](/docs/docs/concepts/specfile) page for a full overv
 
 ### Seed packages
 
-They denote the parent package (or root) that can be used by other packages to depend on. Normally seed packages includes just an image (preferably tagged) used as a base for other packages to depend on.
+Seed packages denote a parent package (or root) that can be used by other packages as a dependency. Normally, seed packages include just an image (preferably tagged) used as a base for other packages to depend on.
 
-It is useful to pin to specific image versions, and to write down in a tree where packages are coming for. There can be as many seed packages as you like in a tree.
+It is useful to pin to specific image versions, and to write down in a tree where packages are coming from. There can be as many seed packages as you like in a tree.
 
 A seed package `build.yaml` example is the following:
 
@@ -87,7 +85,7 @@ image: "alpine:3.1"
 
 Every other package that depends on it will inherit the layers from it.
 
-If you want to extract in separate packages (splitting) the content of the seed package, you can just create as many package as you wish depending on that one, and extract its content, for example:
+If you want to extract the content of the seed package in a separate packages (splitting), you can just create as many package as you wish depending on that one, and extract its content, for example:
 
 **alpine/build.yaml**
 ```yaml
@@ -122,12 +120,12 @@ version: "1.0"
 
 In this example, there are two packages being specified:
 
-- One is the `seed` package, which is the base image which we will use to extract later on packages. It has no installable content, and it is just virtual used during build phase.
-- `sh` is the package which contains `/bin/sh`, extracted from the seed image and packaged. This can be consumed by Luet clients to install sh in their system.
+- One is the `seed` package, which is the base image employed to later extract packages. It has no installable content, and it is just virtually used during build phase.
+- `sh` is the package which contains `/bin/sh`, extracted from the seed image and packaged. This can be consumed by Luet clients in order to install `sh` in their system.
 
 ### Packages delta
 
-Luet by defaults will try to calculate the delta of the package that is meant to be built. It means that it tracks **incrementally** the changes in the packages, to ease the build definition. Let's see an example.
+Luet, by default, will try to calculate the delta of the package that is meant to be built. This means that it tracks **incrementally** the changes in the packages, to ease the build definition. Let's see an example.
 
 Given the root package:
 **alpine/build.yaml**
@@ -142,7 +140,7 @@ version: "3.1"
 category: "seed"
 ```
 
-We can generate whatsoever file, and include it in our package by defining this simple package:
+We can generate any file, and include it in our package by defining this simple package:
 
 **foo/build.yaml**
 ```yaml
@@ -186,15 +184,15 @@ category: "utils"
 version: "1.0"
 ```
 
-The list of commands inside the `prelude` that would produce artifacts, are not accounted to the final package. In this example, only `/foo` would be packaged (which output is equivalent to the example above).
+The list of commands inside `prelude` that would produce artifacts, are not accounted to the final package. In this example, only `/foo` would be packaged (which output is equivalent to the example above).
 
-This can be used for e.g. to fetch sources that must not be part of the package.
+This can be used, for instance, to fetch sources that must not be part of the package.
 
-You can anytime apply restrictions, and use the `includes` keyword to specifically pin to the files you wish in your package.
+You can apply restrictions anytime and use the `includes` keyword to specifically pin to the files you wish in your package.
 
 ### Package layers
 
-Luet can be used to track entire layers, and make them installable by Luet clients. 
+Luet can be used to track entire layers and make them installable by Luet clients. 
 
 Given the examples above:
 
@@ -210,8 +208,7 @@ version: "3.1"
 category: "seed"
 ```
 
-An installable package derived by the seed, with the actual full content of the layer con be composed as so:
-
+An installable package derived by the seed, with the actual full content of the layer can be composed as follows:
 
 **foo/build.yaml**
 ```yaml
@@ -231,7 +228,6 @@ version: "1.0"
 ```
 
 This can be combined with other keywords to manipulate the resulting package (layer), for example:
-
 
 **foo/build.yaml**
 ```yaml
@@ -254,11 +250,9 @@ category: "utils"
 version: "1.0"
 ```
 
-
 ### Package includes
 
-The `includes` keyword can be combined ina ddition to extract portions from the package image.
-
+In addition, the `includes` keyword can be set in order to extract portions from the package image.
 
 **git/build.yaml**
 ```yaml
@@ -282,4 +276,4 @@ category: "utils"
 version: "1.0"
 ```
 
-As a reminder, the `includes` keywords accepts regex in the Golang format. Any criteria expressed with the regex which matches the file name (absolute path) will be part of the final package.
+As a reminder, the `includes` keywords accepts regular expressions in the Golang format. Any criteria expressed by means of Golang regular expressions, and matching the file name (absolute path), will be part of the final package.

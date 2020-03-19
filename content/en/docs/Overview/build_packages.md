@@ -6,9 +6,9 @@ description: >
   How to build packages with luet
 ---
 
-Building a package with Luet requires a [definition](/docs/docs/concepts/specfile) only. It can be self-contained and be only composed of one [specfile](/docs/docs/concepts/specfile), or a group of them, forming a Luet tree.
+Building a package with Luet requires only a [definition](/docs/docs/concepts/specfile). This definition can be self-contained and be only composed of one [specfile](/docs/docs/concepts/specfile), or a group of them, forming a Luet tree.
 
-The `build` help command is the following:
+The `build` help command is as follows:
 
 ```
 build packages or trees from luet tree definitions. Packages are in [category]/[name]-[version] form
@@ -35,11 +35,11 @@ Global Flags:
   -v, --verbose           verbose output
 ```
 
-Build accepts a list of packages to build, which syntax is in the `category/name-version` format (following Gentoo syntax). 
+Build accepts a list of packages to build, which syntax is in the `category/name-version` notation (following Gentoo syntax). 
 
 ## Flags
 
-Flags available for the build command
+Flags available for the build command:
 
 - **--all**: Boolean which instruct Luet to build all the specs contained in a tree
 - **--backend**: String that specifies the backend to use. Currently supported are : `docker` and `img`. Defaults to `docker`
@@ -60,7 +60,7 @@ General flags:
 
 ## Examples
 
-Create a simple [package definition](/docs/docs/concepts/specfile) and build it:
+Creating and building a simple [package definition](/docs/docs/concepts/specfile):
 
 ```
 $> mkdir package
@@ -91,7 +91,7 @@ $> luet build --all
 
 ```
 
-In order to consume the repository by a client, it is sufficient to create the repository:
+For a client to consume the repository, it is sufficient to create the repository:
 
 ```
 $> luet create-repo

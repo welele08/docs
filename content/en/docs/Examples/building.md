@@ -3,12 +3,12 @@ title: "Building"
 linkTitle: "Building"
 weight: 4
 description: >
-  Examples to build with luet
+  Examples to build with Luet
 ---
 
 ## Simple package build
 
-Create a simple [package](/docs/docs/concepts/packages/) definition and build it:
+Creating and building a simple [package](/docs/docs/concepts/packages/):
 
 ```
 $> mkdir package
@@ -40,7 +40,7 @@ $> luet build --all
 
 ### Build packages
 
-To build a specific version, the full [package](/docs/docs/concepts/packages/) definition (triple of `category`, `name` and `version`) has to be specified.
+In order to build a specific version, a full [package](/docs/docs/concepts/packages/) definition (triple of `category`, `name` and `version`) has to be specified.
 In this example we will also enable package compression (gzip).
 
 ```

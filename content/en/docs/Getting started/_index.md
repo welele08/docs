@@ -12,7 +12,7 @@ description: >
 
 ### Building Luet
 
-- Golang installed in your system
+- [Golang](https://golang.org/) installed in your system.
 
 
 ## Installation
