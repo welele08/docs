@@ -40,7 +40,7 @@
 
 &lt;p&gt;A list of requires and conflicts, composed of one or more &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/packages/&#34;&gt;packages&lt;/a&gt;, becomes a SAT formula. The formula is then given to the SAT solver to compute a finite state set of packages which must be installed in the system in order to met the requirements.&lt;/p&gt;
 
-&lt;p&gt;Alongside, Luet builds the ALO (At least one) and AMO (At most one). &lt;!-- I think this sentence should be rewritten--&gt;This means that given requirements as selectors in semver notation (e.g. &lt;code&gt;&amp;gt;1.0&lt;/code&gt;) it builds additional formulas to restrict the constraints of the given solution.&lt;/p&gt;
+&lt;p&gt;As Luet allows to express constraints with selectors ( e.g. &lt;code&gt;A depends on &amp;gt;=B-1.0&lt;/code&gt;) it generates additional constraints to guarantee that at least one package and at most one is picked as dependency (&lt;em&gt;ALO&lt;/em&gt; and &lt;em&gt;AMO&lt;/em&gt;).&lt;/p&gt;
 
 &lt;p&gt;At the moment of writing Luet is not encoding any order, but relies on the SAT solver and tries to enforce the order by forcing the engine to look at the &amp;ldquo;best&amp;rdquo; pick among a set of package. This is a known issue that we will address in the near future.&lt;/p&gt;
 
@@ -292,7 +292,7 @@ distro/raspbian/buster
 
 &lt;p&gt;Luet &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/packages/&#34;&gt;packages&lt;/a&gt; are defined by specfiles. Specfiles define the runtime and builtime requirements of a package.  There is an hard distinction between runtime and buildtime. A spec is composed at least by the runtime (&lt;code&gt;definition.yaml&lt;/code&gt;) and the buildtime specification (&lt;code&gt;build.yaml&lt;/code&gt;).&lt;/p&gt;
 
-&lt;p&gt;A directory containing a &lt;code&gt;build.yaml&lt;/code&gt; and a &lt;code&gt;definition.yaml&lt;/code&gt; forms a specfile &lt;!--it sounds a little bit weird that a directory (or folder) a spec&#34;file&#34;&#34;--&gt;. A Luet tree is merely a composition of specfile(s).  There is no constriction on either folder naming or hierarchy.&lt;/p&gt;
+&lt;p&gt;Luet identifies the package definition by looking at directories that contains a &lt;code&gt;build.yaml&lt;/code&gt; and a &lt;code&gt;definition.yaml&lt;/code&gt; files. A Luet tree is merely a composition of directories that follows this convention. There is no constriction on either folder naming or hierarchy.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Example of a &lt;a href=&#34;https://github.com/Luet-lab/luet-embedded/tree/master/distro&#34; target=&#34;_blank&#34;&gt;tree folder hierarchy&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;tree distro                                                      

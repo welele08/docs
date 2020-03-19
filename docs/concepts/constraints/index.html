@@ -25,14 +25,14 @@
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luet-lab.github.io/docs/docs/concepts/constraints/" />
-<meta property="article:modified_time" content="2020-03-18T22:31:24+01:00" /><meta property="og:site_name" content="Luet" />
+<meta property="article:modified_time" content="2020-03-19T18:42:39+01:00" /><meta property="og:site_name" content="Luet" />
 <meta itemprop="name" content="CSP, SAT &amp;&amp; RL">
 <meta itemprop="description" content="How Luet turns Image resolution into CSP
 ">
 
 
-<meta itemprop="dateModified" content="2020-03-18T22:31:24&#43;01:00" />
-<meta itemprop="wordCount" content="293">
+<meta itemprop="dateModified" content="2020-03-19T18:42:39&#43;01:00" />
+<meta itemprop="wordCount" content="292">
 
 
 
@@ -511,7 +511,7 @@ if (!doNotTrack) {
 
 <p>A list of requires and conflicts, composed of one or more <a href="/docs/docs/concepts/packages/">packages</a>, becomes a SAT formula. The formula is then given to the SAT solver to compute a finite state set of packages which must be installed in the system in order to met the requirements.</p>
 
-<p>Alongside, Luet builds the ALO (At least one) and AMO (At most one). <!-- I think this sentence should be rewritten-->This means that given requirements as selectors in semver notation (e.g. <code>&gt;1.0</code>) it builds additional formulas to restrict the constraints of the given solution.</p>
+<p>As Luet allows to express constraints with selectors ( e.g. <code>A depends on &gt;=B-1.0</code>) it generates additional constraints to guarantee that at least one package and at most one is picked as dependency (<em>ALO</em> and <em>AMO</em>).</p>
 
 <p>At the moment of writing Luet is not encoding any order, but relies on the SAT solver and tries to enforce the order by forcing the engine to look at the &ldquo;best&rdquo; pick among a set of package. This is a known issue that we will address in the near future.</p>
 
@@ -590,7 +590,7 @@ They share the same SAT logic of expansion, allowing to swap entire version rang
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified March 18, 2020: <a  href="https://github.com/Luet-lab/docs/commit/92fe1bad54b59bc951b92c75b15a8f518bb028f8">Review of the content of the documentation (92fe1ba)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified March 19, 2020: <a  href="https://github.com/Luet-lab/docs/commit/68257331d6c43c67e10beaf5396de154c3185a80">Clarify the point raise during review (6825733)</a>
 </div>
 </div>
 
