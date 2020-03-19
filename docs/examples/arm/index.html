@@ -25,14 +25,14 @@
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luet-lab.github.io/docs/docs/examples/arm/" />
-<meta property="article:modified_time" content="2020-03-18T19:17:09+01:00" /><meta property="og:site_name" content="Luet" />
+<meta property="article:modified_time" content="2020-03-18T22:31:24+01:00" /><meta property="og:site_name" content="Luet" />
 <meta itemprop="name" content="ARM images">
 <meta itemprop="description" content="Use Luet to build, track, and release OTA update for your embedded devices.
 ">
 
 
-<meta itemprop="dateModified" content="2020-03-18T19:17:09&#43;01:00" />
-<meta itemprop="wordCount" content="275">
+<meta itemprop="dateModified" content="2020-03-18T22:31:24&#43;01:00" />
+<meta itemprop="wordCount" content="279">
 
 
 
@@ -502,19 +502,19 @@ if (!doNotTrack) {
 	<div class="lead">Use Luet to build, track, and release OTA update for your embedded devices.</div>
 	
 
-<p>We will see an example on how to build burnable SD images for Raspberry PI with Luet. This approach let you describe and version OTA upgrades for your embedded devices, delivering upgrades as layer upgrades on the pi.</p>
+<p>Here we show an example on how to build &ldquo;burnable&rdquo; SD images for Raspberry Pi with Luet. This approach lets you describe and version OTA upgrades for your embedded devices, delivering upgrades as layer upgrades on the Pi.</p>
 
 <p>The other good side of the medal is that you can build a Luet package repository with multiple distributions (e.g. <code>Raspbian</code>, <code>OpenSUSE</code>, <code>Gentoo</code>, &hellip; ) and switch among them in runtime. In the above example <code>Raspbian</code> and <code>Funtoo</code> (at the time of writing) are available.</p>
 
 <h2 id="prerequisites">Prerequisites</h2>
 
-<p>You have to run the following steps inside an ARM board to produce arm-compatible binaries. Whatever distribution with Docker will work. Note that the same steps could be done in a cross-compilation approach, or either with qemu-binfmt in a amd64 host.</p>
+<p>You have to run the following steps inside an ARM board to produce arm-compatible binaries. Any distribution with Docker will work. Note that the same steps could be done in a cross-compilation approach, or with qemu-binfmt in a amd64 host.</p>
 
 <p>You will also need in your host:</p>
 
 <ul>
 <li>Docker</li>
-<li>luet installed (+container-diff) in <code>/usr/bin/luet</code> (arm build)</li>
+<li>Luet installed (+container-diff) in <code>/usr/bin/luet</code> (arm build)</li>
 <li>make</li>
 </ul>
 
@@ -528,7 +528,7 @@ $&gt; sudo make build-all
 ...
 </code></pre>
 
-<p>While to rebuild, after doing changes, just do: <code>sudo make rebuild-all</code></p>
+<p>If a rebuild is needed, just do <code>sudo make rebuild-all</code> after applying the changes.</p>
 
 <h2 id="create-the-repository">Create the repository</h2>
 
@@ -556,11 +556,11 @@ $&gt; sudo make build-all
 ...
 </code></pre>
 
-<p>At the end of the process, a file <code>luet_os.img</code> should be present in the current folder, ready to be flashed to an SD.</p>
+<p>At the end of the process, a file <code>luet_os.img</code>, ready to be flashed to an SD card, should be present in the current directory.</p>
 
 <h2 id="add-packages">Add packages</h2>
 
-<p>In order to build and add <a href="/docs/docs/concepts/packages/">packages</a> to the exiting repository, simply add or edit the <a href="/docs/docs/concepts/specfile">specfiles</a> under the <code>distro</code> folder. When doing <code>make rebuild-all</code> they will be automatically compiled and made available to the local repository.</p>
+<p>In order to build and add <a href="/docs/docs/concepts/packages/">packages</a> to the exiting repository, simply add or edit the <a href="/docs/docs/concepts/specfile">specfiles</a> under the <code>distro</code> folder. When doing <code>make rebuild-all</code> the packages will be automatically compiled and made available to the local repository.</p>
 
 	
 		<style>
@@ -624,7 +624,7 @@ $&gt; sudo make build-all
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified March 18, 2020: <a  href="https://github.com/Luet-lab/docs/commit/3289c380b6c2ba43a5d666af74801386a5d77892">Fix cross-links docs (3289c38)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified March 18, 2020: <a  href="https://github.com/Luet-lab/docs/commit/92fe1bad54b59bc951b92c75b15a8f518bb028f8">Review of the content of the documentation (92fe1ba)</a>
 </div>
 </div>
 

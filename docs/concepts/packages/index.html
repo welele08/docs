@@ -25,14 +25,14 @@
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luet-lab.github.io/docs/docs/concepts/packages/" />
-<meta property="article:modified_time" content="2020-03-18T19:17:09+01:00" /><meta property="og:site_name" content="Luet" />
+<meta property="article:modified_time" content="2020-03-18T22:31:24+01:00" /><meta property="og:site_name" content="Luet" />
 <meta itemprop="name" content="Package">
 <meta itemprop="description" content="How to define packages and relations between packages
 ">
 
 
-<meta itemprop="dateModified" content="2020-03-18T19:17:09&#43;01:00" />
-<meta itemprop="wordCount" content="871">
+<meta itemprop="dateModified" content="2020-03-18T22:31:24&#43;01:00" />
+<meta itemprop="wordCount" content="876">
 
 
 
@@ -505,7 +505,7 @@ if (!doNotTrack) {
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">name<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;awesome&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span>version<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;0.1&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span>category<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;foo&#34;</span></code></pre></div>
-<p>While <code>category</code> and <code>version</code> can be omitted, the name is required. Note that in <code>build.yaml</code> and in <code>definition.yaml</code> files, list of packages are represented by the same triple:</p>
+<p>While <code>category</code> and <code>version</code> can be omitted, the name is required. Note that in the <code>build.yaml</code> and <code>definition.yaml</code> files, list of packages are represented by the same triplet:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">requires<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>name<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;awesome&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span>version<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;0.1&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -519,9 +519,9 @@ if (!doNotTrack) {
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span>version<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;9999&#34;</span></code></pre></div>
 <h2 id="package-building-process">Package building process</h2>
 
-<p>When a package is required to be built, Luet resolves the dependency trees and it orders the spec files to satisfy the given contraints.</p>
+<p>When a package is required to be built, Luet resolves the dependency trees and orders the spec files to satisfy the given contraints.</p>
 
-<p>Each package has a build context which corresponds where the spec files are found (<code>definition.yaml</code> and <code>build.yaml</code>), this means that in the container which is running the build process are accessible the sources refered to the build. <em>Note: you can use this mechanism to provide helper scripts or even static binaries to seed your images from scratch</em></p>
+<p>Each package has a build context which corresponds to where the spec files are found (<code>definition.yaml</code> and <code>build.yaml</code>). This means that in the container, which is running the build process, the resources referred to the build are accessible. <em>Note: you can use this mechanism to provide helper scripts or even static binaries to seed your images from scratch</em></p>
 
 <pre><code>❯ tree distro/raspbian/buster
 distro/raspbian/buster
@@ -531,16 +531,14 @@ distro/raspbian/buster
 └── finalize.yaml
 </code></pre>
 
-<p>In the example above, build.sh is accessible in build time.</p>
-
-<p>It can be invoked easily in build time by specifying in <code>build.yaml</code>:</p>
+<p>In the example above, <code>build.sh</code> is accessible in build time and can be invoked easily in build time in <code>build.yaml</code>:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">steps<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>sh<span style="color:#f8f8f8;text-decoration:underline"> </span>build.sh</code></pre></div>
 <h2 id="package-provides">Package provides</h2>
 
-<p>Packages can specify a list of <code>provides</code>. It is a list of packages in <em>package form</em> which indicates that the current definition <em>replaces</em> every occurrence of the packages in this list (both in <em>build</em> and <em>runtime</em>). This mechanism is particularly helpful for handling package moves or to have virtual packages.</p>
+<p>Packages can specify a list of <code>provides</code>. This is a list of packages in <em>package form</em>, which indicates that the current definition <em>replaces</em> every occurrence of the packages in the list (both at <em>build</em> and <em>runtime</em>). This mechanism is particularly helpful for handling package moves or for enabling virtual packages (e.g., <a href="https://packages.gentoo.org/categories/virtual" target="_blank">gentoo virtual packages</a>).</p>
 
-<p><em>Note: packages that in the <code>provides</code> list don&rsquo;t have to necessarly exist or either have a valid build definition.</em></p>
+<p><em>Note: packages in the <code>provides</code> list don&rsquo;t need to exist or have a valid build definition either.</em></p>
 
 <h2 id="package-types">Package types</h2>
 
@@ -557,15 +555,15 @@ distro/raspbian/buster
 
 <h3 id="seed-packages">Seed packages</h3>
 
-<p>They denote the parent package (or root) that can be used by other packages to depend on. Normally seed packages includes just an image (preferably tagged) used as a base for other packages to depend on.</p>
+<p>Seed packages denote a parent package (or root) that can be used by other packages as a dependency. Normally, seed packages include just an image (preferably tagged) used as a base for other packages to depend on.</p>
 
-<p>It is useful to pin to specific image versions, and to write down in a tree where packages are coming for. There can be as many seed packages as you like in a tree.</p>
+<p>It is useful to pin to specific image versions, and to write down in a tree where packages are coming from. There can be as many seed packages as you like in a tree.</p>
 
 <p>A seed package <code>build.yaml</code> example is the following:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">image<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;alpine:3.1&#34;</span></code></pre></div>
 <p>Every other package that depends on it will inherit the layers from it.</p>
 
-<p>If you want to extract in separate packages (splitting) the content of the seed package, you can just create as many package as you wish depending on that one, and extract its content, for example:</p>
+<p>If you want to extract the content of the seed package in a separate packages (splitting), you can just create as many package as you wish depending on that one, and extract its content, for example:</p>
 
 <p><strong>alpine/build.yaml</strong></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">image<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;alpine:3.1&#34;</span></code></pre></div>
@@ -589,13 +587,13 @@ distro/raspbian/buster
 <p>In this example, there are two packages being specified:</p>
 
 <ul>
-<li>One is the <code>seed</code> package, which is the base image which we will use to extract later on packages. It has no installable content, and it is just virtual used during build phase.</li>
-<li><code>sh</code> is the package which contains <code>/bin/sh</code>, extracted from the seed image and packaged. This can be consumed by Luet clients to install sh in their system.</li>
+<li>One is the <code>seed</code> package, which is the base image employed to later extract packages. It has no installable content, and it is just virtually used during build phase.</li>
+<li><code>sh</code> is the package which contains <code>/bin/sh</code>, extracted from the seed image and packaged. This can be consumed by Luet clients in order to install <code>sh</code> in their system.</li>
 </ul>
 
 <h3 id="packages-delta">Packages delta</h3>
 
-<p>Luet by defaults will try to calculate the delta of the package that is meant to be built. It means that it tracks <strong>incrementally</strong> the changes in the packages, to ease the build definition. Let&rsquo;s see an example.</p>
+<p>Luet, by default, will try to calculate the delta of the package that is meant to be built. This means that it tracks <strong>incrementally</strong> the changes in the packages, to ease the build definition. Let&rsquo;s see an example.</p>
 
 <p>Given the root package:
 <strong>alpine/build.yaml</strong></p>
@@ -604,7 +602,7 @@ distro/raspbian/buster
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">name<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;alpine&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span>version<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;3.1&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span>category<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;seed&#34;</span></code></pre></div>
-<p>We can generate whatsoever file, and include it in our package by defining this simple package:</p>
+<p>We can generate any file, and include it in our package by defining this simple package:</p>
 
 <p><strong>foo/build.yaml</strong></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#8f5902;font-style:italic"># List of build-time dependencies</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -636,15 +634,15 @@ distro/raspbian/buster
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">name<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;foo&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span>category<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;utils&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span>version<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;1.0&#34;</span></code></pre></div>
-<p>The list of commands inside the <code>prelude</code> that would produce artifacts, are not accounted to the final package. In this example, only <code>/foo</code> would be packaged (which output is equivalent to the example above).</p>
+<p>The list of commands inside <code>prelude</code> that would produce artifacts, are not accounted to the final package. In this example, only <code>/foo</code> would be packaged (which output is equivalent to the example above).</p>
 
-<p>This can be used for e.g. to fetch sources that must not be part of the package.</p>
+<p>This can be used, for instance, to fetch sources that must not be part of the package.</p>
 
-<p>You can anytime apply restrictions, and use the <code>includes</code> keyword to specifically pin to the files you wish in your package.</p>
+<p>You can apply restrictions anytime and use the <code>includes</code> keyword to specifically pin to the files you wish in your package.</p>
 
 <h3 id="package-layers">Package layers</h3>
 
-<p>Luet can be used to track entire layers, and make them installable by Luet clients.</p>
+<p>Luet can be used to track entire layers and make them installable by Luet clients.</p>
 
 <p>Given the examples above:</p>
 
@@ -654,7 +652,7 @@ distro/raspbian/buster
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">name<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;alpine&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span>version<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;3.1&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span>category<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;seed&#34;</span></code></pre></div>
-<p>An installable package derived by the seed, with the actual full content of the layer con be composed as so:</p>
+<p>An installable package derived by the seed, with the actual full content of the layer can be composed as follows:</p>
 
 <p><strong>foo/build.yaml</strong></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#8f5902;font-style:italic"># List of build-time dependencies</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -686,7 +684,7 @@ distro/raspbian/buster
 </span><span style="color:#f8f8f8;text-decoration:underline"></span>version<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;1.0&#34;</span></code></pre></div>
 <h3 id="package-includes">Package includes</h3>
 
-<p>The <code>includes</code> keyword can be combined ina ddition to extract portions from the package image.</p>
+<p>In addition, the <code>includes</code> keyword can be set in order to extract portions from the package image.</p>
 
 <p><strong>git/build.yaml</strong></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#8f5902;font-style:italic"># List of build-time dependencies</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -704,7 +702,7 @@ distro/raspbian/buster
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">name<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;git&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span>category<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;utils&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span>version<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;1.0&#34;</span></code></pre></div>
-<p>As a reminder, the <code>includes</code> keywords accepts regex in the Golang format. Any criteria expressed with the regex which matches the file name (absolute path) will be part of the final package.</p>
+<p>As a reminder, the <code>includes</code> keywords accepts regular expressions in the Golang format. Any criteria expressed by means of Golang regular expressions, and matching the file name (absolute path), will be part of the final package.</p>
 
 	
 		<style>
@@ -768,7 +766,7 @@ distro/raspbian/buster
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified March 18, 2020: <a  href="https://github.com/Luet-lab/docs/commit/3289c380b6c2ba43a5d666af74801386a5d77892">Fix cross-links docs (3289c38)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified March 18, 2020: <a  href="https://github.com/Luet-lab/docs/commit/92fe1bad54b59bc951b92c75b15a8f518bb028f8">Review of the content of the documentation (92fe1ba)</a>
 </div>
 </div>
 

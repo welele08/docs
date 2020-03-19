@@ -26,15 +26,15 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luet-lab.github.io/docs/docs/getting-started/requirements/" />
 <meta property="article:published_time" content="2019-12-14T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-12-23T16:02:41+01:00" /><meta property="og:site_name" content="Luet" />
+<meta property="article:modified_time" content="2020-03-18T22:31:24+01:00" /><meta property="og:site_name" content="Luet" />
 <meta itemprop="name" content="Build requirements">
 <meta itemprop="description" content="What Luet needs to build your packages
 ">
 
 
 <meta itemprop="datePublished" content="2019-12-14T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-12-23T16:02:41&#43;01:00" />
-<meta itemprop="wordCount" content="180">
+<meta itemprop="dateModified" content="2020-03-18T22:31:24&#43;01:00" />
+<meta itemprop="wordCount" content="174">
 
 
 
@@ -486,17 +486,15 @@ if (!doNotTrack) {
 	<div class="lead">What Luet needs to build your packages</div>
 	
 
-<p>Luet currently supports <a href="https://www.docker.com/" target="_blank">Docker</a> and <a href="https://github.com/genuinetools/img" target="_blank">Img</a>. Both backend can be used, and they can be switched in runtime.</p>
+<p>Luet currently supports <a href="https://www.docker.com/" target="_blank">Docker</a> and <a href="https://github.com/genuinetools/img" target="_blank">Img</a>. Both back-ends can be used and switched in runtime.</p>
 
 <h2 id="docker">Docker</h2>
 
-<p>Docker is the (less) experimental Luet engine supported. Be sure in your system to have Docker installed and the daemon running.
-The user which is running <code>luet</code> commands needs the permission to execute the <code>docker</code> executable, and to connect to a <code>docker</code> daemon.
-The only feature needed by the daemon is the ability to build images, so it fully supports remote daemon as well. (They can be specified with the <code>DOCKER_HOST</code> environment variable, that is respected by <code>luet</code>)</p>
+<p>Docker is the (less) experimental Luet engine supported. Be sure to have Docker installed and the daemon running. The user running <code>luet</code> commands needs the corresponding permissions to run the <code>docker</code> executable, and to connect to a <code>docker</code> daemon. The only feature needed by the daemon is the ability to build images, so it fully supports remote daemon as well (this can be specified with the <code>DOCKER_HOST</code> environment variable, that is respected by <code>luet</code>)</p>
 
 <h2 id="img">Img</h2>
 
-<p>Luet supports <a href="https://github.com/genuinetools/img" target="_blank">Img</a>. To use it, simply install it in your system, and while running <code>luet build</code>, you can switch the backend by providing it as a parameter: <code>luet build --backend img</code>. For small packages it is particularly powerful, as doesn&rsquo;t require any docker daemon running in the host.</p>
+<p>Luet supports <a href="https://github.com/genuinetools/img" target="_blank">Img</a>. To use it, simply install it in your system, and while running <code>luet build</code>, you can switch the backend by providing it as a parameter: <code>luet build --backend img</code>. For small packages it is particularly powerful, as it doesn&rsquo;t require any docker daemon running in the host.</p>
 
 <h2 id="container-diff">Container-diff</h2>
 
@@ -566,7 +564,7 @@ The only feature needed by the daemon is the ability to build images, so it full
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified December 23, 2019: <a  href="https://github.com/Luet-lab/docs/commit/3c39a84b46cb93a552fbf08f0d46f43760a85401">Initial import (3c39a84)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified March 18, 2020: <a  href="https://github.com/Luet-lab/docs/commit/92fe1bad54b59bc951b92c75b15a8f518bb028f8">Review of the content of the documentation (92fe1ba)</a>
 </div>
 </div>
 

@@ -24,19 +24,19 @@
         
         
 
-&lt;p&gt;We will see an example on how to build burnable SD images for Raspberry PI with Luet. This approach let you describe and version OTA upgrades for your embedded devices, delivering upgrades as layer upgrades on the pi.&lt;/p&gt;
+&lt;p&gt;Here we show an example on how to build &amp;ldquo;burnable&amp;rdquo; SD images for Raspberry Pi with Luet. This approach lets you describe and version OTA upgrades for your embedded devices, delivering upgrades as layer upgrades on the Pi.&lt;/p&gt;
 
 &lt;p&gt;The other good side of the medal is that you can build a Luet package repository with multiple distributions (e.g. &lt;code&gt;Raspbian&lt;/code&gt;, &lt;code&gt;OpenSUSE&lt;/code&gt;, &lt;code&gt;Gentoo&lt;/code&gt;, &amp;hellip; ) and switch among them in runtime. In the above example &lt;code&gt;Raspbian&lt;/code&gt; and &lt;code&gt;Funtoo&lt;/code&gt; (at the time of writing) are available.&lt;/p&gt;
 
 &lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
 
-&lt;p&gt;You have to run the following steps inside an ARM board to produce arm-compatible binaries. Whatever distribution with Docker will work. Note that the same steps could be done in a cross-compilation approach, or either with qemu-binfmt in a amd64 host.&lt;/p&gt;
+&lt;p&gt;You have to run the following steps inside an ARM board to produce arm-compatible binaries. Any distribution with Docker will work. Note that the same steps could be done in a cross-compilation approach, or with qemu-binfmt in a amd64 host.&lt;/p&gt;
 
 &lt;p&gt;You will also need in your host:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Docker&lt;/li&gt;
-&lt;li&gt;luet installed (+container-diff) in &lt;code&gt;/usr/bin/luet&lt;/code&gt; (arm build)&lt;/li&gt;
+&lt;li&gt;Luet installed (+container-diff) in &lt;code&gt;/usr/bin/luet&lt;/code&gt; (arm build)&lt;/li&gt;
 &lt;li&gt;make&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -50,7 +50,7 @@ $&amp;gt; sudo make build-all
 ...
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;While to rebuild, after doing changes, just do: &lt;code&gt;sudo make rebuild-all&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;If a rebuild is needed, just do &lt;code&gt;sudo make rebuild-all&lt;/code&gt; after applying the changes.&lt;/p&gt;
 
 &lt;h2 id=&#34;create-the-repository&#34;&gt;Create the repository&lt;/h2&gt;
 
@@ -78,11 +78,11 @@ $&amp;gt; sudo make build-all
 ...
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;At the end of the process, a file &lt;code&gt;luet_os.img&lt;/code&gt; should be present in the current folder, ready to be flashed to an SD.&lt;/p&gt;
+&lt;p&gt;At the end of the process, a file &lt;code&gt;luet_os.img&lt;/code&gt;, ready to be flashed to an SD card, should be present in the current directory.&lt;/p&gt;
 
 &lt;h2 id=&#34;add-packages&#34;&gt;Add packages&lt;/h2&gt;
 
-&lt;p&gt;In order to build and add &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/packages/&#34;&gt;packages&lt;/a&gt; to the exiting repository, simply add or edit the &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/specfile&#34;&gt;specfiles&lt;/a&gt; under the &lt;code&gt;distro&lt;/code&gt; folder. When doing &lt;code&gt;make rebuild-all&lt;/code&gt; they will be automatically compiled and made available to the local repository.&lt;/p&gt;
+&lt;p&gt;In order to build and add &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/packages/&#34;&gt;packages&lt;/a&gt; to the exiting repository, simply add or edit the &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/specfile&#34;&gt;specfiles&lt;/a&gt; under the &lt;code&gt;distro&lt;/code&gt; folder. When doing &lt;code&gt;make rebuild-all&lt;/code&gt; the packages will be automatically compiled and made available to the local repository.&lt;/p&gt;
 
       </description>
     </item>
@@ -100,7 +100,7 @@ $&amp;gt; sudo make build-all
 
 &lt;h2 id=&#34;simple-package-build&#34;&gt;Simple package build&lt;/h2&gt;
 
-&lt;p&gt;Create a simple &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/packages/&#34;&gt;package&lt;/a&gt; definition and build it:&lt;/p&gt;
+&lt;p&gt;Creating and building a simple &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/packages/&#34;&gt;package&lt;/a&gt;:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$&amp;gt; mkdir package
 
@@ -131,7 +131,7 @@ $&amp;gt; luet build --all
 
 &lt;h3 id=&#34;build-packages&#34;&gt;Build packages&lt;/h3&gt;
 
-&lt;p&gt;To build a specific version, the full &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/packages/&#34;&gt;package&lt;/a&gt; definition (triple of &lt;code&gt;category&lt;/code&gt;, &lt;code&gt;name&lt;/code&gt; and &lt;code&gt;version&lt;/code&gt;) has to be specified.
+&lt;p&gt;In order to build a specific version, a full &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/packages/&#34;&gt;package&lt;/a&gt; definition (triple of &lt;code&gt;category&lt;/code&gt;, &lt;code&gt;name&lt;/code&gt; and &lt;code&gt;version&lt;/code&gt;) has to be specified.
 In this example we will also enable package compression (gzip).&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$&amp;gt; mkdir package
@@ -176,9 +176,9 @@ $&amp;gt; luet build bar/foo-0.1 --compression gzip
         
         
 
-&lt;p&gt;Luet uses SAT under the hood and Reinforcement learning techniques to solve package constraints.&lt;/p&gt;
+&lt;p&gt;Under the hood, Luet uses boolean satisfiability problem (&lt;a href=&#34;https://en.wikipedia.org/wiki/Boolean_satisfiability_problem&#34; target=&#34;_blank&#34;&gt;SAT&lt;/a&gt;)  &lt;a href=&#34;https://en.wikipedia.org/wiki/Reinforcement_learning&#34; target=&#34;_blank&#34;&gt;reinforcement learning&lt;/a&gt; techniques to solve package constraints.&lt;/p&gt;
 
-&lt;p&gt;Luet allows you to specify 3 kind of set of contraints on a &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/packages/&#34;&gt;package&lt;/a&gt; definition:&lt;/p&gt;
+&lt;p&gt;Luet allows you to specify 3 types of set of contraints on a &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/packages/&#34;&gt;package&lt;/a&gt; definition:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Requires&lt;/li&gt;
@@ -186,19 +186,19 @@ $&amp;gt; luet build bar/foo-0.1 --compression gzip
 &lt;li&gt;Provides&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;The package definition in your tree definition along with its Requires and Conflicts are turned into Boolean formulas that are consumed by the solver to compute a solution. The solution represent the state of your system after a particular query is asked to the solver (Install, Uninstall, Upgrade).&lt;/p&gt;
+&lt;p&gt;The package definition in your tree definition, along with its Requires and Conflicts, are turned into Boolean formulas that are consumed by the solver to compute a solution. The solution represent the state of your system after a particular query is asked to the solver (Install, Uninstall, Upgrade).&lt;/p&gt;
 
 &lt;h2 id=&#34;requires-and-conflicts&#34;&gt;Requires and Conflicts&lt;/h2&gt;
 
-&lt;p&gt;A list of requires and conflicts, composed of one or more &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/packages/&#34;&gt;packages&lt;/a&gt;, becomes a SAT formula. The formula is then given to the SAT solver to compute a finite state set of packages that must be installed in the system to met the requirements.&lt;/p&gt;
+&lt;p&gt;A list of requires and conflicts, composed of one or more &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/packages/&#34;&gt;packages&lt;/a&gt;, becomes a SAT formula. The formula is then given to the SAT solver to compute a finite state set of packages which must be installed in the system in order to met the requirements.&lt;/p&gt;
 
-&lt;p&gt;Along, Luet builds the ALO (At least one) and AMO (At most one) constraints. That means that given requirements as selectors in semver notation (e.g. &lt;code&gt;&amp;gt;1.0&lt;/code&gt;) it builds additional formulas to restrict the constraints of the given solution.&lt;/p&gt;
+&lt;p&gt;Alongside, Luet builds the ALO (At least one) and AMO (At most one). &lt;!-- I think this sentence should be rewritten--&gt;This means that given requirements as selectors in semver notation (e.g. &lt;code&gt;&amp;gt;1.0&lt;/code&gt;) it builds additional formulas to restrict the constraints of the given solution.&lt;/p&gt;
 
 &lt;p&gt;At the moment of writing Luet is not encoding any order, but relies on the SAT solver and tries to enforce the order by forcing the engine to look at the &amp;ldquo;best&amp;rdquo; pick among a set of package. This is a known issue that we will address in the near future.&lt;/p&gt;
 
 &lt;h2 id=&#34;provides&#34;&gt;Provides&lt;/h2&gt;
 
-&lt;p&gt;Provides are not encoded in a SAT formula. Instead they are &lt;code&gt;expanded&lt;/code&gt; into in-place substitution of the packages that they have to be replaced with.
+&lt;p&gt;Provides constraints are not encoded in a SAT formula. Instead, they are &lt;code&gt;expanded&lt;/code&gt; into an in-place substitution of the packages that they have to be replaced with.
 They share the same SAT logic of expansion, allowing to swap entire version ranges (e.g. &lt;code&gt;&amp;gt;=1.0&lt;/code&gt;), allowing to handle package rename, removals, and virtuals.&lt;/p&gt;
 
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
@@ -227,7 +227,7 @@ They share the same SAT logic of expansion, allowing to swap entire version rang
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;name&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;awesome&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;version&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;0.1&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;category&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;foo&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;While &lt;code&gt;category&lt;/code&gt; and &lt;code&gt;version&lt;/code&gt; can be omitted, the name is required. Note that in &lt;code&gt;build.yaml&lt;/code&gt; and in &lt;code&gt;definition.yaml&lt;/code&gt; files, list of packages are represented by the same triple:&lt;/p&gt;
+&lt;p&gt;While &lt;code&gt;category&lt;/code&gt; and &lt;code&gt;version&lt;/code&gt; can be omitted, the name is required. Note that in the &lt;code&gt;build.yaml&lt;/code&gt; and &lt;code&gt;definition.yaml&lt;/code&gt; files, list of packages are represented by the same triplet:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;requires&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;-&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;name&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;awesome&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;version&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;0.1&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
@@ -241,9 +241,9 @@ They share the same SAT logic of expansion, allowing to swap entire version rang
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;version&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;9999&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;package-building-process&#34;&gt;Package building process&lt;/h2&gt;
 
-&lt;p&gt;When a package is required to be built, Luet resolves the dependency trees and it orders the spec files to satisfy the given contraints.&lt;/p&gt;
+&lt;p&gt;When a package is required to be built, Luet resolves the dependency trees and orders the spec files to satisfy the given contraints.&lt;/p&gt;
 
-&lt;p&gt;Each package has a build context which corresponds where the spec files are found (&lt;code&gt;definition.yaml&lt;/code&gt; and &lt;code&gt;build.yaml&lt;/code&gt;), this means that in the container which is running the build process are accessible the sources refered to the build. &lt;em&gt;Note: you can use this mechanism to provide helper scripts or even static binaries to seed your images from scratch&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Each package has a build context which corresponds to where the spec files are found (&lt;code&gt;definition.yaml&lt;/code&gt; and &lt;code&gt;build.yaml&lt;/code&gt;). This means that in the container, which is running the build process, the resources referred to the build are accessible. &lt;em&gt;Note: you can use this mechanism to provide helper scripts or even static binaries to seed your images from scratch&lt;/em&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;❯ tree distro/raspbian/buster
 distro/raspbian/buster
@@ -253,16 +253,14 @@ distro/raspbian/buster
 └── finalize.yaml
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;In the example above, build.sh is accessible in build time.&lt;/p&gt;
-
-&lt;p&gt;It can be invoked easily in build time by specifying in &lt;code&gt;build.yaml&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;In the example above, &lt;code&gt;build.sh&lt;/code&gt; is accessible in build time and can be invoked easily in build time in &lt;code&gt;build.yaml&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;steps&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;-&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;sh&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;build.sh&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;package-provides&#34;&gt;Package provides&lt;/h2&gt;
 
-&lt;p&gt;Packages can specify a list of &lt;code&gt;provides&lt;/code&gt;. It is a list of packages in &lt;em&gt;package form&lt;/em&gt; which indicates that the current definition &lt;em&gt;replaces&lt;/em&gt; every occurrence of the packages in this list (both in &lt;em&gt;build&lt;/em&gt; and &lt;em&gt;runtime&lt;/em&gt;). This mechanism is particularly helpful for handling package moves or to have virtual packages.&lt;/p&gt;
+&lt;p&gt;Packages can specify a list of &lt;code&gt;provides&lt;/code&gt;. This is a list of packages in &lt;em&gt;package form&lt;/em&gt;, which indicates that the current definition &lt;em&gt;replaces&lt;/em&gt; every occurrence of the packages in the list (both at &lt;em&gt;build&lt;/em&gt; and &lt;em&gt;runtime&lt;/em&gt;). This mechanism is particularly helpful for handling package moves or for enabling virtual packages (e.g., &lt;a href=&#34;https://packages.gentoo.org/categories/virtual&#34; target=&#34;_blank&#34;&gt;gentoo virtual packages&lt;/a&gt;).&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Note: packages that in the &lt;code&gt;provides&lt;/code&gt; list don&amp;rsquo;t have to necessarly exist or either have a valid build definition.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Note: packages in the &lt;code&gt;provides&lt;/code&gt; list don&amp;rsquo;t need to exist or have a valid build definition either.&lt;/em&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;package-types&#34;&gt;Package types&lt;/h2&gt;
 
@@ -279,15 +277,15 @@ distro/raspbian/buster
 
 &lt;h3 id=&#34;seed-packages&#34;&gt;Seed packages&lt;/h3&gt;
 
-&lt;p&gt;They denote the parent package (or root) that can be used by other packages to depend on. Normally seed packages includes just an image (preferably tagged) used as a base for other packages to depend on.&lt;/p&gt;
+&lt;p&gt;Seed packages denote a parent package (or root) that can be used by other packages as a dependency. Normally, seed packages include just an image (preferably tagged) used as a base for other packages to depend on.&lt;/p&gt;
 
-&lt;p&gt;It is useful to pin to specific image versions, and to write down in a tree where packages are coming for. There can be as many seed packages as you like in a tree.&lt;/p&gt;
+&lt;p&gt;It is useful to pin to specific image versions, and to write down in a tree where packages are coming from. There can be as many seed packages as you like in a tree.&lt;/p&gt;
 
 &lt;p&gt;A seed package &lt;code&gt;build.yaml&lt;/code&gt; example is the following:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;image&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;alpine:3.1&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Every other package that depends on it will inherit the layers from it.&lt;/p&gt;
 
-&lt;p&gt;If you want to extract in separate packages (splitting) the content of the seed package, you can just create as many package as you wish depending on that one, and extract its content, for example:&lt;/p&gt;
+&lt;p&gt;If you want to extract the content of the seed package in a separate packages (splitting), you can just create as many package as you wish depending on that one, and extract its content, for example:&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;alpine/build.yaml&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;image&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;alpine:3.1&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -311,13 +309,13 @@ distro/raspbian/buster
 &lt;p&gt;In this example, there are two packages being specified:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;One is the &lt;code&gt;seed&lt;/code&gt; package, which is the base image which we will use to extract later on packages. It has no installable content, and it is just virtual used during build phase.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;sh&lt;/code&gt; is the package which contains &lt;code&gt;/bin/sh&lt;/code&gt;, extracted from the seed image and packaged. This can be consumed by Luet clients to install sh in their system.&lt;/li&gt;
+&lt;li&gt;One is the &lt;code&gt;seed&lt;/code&gt; package, which is the base image employed to later extract packages. It has no installable content, and it is just virtually used during build phase.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sh&lt;/code&gt; is the package which contains &lt;code&gt;/bin/sh&lt;/code&gt;, extracted from the seed image and packaged. This can be consumed by Luet clients in order to install &lt;code&gt;sh&lt;/code&gt; in their system.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;packages-delta&#34;&gt;Packages delta&lt;/h3&gt;
 
-&lt;p&gt;Luet by defaults will try to calculate the delta of the package that is meant to be built. It means that it tracks &lt;strong&gt;incrementally&lt;/strong&gt; the changes in the packages, to ease the build definition. Let&amp;rsquo;s see an example.&lt;/p&gt;
+&lt;p&gt;Luet, by default, will try to calculate the delta of the package that is meant to be built. This means that it tracks &lt;strong&gt;incrementally&lt;/strong&gt; the changes in the packages, to ease the build definition. Let&amp;rsquo;s see an example.&lt;/p&gt;
 
 &lt;p&gt;Given the root package:
 &lt;strong&gt;alpine/build.yaml&lt;/strong&gt;&lt;/p&gt;
@@ -326,7 +324,7 @@ distro/raspbian/buster
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;name&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;alpine&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;version&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;3.1&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;category&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;seed&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;We can generate whatsoever file, and include it in our package by defining this simple package:&lt;/p&gt;
+&lt;p&gt;We can generate any file, and include it in our package by defining this simple package:&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;foo/build.yaml&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# List of build-time dependencies&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
@@ -358,15 +356,15 @@ distro/raspbian/buster
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;name&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;foo&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;category&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;utils&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;version&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;1.0&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The list of commands inside the &lt;code&gt;prelude&lt;/code&gt; that would produce artifacts, are not accounted to the final package. In this example, only &lt;code&gt;/foo&lt;/code&gt; would be packaged (which output is equivalent to the example above).&lt;/p&gt;
+&lt;p&gt;The list of commands inside &lt;code&gt;prelude&lt;/code&gt; that would produce artifacts, are not accounted to the final package. In this example, only &lt;code&gt;/foo&lt;/code&gt; would be packaged (which output is equivalent to the example above).&lt;/p&gt;
 
-&lt;p&gt;This can be used for e.g. to fetch sources that must not be part of the package.&lt;/p&gt;
+&lt;p&gt;This can be used, for instance, to fetch sources that must not be part of the package.&lt;/p&gt;
 
-&lt;p&gt;You can anytime apply restrictions, and use the &lt;code&gt;includes&lt;/code&gt; keyword to specifically pin to the files you wish in your package.&lt;/p&gt;
+&lt;p&gt;You can apply restrictions anytime and use the &lt;code&gt;includes&lt;/code&gt; keyword to specifically pin to the files you wish in your package.&lt;/p&gt;
 
 &lt;h3 id=&#34;package-layers&#34;&gt;Package layers&lt;/h3&gt;
 
-&lt;p&gt;Luet can be used to track entire layers, and make them installable by Luet clients.&lt;/p&gt;
+&lt;p&gt;Luet can be used to track entire layers and make them installable by Luet clients.&lt;/p&gt;
 
 &lt;p&gt;Given the examples above:&lt;/p&gt;
 
@@ -376,7 +374,7 @@ distro/raspbian/buster
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;name&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;alpine&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;version&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;3.1&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;category&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;seed&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;An installable package derived by the seed, with the actual full content of the layer con be composed as so:&lt;/p&gt;
+&lt;p&gt;An installable package derived by the seed, with the actual full content of the layer can be composed as follows:&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;foo/build.yaml&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# List of build-time dependencies&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
@@ -408,7 +406,7 @@ distro/raspbian/buster
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;version&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;1.0&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3 id=&#34;package-includes&#34;&gt;Package includes&lt;/h3&gt;
 
-&lt;p&gt;The &lt;code&gt;includes&lt;/code&gt; keyword can be combined ina ddition to extract portions from the package image.&lt;/p&gt;
+&lt;p&gt;In addition, the &lt;code&gt;includes&lt;/code&gt; keyword can be set in order to extract portions from the package image.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;git/build.yaml&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# List of build-time dependencies&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
@@ -426,7 +424,7 @@ distro/raspbian/buster
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;name&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;git&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;category&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;utils&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;version&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;1.0&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;As a reminder, the &lt;code&gt;includes&lt;/code&gt; keywords accepts regex in the Golang format. Any criteria expressed with the regex which matches the file name (absolute path) will be part of the final package.&lt;/p&gt;
+&lt;p&gt;As a reminder, the &lt;code&gt;includes&lt;/code&gt; keywords accepts regular expressions in the Golang format. Any criteria expressed by means of Golang regular expressions, and matching the file name (absolute path), will be part of the final package.&lt;/p&gt;
 
       </description>
     </item>
@@ -474,10 +472,9 @@ docker run -ti --entrypoint /bin/sh --rm luet-runtime-test-image&lt;/code&gt;&lt
 
 &lt;h2 id=&#34;specfiles&#34;&gt;Specfiles&lt;/h2&gt;
 
-&lt;p&gt;Luet &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/packages/&#34;&gt;packages&lt;/a&gt; are defined by specfiles. They define the runtime and builtime requirements of a package.
-There is an hard distinction between runtime and buildtime. A spec is composed at least by the runtime (&lt;code&gt;definition.yaml&lt;/code&gt;) and the buildtime specification (&lt;code&gt;build.yaml&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Luet &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/packages/&#34;&gt;packages&lt;/a&gt; are defined by specfiles. Specfiles define the runtime and builtime requirements of a package.  There is an hard distinction between runtime and buildtime. A spec is composed at least by the runtime (&lt;code&gt;definition.yaml&lt;/code&gt;) and the buildtime specification (&lt;code&gt;build.yaml&lt;/code&gt;).&lt;/p&gt;
 
-&lt;p&gt;A Folder containing a &lt;code&gt;build.yaml&lt;/code&gt; and a &lt;code&gt;definition.yaml&lt;/code&gt; form a specfile. A Luet tree is merely a composition of specfile(s).  There is no constriction on folder naming or hierarchy either.&lt;/p&gt;
+&lt;p&gt;A directory containing a &lt;code&gt;build.yaml&lt;/code&gt; and a &lt;code&gt;definition.yaml&lt;/code&gt; forms a specfile &lt;!--it sounds a little bit weird that a directory (or folder) a spec&#34;file&#34;&#34;--&gt;. A Luet tree is merely a composition of specfile(s).  There is no constriction on either folder naming or hierarchy.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Example of a &lt;a href=&#34;https://github.com/Luet-lab/luet-embedded/tree/master/distro&#34; target=&#34;_blank&#34;&gt;tree folder hierarchy&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;tree distro                                                      
@@ -518,7 +515,7 @@ distro
 │   │   └── finalize.yaml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3 id=&#34;build-specs&#34;&gt;Build specs&lt;/h3&gt;
 
-&lt;p&gt;Build specs are defined in &lt;code&gt;build.yaml&lt;/code&gt; files. They denote the build-time &lt;code&gt;dependencies&lt;/code&gt; and &lt;code&gt;conflicts&lt;/code&gt; along with a definition of the content of the package.&lt;/p&gt;
+&lt;p&gt;Build specs are defined in &lt;code&gt;build.yaml&lt;/code&gt; files. They denote the build-time &lt;code&gt;dependencies&lt;/code&gt; and &lt;code&gt;conflicts&lt;/code&gt;, together with a definition of the content of the package.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Example of a &lt;code&gt;build.yaml&lt;/code&gt; file&lt;/em&gt;:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;steps&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
@@ -545,24 +542,24 @@ distro
 &lt;p&gt;Global:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;environment&lt;/code&gt;: List of environment variables ( in &lt;code&gt;NAME=value&lt;/code&gt; format ) that are expanded in &lt;code&gt;step&lt;/code&gt; and in &lt;code&gt;prelude&lt;/code&gt;. ( e.g. &lt;code&gt;${NAME}&lt;/code&gt; )&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;step&lt;/code&gt;: List of commands to perform in the build container&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;prelude&lt;/code&gt;: List of commands to perform in the build container before building&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;environment&lt;/code&gt;: List of environment variables ( in &lt;code&gt;NAME=value&lt;/code&gt; format ) that are expanded in &lt;code&gt;step&lt;/code&gt; and in &lt;code&gt;prelude&lt;/code&gt;. ( e.g. &lt;code&gt;${NAME}&lt;/code&gt; ).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;step&lt;/code&gt;: List of commands to perform in the build container.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;prelude&lt;/code&gt;: List of commands to perform in the build container before building.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;unpack&lt;/code&gt;: Boolean which indicates if the package content &lt;strong&gt;is&lt;/strong&gt; the whole container content.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;includes&lt;/code&gt;: List of strings which are encoded in logical AND, they denote the content to filter from the container image to be packed. Wildcards and golang regexes are supported. If specified, files that don&amp;rsquo;t much any of the regex in the list won&amp;rsquo;t be included in the final package.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;includes&lt;/code&gt;: List of strings which are encoded in logical AND, they denote the content to filter from the container image to be packed. Wildcards and golang regular expressions are supported. If specified, files not matching any of the regular expressions in the list won&amp;rsquo;t be included in the final package.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Source from external image (e.g. Docker):&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;image&lt;/code&gt;: List of packages which it provides&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;image&lt;/code&gt;: List of packages which it provides.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;From a tree dependency:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;requires&lt;/code&gt;: List of packages which it depends on&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;conflicts&lt;/code&gt;: List of packages which it conflicts with&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;requires&lt;/code&gt;: List of packages which it depends on.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;conflicts&lt;/code&gt;: List of packages which it conflicts with.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;rutime-specs&#34;&gt;Rutime specs&lt;/h3&gt;
@@ -590,20 +587,20 @@ distro
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;name&lt;/code&gt;: Name of the package &lt;strong&gt;required&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;version&lt;/code&gt;: Version of the package in semver notation. Selectors here are not supported. You can use selectors (&lt;code&gt;&amp;gt;=&lt;/code&gt;,&lt;code&gt;&amp;lt;&lt;/code&gt;,&lt;code&gt;&amp;gt;&lt;/code&gt;,&lt;code&gt;&amp;lt;=&lt;/code&gt;) only in dependency lists.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;category&lt;/code&gt;: Category of the package&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;provides&lt;/code&gt;: List of packages which it replaces&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;category&lt;/code&gt;: Category of the package.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;provides&lt;/code&gt;: List of packages which it replaces.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Runtime dependency list:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;requires&lt;/code&gt;: List of packages which it depends on runtime&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;conflicts&lt;/code&gt;: List of packages which it conflicts with in runtime&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;requires&lt;/code&gt;: List of packages which it depends on, in runtime.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;conflicts&lt;/code&gt;: List of packages which it conflicts with, in runtime.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;finalizers&#34;&gt;Finalizers&lt;/h3&gt;
 
-&lt;p&gt;Finalizers are denoted in a &lt;code&gt;finalize.yaml&lt;/code&gt; file which is a sibiling of &lt;code&gt;definition.yaml&lt;/code&gt; and &lt;code&gt;build.yaml&lt;/code&gt; file. It contains a list of commands that finalize the package when it is installed in the machine.&lt;/p&gt;
+&lt;p&gt;Finalizers are denoted in a &lt;code&gt;finalize.yaml&lt;/code&gt; file, which is a sibiling of &lt;code&gt;definition.yaml&lt;/code&gt; and &lt;code&gt;build.yaml&lt;/code&gt; file. It contains a list of commands that finalize the package when it is installed in the machine.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;finalize.yaml&lt;/em&gt;:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;install&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
@@ -628,9 +625,9 @@ distro
         
         
 
-&lt;p&gt;Building a package with Luet requires a &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/specfile&#34;&gt;definition&lt;/a&gt; only. It can be self-contained and be only composed of one &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/specfile&#34;&gt;specfile&lt;/a&gt;, or a group of them, forming a Luet tree.&lt;/p&gt;
+&lt;p&gt;Building a package with Luet requires only a &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/specfile&#34;&gt;definition&lt;/a&gt;. This definition can be self-contained and be only composed of one &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/specfile&#34;&gt;specfile&lt;/a&gt;, or a group of them, forming a Luet tree.&lt;/p&gt;
 
-&lt;p&gt;The &lt;code&gt;build&lt;/code&gt; help command is the following:&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;build&lt;/code&gt; help command is as follows:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;build packages or trees from luet tree definitions. Packages are in [category]/[name]-[version] form
 
@@ -656,11 +653,11 @@ Global Flags:
   -v, --verbose           verbose output
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Build accepts a list of packages to build, which syntax is in the &lt;code&gt;category/name-version&lt;/code&gt; format (following Gentoo syntax).&lt;/p&gt;
+&lt;p&gt;Build accepts a list of packages to build, which syntax is in the &lt;code&gt;category/name-version&lt;/code&gt; notation (following Gentoo syntax).&lt;/p&gt;
 
 &lt;h2 id=&#34;flags&#34;&gt;Flags&lt;/h2&gt;
 
-&lt;p&gt;Flags available for the build command&lt;/p&gt;
+&lt;p&gt;Flags available for the build command:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;&amp;ndash;all&lt;/strong&gt;: Boolean which instruct Luet to build all the specs contained in a tree&lt;/li&gt;
@@ -685,7 +682,7 @@ Global Flags:
 
 &lt;h2 id=&#34;examples&#34;&gt;Examples&lt;/h2&gt;
 
-&lt;p&gt;Create a simple &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/specfile&#34;&gt;package definition&lt;/a&gt; and build it:&lt;/p&gt;
+&lt;p&gt;Creating and building a simple &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/specfile&#34;&gt;package definition&lt;/a&gt;:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$&amp;gt; mkdir package
 
@@ -715,7 +712,7 @@ $&amp;gt; luet build --all
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;In order to consume the repository by a client, it is sufficient to create the repository:&lt;/p&gt;
+&lt;p&gt;For a client to consume the repository, it is sufficient to create the repository:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$&amp;gt; luet create-repo
  For repository luet creating revision 1 and last update 1580640083...
@@ -737,17 +734,15 @@ $&amp;gt; luet build --all
         
         
 
-&lt;p&gt;Luet currently supports &lt;a href=&#34;https://www.docker.com/&#34; target=&#34;_blank&#34;&gt;Docker&lt;/a&gt; and &lt;a href=&#34;https://github.com/genuinetools/img&#34; target=&#34;_blank&#34;&gt;Img&lt;/a&gt;. Both backend can be used, and they can be switched in runtime.&lt;/p&gt;
+&lt;p&gt;Luet currently supports &lt;a href=&#34;https://www.docker.com/&#34; target=&#34;_blank&#34;&gt;Docker&lt;/a&gt; and &lt;a href=&#34;https://github.com/genuinetools/img&#34; target=&#34;_blank&#34;&gt;Img&lt;/a&gt;. Both back-ends can be used and switched in runtime.&lt;/p&gt;
 
 &lt;h2 id=&#34;docker&#34;&gt;Docker&lt;/h2&gt;
 
-&lt;p&gt;Docker is the (less) experimental Luet engine supported. Be sure in your system to have Docker installed and the daemon running.
-The user which is running &lt;code&gt;luet&lt;/code&gt; commands needs the permission to execute the &lt;code&gt;docker&lt;/code&gt; executable, and to connect to a &lt;code&gt;docker&lt;/code&gt; daemon.
-The only feature needed by the daemon is the ability to build images, so it fully supports remote daemon as well. (They can be specified with the &lt;code&gt;DOCKER_HOST&lt;/code&gt; environment variable, that is respected by &lt;code&gt;luet&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;Docker is the (less) experimental Luet engine supported. Be sure to have Docker installed and the daemon running. The user running &lt;code&gt;luet&lt;/code&gt; commands needs the corresponding permissions to run the &lt;code&gt;docker&lt;/code&gt; executable, and to connect to a &lt;code&gt;docker&lt;/code&gt; daemon. The only feature needed by the daemon is the ability to build images, so it fully supports remote daemon as well (this can be specified with the &lt;code&gt;DOCKER_HOST&lt;/code&gt; environment variable, that is respected by &lt;code&gt;luet&lt;/code&gt;)&lt;/p&gt;
 
 &lt;h2 id=&#34;img&#34;&gt;Img&lt;/h2&gt;
 
-&lt;p&gt;Luet supports &lt;a href=&#34;https://github.com/genuinetools/img&#34; target=&#34;_blank&#34;&gt;Img&lt;/a&gt;. To use it, simply install it in your system, and while running &lt;code&gt;luet build&lt;/code&gt;, you can switch the backend by providing it as a parameter: &lt;code&gt;luet build --backend img&lt;/code&gt;. For small packages it is particularly powerful, as doesn&amp;rsquo;t require any docker daemon running in the host.&lt;/p&gt;
+&lt;p&gt;Luet supports &lt;a href=&#34;https://github.com/genuinetools/img&#34; target=&#34;_blank&#34;&gt;Img&lt;/a&gt;. To use it, simply install it in your system, and while running &lt;code&gt;luet build&lt;/code&gt;, you can switch the backend by providing it as a parameter: &lt;code&gt;luet build --backend img&lt;/code&gt;. For small packages it is particularly powerful, as it doesn&amp;rsquo;t require any docker daemon running in the host.&lt;/p&gt;
 
 &lt;h2 id=&#34;container-diff&#34;&gt;Container-diff&lt;/h2&gt;
 
@@ -769,7 +764,7 @@ The only feature needed by the daemon is the ability to build images, so it full
         
         
 
-&lt;p&gt;After a set of packages was built, a repository must be created to make them accessible by Luet clients. A Repository can be served either locally or via http(s) (at the moment of writing). Luet supports multiple-repositories with priorities by default.&lt;/p&gt;
+&lt;p&gt;After a set of packages has been built, a repository must be created in order to make them accessible by Luet clients. A Repository can be served either local files or via http(s) (at the moment of writing). Luet, by default, supports multiple-repositories with priorities.&lt;/p&gt;
 
 &lt;h2 id=&#34;create-a-repository&#34;&gt;Create a repository&lt;/h2&gt;
 
@@ -799,9 +794,9 @@ Global Flags:
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;After issuing a &lt;code&gt;luet build&lt;/code&gt;, the packages are present in the output build folder. The &lt;code&gt;create-repo&lt;/code&gt; step is needed to generate a portable tree which is read by the clients, and a &lt;code&gt;repository.yaml&lt;/code&gt; which contains the repository metadata.&lt;/p&gt;
+&lt;p&gt;After issuing a &lt;code&gt;luet build&lt;/code&gt;, the built packages are present in the output build directory. The &lt;code&gt;create-repo&lt;/code&gt; step is needed to generate a portable tree, which is read by the clients, and a &lt;code&gt;repository.yaml&lt;/code&gt; which contains the repository metadata.&lt;/p&gt;
 
-&lt;p&gt;Note that the output of create-repo is &lt;em&gt;additive&lt;/em&gt; so it integrates with the current build content. The repository is composed by the &lt;code&gt;build&lt;/code&gt; output command and the &lt;code&gt;create-repo&lt;/code&gt; metadata.&lt;/p&gt;
+&lt;p&gt;Note that the output of &lt;code&gt;create-repo&lt;/code&gt; is &lt;em&gt;additive&lt;/em&gt; so it integrates with the current build content. The repository is composed by the &lt;code&gt;build&lt;/code&gt; output command and the &lt;code&gt;create-repo&lt;/code&gt; metadata.&lt;/p&gt;
 
 &lt;h3 id=&#34;flags&#34;&gt;Flags&lt;/h3&gt;
 

@@ -470,22 +470,21 @@ if (!doNotTrack) {
 
 <h1 id="what">What</h1>
 
-<p>Luet brings the containers ecosystem to standard package management software and delivery. It is fully built around the container concept, and leverages the huge catalog already present in the wild. It lets you use Docker images from docker hub, or from private registry to build packages, and helps you to redistribute them.</p>
+<p>Luet brings the containers ecosystem to standard software package management and delivery. It is fully built around the container concept, and leverages the huge catalog already present in the wild. It lets you use Docker images from <a href="https://hub.docker.com/" target="_blank">Docker Hub</a>, or from private registries to build packages, and helps you to redistribute them.</p>
 
-<p>Luet clients ( here in after called &ldquo;Luet native clients&rdquo; ) can consume Luet repositories with 0-dependency installs. No dependency is required by the Package manager, giving you the full control on what you install or not in your system. While it can be used to generate <em>Linux from Scratch</em> distributions, it can be used also to build Docker images, or simply build standalone packages that you might want to redistribute.</p>
+<p>Luet clients (here in after called &ldquo;Luet native clients&rdquo;) can consume Luet repositories with 0-dependency installs. No dependency is required by the Package manager, giving you the full control on what you install or not in your system. While it can be used to generate <em>Linux from Scratch</em> distributions, it can also be used to build Docker images, or to simply build standalone packages that you might want to redistribute.</p>
 
-<p>The syntax which is proposed it aims to be KISS - you define a set of steps that has to be run while you build your image, and a set of constraints that denotes the requirements, or conflicts of your package.</p>
+<p>The syntax proposed aims to be <a href="https://en.wikipedia.org/wiki/KISS_principle" target="_blank">KISS</a> - you define a set of steps that need to be run to build your image, and a set of constraints denoting the requirements or conflicts of your package.</p>
 
 <h1 id="why">Why</h1>
 
-<p>There is no known package manager that has zero dependency and that fully leverages the container ecosystem. This gap forces current package managers to depend on a specific system layout and by the depencies that it has to care about. This is somehow prone to situations that could lead to a broken system. We want to fix that by giving you ways to define your system that can span from a layered system (just composed of &ldquo;layers&rdquo;), or a fully atomized one (a set of packages, that depends on each other and at the end compose up your system), without having a Package manager that depends on what you ask to install.</p>
+<p>There is no known package manager with 0-dependency that fully leverages the container ecosystem. This gap forces current package managers to depend on a specific system layout and the corresponding depencies. This can cause situations leading to a broken system. We want to fix that by giving you ways to define your system spanning from a layered system (just composed of &ldquo;layers&rdquo;), or a fully atomized one (a set of packages, that depends on each other and at the end compose up your system), without having a package manager that depends on what you ask to install.</p>
 
 <h1 id="how">How</h1>
 
-<p>By defining a yaml specification format, Luet parses the <a href="/docs/docs/concepts/constraints">requirements</a> to build <a href="/docs/docs/concepts/packages">packages</a>, so Luet clients can consume them.
-As Luet has 0 dependency while being used for installation of packages, this have the nice effect that doesn&rsquo;t depend on the package tree that is available for installation inside a Luet repository.</p>
+<p>By defining a <a href="https://en.wikipedia.org/wiki/YAML" target="_blank">YAML</a> specification format, Luet parses the <a href="/docs/docs/concepts/constraints">requirements</a> to build <a href="/docs/docs/concepts/packages">packages</a>, so Luet clients can consume them. Since Luet has 0-dependency for installation of packages, it benefits from the nice effect of not depending on the package trees available for installation inside Luet repositories.</p>
 
-<p>Here below you can find links to tutorials on how to build packages, images and repositories.</p>
+<p>Below you can find links to tutorials on how to build packages, images and repositories.</p>
 
         <div class="section-index">
     
@@ -609,7 +608,7 @@ As Luet has 0 dependency while being used for installation of packages, this hav
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified March 18, 2020: <a  href="https://github.com/Luet-lab/docs/commit/3289c380b6c2ba43a5d666af74801386a5d77892">Fix cross-links docs (3289c38)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified March 18, 2020: <a  href="https://github.com/Luet-lab/docs/commit/92fe1bad54b59bc951b92c75b15a8f518bb028f8">Review of the content of the documentation (92fe1ba)</a>
 </div>
 </div>
 

@@ -26,15 +26,15 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luet-lab.github.io/docs/docs/overview/build_packages/" />
 <meta property="article:published_time" content="2019-12-14T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-03-18T19:17:09+01:00" /><meta property="og:site_name" content="Luet" />
+<meta property="article:modified_time" content="2020-03-18T22:31:24+01:00" /><meta property="og:site_name" content="Luet" />
 <meta itemprop="name" content="Build packages">
 <meta itemprop="description" content="How to build packages with luet
 ">
 
 
 <meta itemprop="datePublished" content="2019-12-14T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-03-18T19:17:09&#43;01:00" />
-<meta itemprop="wordCount" content="495">
+<meta itemprop="dateModified" content="2020-03-18T22:31:24&#43;01:00" />
+<meta itemprop="wordCount" content="493">
 
 
 
@@ -486,9 +486,9 @@ if (!doNotTrack) {
 	<div class="lead">How to build packages with luet</div>
 	
 
-<p>Building a package with Luet requires a <a href="/docs/docs/concepts/specfile">definition</a> only. It can be self-contained and be only composed of one <a href="/docs/docs/concepts/specfile">specfile</a>, or a group of them, forming a Luet tree.</p>
+<p>Building a package with Luet requires only a <a href="/docs/docs/concepts/specfile">definition</a>. This definition can be self-contained and be only composed of one <a href="/docs/docs/concepts/specfile">specfile</a>, or a group of them, forming a Luet tree.</p>
 
-<p>The <code>build</code> help command is the following:</p>
+<p>The <code>build</code> help command is as follows:</p>
 
 <pre><code>build packages or trees from luet tree definitions. Packages are in [category]/[name]-[version] form
 
@@ -514,11 +514,11 @@ Global Flags:
   -v, --verbose           verbose output
 </code></pre>
 
-<p>Build accepts a list of packages to build, which syntax is in the <code>category/name-version</code> format (following Gentoo syntax).</p>
+<p>Build accepts a list of packages to build, which syntax is in the <code>category/name-version</code> notation (following Gentoo syntax).</p>
 
 <h2 id="flags">Flags</h2>
 
-<p>Flags available for the build command</p>
+<p>Flags available for the build command:</p>
 
 <ul>
 <li><strong>&ndash;all</strong>: Boolean which instruct Luet to build all the specs contained in a tree</li>
@@ -543,7 +543,7 @@ Global Flags:
 
 <h2 id="examples">Examples</h2>
 
-<p>Create a simple <a href="/docs/docs/concepts/specfile">package definition</a> and build it:</p>
+<p>Creating and building a simple <a href="/docs/docs/concepts/specfile">package definition</a>:</p>
 
 <pre><code>$&gt; mkdir package
 
@@ -573,7 +573,7 @@ $&gt; luet build --all
 
 </code></pre>
 
-<p>In order to consume the repository by a client, it is sufficient to create the repository:</p>
+<p>For a client to consume the repository, it is sufficient to create the repository:</p>
 
 <pre><code>$&gt; luet create-repo
  For repository luet creating revision 1 and last update 1580640083...
@@ -643,7 +643,7 @@ $&gt; luet build --all
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified March 18, 2020: <a  href="https://github.com/Luet-lab/docs/commit/3289c380b6c2ba43a5d666af74801386a5d77892">Fix cross-links docs (3289c38)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified March 18, 2020: <a  href="https://github.com/Luet-lab/docs/commit/92fe1bad54b59bc951b92c75b15a8f518bb028f8">Review of the content of the documentation (92fe1ba)</a>
 </div>
 </div>
 

@@ -24,9 +24,9 @@
         
         
 
-&lt;p&gt;Building a package with Luet requires a &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/specfile&#34;&gt;definition&lt;/a&gt; only. It can be self-contained and be only composed of one &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/specfile&#34;&gt;specfile&lt;/a&gt;, or a group of them, forming a Luet tree.&lt;/p&gt;
+&lt;p&gt;Building a package with Luet requires only a &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/specfile&#34;&gt;definition&lt;/a&gt;. This definition can be self-contained and be only composed of one &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/specfile&#34;&gt;specfile&lt;/a&gt;, or a group of them, forming a Luet tree.&lt;/p&gt;
 
-&lt;p&gt;The &lt;code&gt;build&lt;/code&gt; help command is the following:&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;build&lt;/code&gt; help command is as follows:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;build packages or trees from luet tree definitions. Packages are in [category]/[name]-[version] form
 
@@ -52,11 +52,11 @@ Global Flags:
   -v, --verbose           verbose output
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Build accepts a list of packages to build, which syntax is in the &lt;code&gt;category/name-version&lt;/code&gt; format (following Gentoo syntax).&lt;/p&gt;
+&lt;p&gt;Build accepts a list of packages to build, which syntax is in the &lt;code&gt;category/name-version&lt;/code&gt; notation (following Gentoo syntax).&lt;/p&gt;
 
 &lt;h2 id=&#34;flags&#34;&gt;Flags&lt;/h2&gt;
 
-&lt;p&gt;Flags available for the build command&lt;/p&gt;
+&lt;p&gt;Flags available for the build command:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;&amp;ndash;all&lt;/strong&gt;: Boolean which instruct Luet to build all the specs contained in a tree&lt;/li&gt;
@@ -81,7 +81,7 @@ Global Flags:
 
 &lt;h2 id=&#34;examples&#34;&gt;Examples&lt;/h2&gt;
 
-&lt;p&gt;Create a simple &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/specfile&#34;&gt;package definition&lt;/a&gt; and build it:&lt;/p&gt;
+&lt;p&gt;Creating and building a simple &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/specfile&#34;&gt;package definition&lt;/a&gt;:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$&amp;gt; mkdir package
 
@@ -111,7 +111,7 @@ $&amp;gt; luet build --all
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;In order to consume the repository by a client, it is sufficient to create the repository:&lt;/p&gt;
+&lt;p&gt;For a client to consume the repository, it is sufficient to create the repository:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$&amp;gt; luet create-repo
  For repository luet creating revision 1 and last update 1580640083...
@@ -133,7 +133,7 @@ $&amp;gt; luet build --all
         
         
 
-&lt;p&gt;After a set of packages was built, a repository must be created to make them accessible by Luet clients. A Repository can be served either locally or via http(s) (at the moment of writing). Luet supports multiple-repositories with priorities by default.&lt;/p&gt;
+&lt;p&gt;After a set of packages has been built, a repository must be created in order to make them accessible by Luet clients. A Repository can be served either local files or via http(s) (at the moment of writing). Luet, by default, supports multiple-repositories with priorities.&lt;/p&gt;
 
 &lt;h2 id=&#34;create-a-repository&#34;&gt;Create a repository&lt;/h2&gt;
 
@@ -163,9 +163,9 @@ Global Flags:
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;After issuing a &lt;code&gt;luet build&lt;/code&gt;, the packages are present in the output build folder. The &lt;code&gt;create-repo&lt;/code&gt; step is needed to generate a portable tree which is read by the clients, and a &lt;code&gt;repository.yaml&lt;/code&gt; which contains the repository metadata.&lt;/p&gt;
+&lt;p&gt;After issuing a &lt;code&gt;luet build&lt;/code&gt;, the built packages are present in the output build directory. The &lt;code&gt;create-repo&lt;/code&gt; step is needed to generate a portable tree, which is read by the clients, and a &lt;code&gt;repository.yaml&lt;/code&gt; which contains the repository metadata.&lt;/p&gt;
 
-&lt;p&gt;Note that the output of create-repo is &lt;em&gt;additive&lt;/em&gt; so it integrates with the current build content. The repository is composed by the &lt;code&gt;build&lt;/code&gt; output command and the &lt;code&gt;create-repo&lt;/code&gt; metadata.&lt;/p&gt;
+&lt;p&gt;Note that the output of &lt;code&gt;create-repo&lt;/code&gt; is &lt;em&gt;additive&lt;/em&gt; so it integrates with the current build content. The repository is composed by the &lt;code&gt;build&lt;/code&gt; output command and the &lt;code&gt;create-repo&lt;/code&gt; metadata.&lt;/p&gt;
 
 &lt;h3 id=&#34;flags&#34;&gt;Flags&lt;/h3&gt;
 
