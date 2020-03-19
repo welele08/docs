@@ -20,7 +20,7 @@ The package definition in your tree definition, along with its Requires and Conf
 
 A list of requires and conflicts, composed of one or more [packages](/docs/docs/concepts/packages/), becomes a SAT formula. The formula is then given to the SAT solver to compute a finite state set of packages which must be installed in the system in order to met the requirements.
 
-Alongside, Luet builds the ALO (At least one) and AMO (At most one). <!-- I think this sentence should be rewritten-->This means that given requirements as selectors in semver notation (e.g. `>1.0`) it builds additional formulas to restrict the constraints of the given solution.
+As Luet allows to express constraints with selectors ( e.g. `A depends on >=B-1.0`) it generates additional constraints to guarantee that at least one package and at most one is picked as dependency (*ALO* and *AMO*).
 
 At the moment of writing Luet is not encoding any order, but relies on the SAT solver and tries to enforce the order by forcing the engine to look at the "best" pick among a set of package. This is a known issue that we will address in the near future.
 

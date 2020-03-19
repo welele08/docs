@@ -10,7 +10,7 @@ description: >
 
 Luet [packages](/docs/docs/concepts/packages/) are defined by specfiles. Specfiles define the runtime and builtime requirements of a package.  There is an hard distinction between runtime and buildtime. A spec is composed at least by the runtime (`definition.yaml`) and the buildtime specification (`build.yaml`).
 
-A directory containing a `build.yaml` and a `definition.yaml` forms a specfile <!--it sounds a little bit weird that a directory (or folder) a spec"file""-->. A Luet tree is merely a composition of specfile(s).  There is no constriction on either folder naming or hierarchy.
+Luet identifies the package definition by looking at directories that contains a `build.yaml` and a `definition.yaml` files. A Luet tree is merely a composition of directories that follows this convention. There is no constriction on either folder naming or hierarchy.
 
 *Example of a [tree folder hierarchy](https://github.com/Luet-lab/luet-embedded/tree/master/distro)*
 ```bash
