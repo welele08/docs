@@ -43,7 +43,7 @@ Flags available for the build command:
 
 - **--all**: Boolean which instruct Luet to build all the specs contained in a tree
 - **--backend**: String that specifies the backend to use. Currently supported are : `docker` and `img`. Defaults to `docker`
-- **--clean**: Boolean that when enabled perform a clean build without taking in consideration already existing artifacts
+- **--clean**: Boolean that when enabled perform a clean build without taking in consideration already existing artifacts (Enabled by default, disable with `--clean=false`)
 - **--compression**: Specify a compression algorithm. Currently available only tgz. Defaults to no compression
 - **--database**: Type of database which is used for solving. This setting is particularly helpful for big trees composed of many packages on small devices where available memory is limited. Currently available `boltdb` and `memory`. Defaults to `memory`.
 - **--destination**: Output folder where the generated artifacts are written.
