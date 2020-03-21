@@ -61,7 +61,7 @@ Global Flags:
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;&amp;ndash;all&lt;/strong&gt;: Boolean which instruct Luet to build all the specs contained in a tree&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;&amp;ndash;backend&lt;/strong&gt;: String that specifies the backend to use. Currently supported are : &lt;code&gt;docker&lt;/code&gt; and &lt;code&gt;img&lt;/code&gt;. Defaults to &lt;code&gt;docker&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&amp;ndash;clean&lt;/strong&gt;: Boolean that when enabled perform a clean build without taking in consideration already existing artifacts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ndash;clean&lt;/strong&gt;: Boolean that when enabled perform a clean build without taking in consideration already existing artifacts (Enabled by default, disable with &lt;code&gt;--clean=false&lt;/code&gt;)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;&amp;ndash;compression&lt;/strong&gt;: Specify a compression algorithm. Currently available only tgz. Defaults to no compression&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;&amp;ndash;database&lt;/strong&gt;: Type of database which is used for solving. This setting is particularly helpful for big trees composed of many packages on small devices where available memory is limited. Currently available &lt;code&gt;boltdb&lt;/code&gt; and &lt;code&gt;memory&lt;/code&gt;. Defaults to &lt;code&gt;memory&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;&amp;ndash;destination&lt;/strong&gt;: Output folder where the generated artifacts are written.&lt;/li&gt;

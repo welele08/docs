@@ -26,15 +26,15 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luet-lab.github.io/docs/docs/overview/build_packages/" />
 <meta property="article:published_time" content="2019-12-14T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-03-18T22:31:24+01:00" /><meta property="og:site_name" content="Luet" />
+<meta property="article:modified_time" content="2020-03-21T10:11:16+01:00" /><meta property="og:site_name" content="Luet" />
 <meta itemprop="name" content="Build packages">
 <meta itemprop="description" content="How to build packages with luet
 ">
 
 
 <meta itemprop="datePublished" content="2019-12-14T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-03-18T22:31:24&#43;01:00" />
-<meta itemprop="wordCount" content="493">
+<meta itemprop="dateModified" content="2020-03-21T10:11:16&#43;01:00" />
+<meta itemprop="wordCount" content="499">
 
 
 
@@ -523,7 +523,7 @@ Global Flags:
 <ul>
 <li><strong>&ndash;all</strong>: Boolean which instruct Luet to build all the specs contained in a tree</li>
 <li><strong>&ndash;backend</strong>: String that specifies the backend to use. Currently supported are : <code>docker</code> and <code>img</code>. Defaults to <code>docker</code></li>
-<li><strong>&ndash;clean</strong>: Boolean that when enabled perform a clean build without taking in consideration already existing artifacts</li>
+<li><strong>&ndash;clean</strong>: Boolean that when enabled perform a clean build without taking in consideration already existing artifacts (Enabled by default, disable with <code>--clean=false</code>)</li>
 <li><strong>&ndash;compression</strong>: Specify a compression algorithm. Currently available only tgz. Defaults to no compression</li>
 <li><strong>&ndash;database</strong>: Type of database which is used for solving. This setting is particularly helpful for big trees composed of many packages on small devices where available memory is limited. Currently available <code>boltdb</code> and <code>memory</code>. Defaults to <code>memory</code>.</li>
 <li><strong>&ndash;destination</strong>: Output folder where the generated artifacts are written.</li>
@@ -643,7 +643,7 @@ $&gt; luet build --all
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified March 18, 2020: <a  href="https://github.com/Luet-lab/docs/commit/92fe1bad54b59bc951b92c75b15a8f518bb028f8">Review of the content of the documentation (92fe1ba)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified March 21, 2020: <a  href="https://github.com/Luet-lab/docs/commit/d337a258b73df4a4bcf9175f08e2f9267c1f0ac3">Clarify on how to disable default boolean flags (d337a25)</a>
 </div>
 </div>
 
