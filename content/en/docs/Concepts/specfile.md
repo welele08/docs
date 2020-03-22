@@ -71,7 +71,7 @@ conflicts:
 provides:
 - name: "bar"
   version: ">=1.0"
-environment:
+env:
 - FOO=bar
 includes:
 - /awesome
@@ -83,7 +83,7 @@ unpack: true
 
 Global:
 
-- `environment`: List of environment variables ( in `NAME=value` format ) that are expanded in `step` and in `prelude`. ( e.g. `${NAME}` ).
+- `env`: List of environment variables ( in `NAME=value` format ) that are expanded in `step` and in `prelude`. ( e.g. `${NAME}` ).
 - `step`: List of commands to perform in the build container.
 - `prelude`: List of commands to perform in the build container before building.
 - `unpack`: Boolean which indicates if the package content **is** the whole container content.
