@@ -349,7 +349,7 @@ distro
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;provides&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;-&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;name&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;bar&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;version&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;gt;=1.0&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;environment&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;env&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;-&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;FOO=bar&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;includes&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;-&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;/awesome&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
@@ -360,7 +360,7 @@ distro
 &lt;p&gt;Global:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;environment&lt;/code&gt;: List of environment variables ( in &lt;code&gt;NAME=value&lt;/code&gt; format ) that are expanded in &lt;code&gt;step&lt;/code&gt; and in &lt;code&gt;prelude&lt;/code&gt;. ( e.g. &lt;code&gt;${NAME}&lt;/code&gt; ).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;env&lt;/code&gt;: List of environment variables ( in &lt;code&gt;NAME=value&lt;/code&gt; format ) that are expanded in &lt;code&gt;step&lt;/code&gt; and in &lt;code&gt;prelude&lt;/code&gt;. ( e.g. &lt;code&gt;${NAME}&lt;/code&gt; ).&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;step&lt;/code&gt;: List of commands to perform in the build container.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;prelude&lt;/code&gt;: List of commands to perform in the build container before building.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;unpack&lt;/code&gt;: Boolean which indicates if the package content &lt;strong&gt;is&lt;/strong&gt; the whole container content.&lt;/li&gt;

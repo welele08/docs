@@ -25,13 +25,13 @@
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luet-lab.github.io/docs/docs/concepts/specfile/" />
-<meta property="article:modified_time" content="2020-03-19T18:42:39+01:00" /><meta property="og:site_name" content="Luet" />
+<meta property="article:modified_time" content="2020-03-22T14:49:09+01:00" /><meta property="og:site_name" content="Luet" />
 <meta itemprop="name" content="Specfile">
 <meta itemprop="description" content="Luet specfile syntax
 ">
 
 
-<meta itemprop="dateModified" content="2020-03-19T18:42:39&#43;01:00" />
+<meta itemprop="dateModified" content="2020-03-22T14:49:09&#43;01:00" />
 <meta itemprop="wordCount" content="522">
 
 
@@ -568,7 +568,7 @@ distro
 </span><span style="color:#f8f8f8;text-decoration:underline"></span>provides<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>name<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;bar&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span>version<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;&gt;=1.0&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span>environment<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>env<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>FOO=bar<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span>includes<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>/awesome<span style="color:#f8f8f8;text-decoration:underline">
@@ -579,7 +579,7 @@ distro
 <p>Global:</p>
 
 <ul>
-<li><code>environment</code>: List of environment variables ( in <code>NAME=value</code> format ) that are expanded in <code>step</code> and in <code>prelude</code>. ( e.g. <code>${NAME}</code> ).</li>
+<li><code>env</code>: List of environment variables ( in <code>NAME=value</code> format ) that are expanded in <code>step</code> and in <code>prelude</code>. ( e.g. <code>${NAME}</code> ).</li>
 <li><code>step</code>: List of commands to perform in the build container.</li>
 <li><code>prelude</code>: List of commands to perform in the build container before building.</li>
 <li><code>unpack</code>: Boolean which indicates if the package content <strong>is</strong> the whole container content.</li>
@@ -710,7 +710,7 @@ distro
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified March 19, 2020: <a  href="https://github.com/Luet-lab/docs/commit/68257331d6c43c67e10beaf5396de154c3185a80">Clarify the point raise during review (6825733)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified March 22, 2020: <a  href="https://github.com/Luet-lab/docs/commit/ec5dc7527470d128cdb8991a469bf87dd0beaa5c">Fixup typo in build specs (ec5dc75)</a>
 </div>
 </div>
 
