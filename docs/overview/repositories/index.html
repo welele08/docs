@@ -26,15 +26,15 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luet-lab.github.io/docs/docs/overview/repositories/" />
 <meta property="article:published_time" content="2019-12-14T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-03-18T22:31:24+01:00" /><meta property="og:site_name" content="Luet" />
+<meta property="article:modified_time" content="2020-03-27T09:03:11+01:00" /><meta property="og:site_name" content="Luet" />
 <meta itemprop="name" content="Package repositories">
 <meta itemprop="description" content="How to create Luet repositories
 ">
 
 
 <meta itemprop="datePublished" content="2019-12-14T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-03-18T22:31:24&#43;01:00" />
-<meta itemprop="wordCount" content="475">
+<meta itemprop="dateModified" content="2020-03-27T09:03:11&#43;01:00" />
+<meta itemprop="wordCount" content="490">
 
 
 
@@ -511,13 +511,15 @@ Usage:
 Flags:
       --descr string              Repository description (default &quot;luet&quot;)
   -h, --help                      help for create-repo
+      --meta-compression string   Compression alg: none, gzip (default &quot;none&quot;)
+      --meta-filename string      Repository metadata filename (default &quot;repository.meta.yaml.tar&quot;)
       --name string               Repository name (default &quot;luet&quot;)
       --output string             Destination folder (default current dir)
       --packages string           Packages folder (output from build) (default current dir)
       --reset-revision            Reset repository revision.
       --tree string               Source luet tree (default &quot;/home/mudler/_git/luet/test&quot;)
-      --tree-compression string   Compression alg: none, gzip (default &quot;none&quot;)
-      --tree-path string          Repository tree filename (default &quot;tree.tar&quot;)
+      --tree-compression string   Compression alg: none, gzip (default &quot;gzip&quot;)
+      --tree-filename string      Repository tree filename (default &quot;tree.tar&quot;)
       --type string               Repository type (disk) (default &quot;disk&quot;)
       --urls strings              Repository URLs
 
@@ -648,7 +650,7 @@ foo-bar-0.1-builder.image.tar  foo-bar-0.1.image.tar  foo-bar-0.1.metadata.yaml 
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified March 18, 2020: <a  href="https://github.com/Luet-lab/docs/commit/92fe1bad54b59bc951b92c75b15a8f518bb028f8">Review of the content of the documentation (92fe1ba)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified March 27, 2020: <a  href="https://github.com/Luet-lab/docs/commit/2dc359c64aa4c4973e8d8d414048ff09b39c332f">repositories: Align new create-repo flags (2dc359c)</a>
 </div>
 </div>
 
