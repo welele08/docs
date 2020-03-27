@@ -19,13 +19,15 @@ Usage:
 Flags:
       --descr string              Repository description (default "luet")
   -h, --help                      help for create-repo
+      --meta-compression string   Compression alg: none, gzip (default "none")
+      --meta-filename string      Repository metadata filename (default "repository.meta.yaml.tar")
       --name string               Repository name (default "luet")
       --output string             Destination folder (default current dir)
       --packages string           Packages folder (output from build) (default current dir)
       --reset-revision            Reset repository revision.
       --tree string               Source luet tree (default "/home/mudler/_git/luet/test")
-      --tree-compression string   Compression alg: none, gzip (default "none")
-      --tree-path string          Repository tree filename (default "tree.tar")
+      --tree-compression string   Compression alg: none, gzip (default "gzip")
+      --tree-filename string      Repository tree filename (default "tree.tar")
       --type string               Repository type (disk) (default "disk")
       --urls strings              Repository URLs
 
