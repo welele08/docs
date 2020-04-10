@@ -99,3 +99,7 @@ $> luet create-repo
 ```
 
 Which generates a `repository.yaml` file containing the repository metadata needed by the client when consuming the packages.
+
+## Notes
+
+If you notice errors about disk space, mind to set the `TMPDIR` env variable to a different folder. By default luet respects the O.S. default (which in the majority of system is `/tmp`).

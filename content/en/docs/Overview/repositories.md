@@ -95,3 +95,7 @@ foo-bar-0.1-builder.image.tar  foo-bar-0.1.image.tar  foo-bar-0.1.metadata.yaml 
 
 ```
 
+## Notes
+
+- The tree of definition being used to build the repository, and the package directories must **not** be symlinks.
+- To build a repository is not required to hold the packages artifacts, only the respective `metadata.yaml` file is required.
