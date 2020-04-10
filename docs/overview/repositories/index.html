@@ -26,15 +26,15 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luet-lab.github.io/docs/docs/overview/repositories/" />
 <meta property="article:published_time" content="2019-12-14T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-03-27T09:03:11+01:00" /><meta property="og:site_name" content="Luet" />
+<meta property="article:modified_time" content="2020-04-10T19:52:02+02:00" /><meta property="og:site_name" content="Luet" />
 <meta itemprop="name" content="Package repositories">
 <meta itemprop="description" content="How to create Luet repositories
 ">
 
 
 <meta itemprop="datePublished" content="2019-12-14T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-03-27T09:03:11&#43;01:00" />
-<meta itemprop="wordCount" content="490">
+<meta itemprop="dateModified" content="2020-04-10T19:52:02&#43;02:00" />
+<meta itemprop="wordCount" content="528">
 
 
 
@@ -451,6 +451,7 @@ if (!doNotTrack) {
 <li><a href="#flags">Flags</a></li>
 </ul></li>
 <li><a href="#example">Example</a></li>
+<li><a href="#notes">Notes</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -588,6 +589,13 @@ foo-bar-0.1-builder.image.tar  foo-bar-0.1.image.tar  foo-bar-0.1.metadata.yaml 
 
 </code></pre>
 
+<h2 id="notes">Notes</h2>
+
+<ul>
+<li>The tree of definition being used to build the repository, and the package directories must <strong>not</strong> be symlinks.</li>
+<li>To build a repository is not required to hold the packages artifacts, only the respective <code>metadata.yaml</code> file is required.</li>
+</ul>
+
 	
 		<style>
   .feedback--answer {
@@ -650,7 +658,7 @@ foo-bar-0.1-builder.image.tar  foo-bar-0.1.image.tar  foo-bar-0.1.metadata.yaml 
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified March 27, 2020: <a  href="https://github.com/Luet-lab/docs/commit/2dc359c64aa4c4973e8d8d414048ff09b39c332f">repositories: Align new create-repo flags (2dc359c)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified April 10, 2020: <a  href="https://github.com/Luet-lab/docs/commit/2b175ce7765ec967c97eab34ca2636c6e52ad25b">Add notes on build and repositories generation (2b175ce)</a>
 </div>
 </div>
 

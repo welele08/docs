@@ -26,15 +26,15 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luet-lab.github.io/docs/docs/overview/build_packages/" />
 <meta property="article:published_time" content="2019-12-14T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-03-21T10:11:16+01:00" /><meta property="og:site_name" content="Luet" />
+<meta property="article:modified_time" content="2020-04-10T19:52:02+02:00" /><meta property="og:site_name" content="Luet" />
 <meta itemprop="name" content="Build packages">
 <meta itemprop="description" content="How to build packages with luet
 ">
 
 
 <meta itemprop="datePublished" content="2019-12-14T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-03-21T10:11:16&#43;01:00" />
-<meta itemprop="wordCount" content="499">
+<meta itemprop="dateModified" content="2020-04-10T19:52:02&#43;02:00" />
+<meta itemprop="wordCount" content="533">
 
 
 
@@ -581,6 +581,10 @@ $&gt; luet build --all
 
 <p>Which generates a <code>repository.yaml</code> file containing the repository metadata needed by the client when consuming the packages.</p>
 
+<h2 id="notes">Notes</h2>
+
+<p>If you notice errors about disk space, mind to set the <code>TMPDIR</code> env variable to a different folder. By default luet respects the O.S. default (which in the majority of system is <code>/tmp</code>).</p>
+
 	
 		<style>
   .feedback--answer {
@@ -643,7 +647,7 @@ $&gt; luet build --all
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified March 21, 2020: <a  href="https://github.com/Luet-lab/docs/commit/d337a258b73df4a4bcf9175f08e2f9267c1f0ac3">Clarify on how to disable default boolean flags (d337a25)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified April 10, 2020: <a  href="https://github.com/Luet-lab/docs/commit/2b175ce7765ec967c97eab34ca2636c6e52ad25b">Add notes on build and repositories generation (2b175ce)</a>
 </div>
 </div>
 

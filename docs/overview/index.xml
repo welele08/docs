@@ -119,6 +119,10 @@ $&amp;gt; luet build --all
 
 &lt;p&gt;Which generates a &lt;code&gt;repository.yaml&lt;/code&gt; file containing the repository metadata needed by the client when consuming the packages.&lt;/p&gt;
 
+&lt;h2 id=&#34;notes&#34;&gt;Notes&lt;/h2&gt;
+
+&lt;p&gt;If you notice errors about disk space, mind to set the &lt;code&gt;TMPDIR&lt;/code&gt; env variable to a different folder. By default luet respects the O.S. default (which in the majority of system is &lt;code&gt;/tmp&lt;/code&gt;).&lt;/p&gt;
+
       </description>
     </item>
     
@@ -221,6 +225,13 @@ $&amp;gt; ls out
 foo-bar-0.1-builder.image.tar  foo-bar-0.1.image.tar  foo-bar-0.1.metadata.yaml  foo-bar-0.1.package.tar  repository.yaml  tree.tar
 
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;notes&#34;&gt;Notes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The tree of definition being used to build the repository, and the package directories must &lt;strong&gt;not&lt;/strong&gt; be symlinks.&lt;/li&gt;
+&lt;li&gt;To build a repository is not required to hold the packages artifacts, only the respective &lt;code&gt;metadata.yaml&lt;/code&gt; file is required.&lt;/li&gt;
+&lt;/ul&gt;
 
       </description>
     </item>
