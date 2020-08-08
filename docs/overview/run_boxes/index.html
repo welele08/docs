@@ -7,7 +7,6 @@
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
-<link rel="alternate" type="application/rss&#43;xml" href="https://luet-lab.github.io/docs/docs/tasks/index.xml">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -21,20 +20,28 @@
 <link rel="icon" type="image/png" href="/docs/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/docs/favicons/android-192x192.png" sizes="192x192">
 
-<title>Core Tasks | Luet</title><meta property="og:title" content="Core Tasks" />
-<meta property="og:description" content="What can Luet do for you?
+<title>Run Luet boxes | Luet</title><meta property="og:title" content="Run Luet boxes" />
+<meta property="og:description" content="How to create portable rootfs, install packages in it and run applications from them with Luet.
 " />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://luet-lab.github.io/docs/docs/tasks/" />
-
-<meta property="og:updated_time" content="2017-01-05T00:00:00+00:00" /><meta property="og:site_name" content="Luet" />
-<meta itemprop="name" content="Core Tasks">
-<meta itemprop="description" content="What can Luet do for you?
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luet-lab.github.io/docs/docs/overview/run_boxes/" />
+<meta property="article:published_time" content="2017-01-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-08-08T12:16:57+02:00" /><meta property="og:site_name" content="Luet" />
+<meta itemprop="name" content="Run Luet boxes">
+<meta itemprop="description" content="How to create portable rootfs, install packages in it and run applications from them with Luet.
 ">
 
+
+<meta itemprop="datePublished" content="2017-01-05T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-08-08T12:16:57&#43;02:00" />
+<meta itemprop="wordCount" content="0">
+
+
+
+<meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Core Tasks"/>
-<meta name="twitter:description" content="What can Luet do for you?
+<meta name="twitter:title" content="Run Luet boxes"/>
+<meta name="twitter:description" content="How to create portable rootfs, install packages in it and run applications from them with Luet.
 "/>
 
 
@@ -64,9 +71,9 @@ if (!doNotTrack) {
   crossorigin="anonymous"></script>
 
 
-    <title>Core Tasks | Luet</title>
+    <title>Run Luet boxes | Luet</title>
   </head>
-  <body class="td-section">
+  <body class="td-page">
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -170,41 +177,6 @@ if (!doNotTrack) {
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/docs/overview/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Overview</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docs-docs-overview">
-      
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-overview-build-packages" href="/docs/docs/overview/build_packages/">Build packages</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-overview-repositories" href="/docs/docs/overview/repositories/">Package repositories</a>
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
     <a  href="/docs/docs/getting-started/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Getting Started</a>
   </li>
   <ul>
@@ -212,12 +184,6 @@ if (!doNotTrack) {
       
       
       
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-getting-started-requirements" href="/docs/docs/getting-started/requirements/">Build requirements</a>
-      
-      
     </li>
   </ul>
 </ul>
@@ -234,29 +200,35 @@ if (!doNotTrack) {
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/docs/examples/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Examples</a>
+    <a  href="/docs/docs/overview/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Overview</a>
   </li>
   <ul>
-    <li class="collapse " id="docs-docs-examples">
+    <li class="collapse show" id="docs-docs-overview">
       
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-examples-arm" href="/docs/docs/examples/arm/">ARM images</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-overview-build-packages" href="/docs/docs/overview/build_packages/">Building packages</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-examples-building" href="/docs/docs/examples/building/">Building</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-overview-repositories" href="/docs/docs/overview/repositories/">Creating Luet repositories</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-examples-scratch" href="/docs/docs/examples/scratch/">ScratchImages</a>
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docs-docs-overview-run-boxes" href="/docs/docs/overview/run_boxes/">Run Luet boxes</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-overview-install-packages" href="/docs/docs/overview/install_packages/">Installing packages</a>
       
       
     </li>
@@ -316,29 +288,6 @@ if (!doNotTrack) {
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/docs/tasks/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Core Tasks</a>
-  </li>
-  <ul>
-    <li class="collapse show" id="docs-docs-tasks">
-      
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
     <a  href="/docs/docs/tutorials/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Tutorials</a>
   </li>
   <ul>
@@ -346,27 +295,16 @@ if (!doNotTrack) {
       
       
       
-    </li>
-  </ul>
-</ul>
-
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-tutorials-hello-world" href="/docs/docs/tutorials/hello_world/">Hello world!</a>
       
       
       
       
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/docs/reference/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Reference</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docs-docs-reference">
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-tutorials-build-package" href="/docs/docs/tutorials/build_package/">Build a package</a>
       
       
     </li>
@@ -390,6 +328,47 @@ if (!doNotTrack) {
   <ul>
     <li class="collapse " id="docs-docs-contribution-guidelines">
       
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/docs/examples/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Examples</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docs-docs-examples">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-examples-arm" href="/docs/docs/examples/arm/">ARM images</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-examples-building" href="/docs/docs/examples/building/">Building</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-docs-examples-scratch" href="/docs/docs/examples/scratch/">ScratchImages</a>
       
       
     </li>
@@ -422,8 +401,8 @@ if (!doNotTrack) {
 
 
 
-<a href="https://github.com/Luet-lab/docs/edit/master/content/en/docs/Tasks/_index.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-<a href="https://github.com/Luet-lab/docs/issues/new?title=Core%20Tasks" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+<a href="https://github.com/Luet-lab/docs/edit/master/content/en/docs/Overview/run_boxes.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/Luet-lab/docs/issues/new?title=Run%20Luet%20boxes" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
 
 
 <a href="https://github.com/mudler/luet/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
@@ -447,6 +426,9 @@ if (!doNotTrack) {
 
 
 
+
+
+
 <li class="breadcrumb-item" >
 	<a href="https://luet-lab.github.io/docs/docs/">Documentation</a>
 </li>
@@ -454,8 +436,15 @@ if (!doNotTrack) {
 
 
 
+<li class="breadcrumb-item" >
+	<a href="https://luet-lab.github.io/docs/docs/overview/">Overview</a>
+</li>
+
+
+
+
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="https://luet-lab.github.io/docs/docs/tasks/">Core Tasks</a>
+	<a href="https://luet-lab.github.io/docs/docs/overview/run_boxes/">Run Luet boxes</a>
 </li>
 
 	</ol>
@@ -463,55 +452,9 @@ if (!doNotTrack) {
 
             
 <div class="td-content">
-	<h1>Core Tasks</h1>
-	<div class="lead">What can Luet do for you?</div>
+	<h1>Run Luet boxes</h1>
+	<div class="lead">How to create portable rootfs, install packages in it and run applications from them with Luet.</div>
 	
-        <div class="section-index">
-    
-    
-    
-    
-    <hr class="panel-line">
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-    
-</div>
-
 	
 		<style>
   .feedback--answer {
@@ -574,9 +517,10 @@ if (!doNotTrack) {
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified December 23, 2019: <a  href="https://github.com/Luet-lab/docs/commit/3c39a84b46cb93a552fbf08f0d46f43760a85401">Initial import (3c39a84)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified August 8, 2020: <a  href="https://github.com/Luet-lab/docs/commit/f74418f98828b98fd0196c99766e6aee69062040">Update docs and redefine structure (f74418f)</a>
 </div>
 </div>
+
 
           </main>
         </div>

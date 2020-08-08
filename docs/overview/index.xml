@@ -14,9 +14,9 @@
     
     
     <item>
-      <title>Docs: Build packages</title>
+      <title>Docs: Building packages</title>
       <link>https://luet-lab.github.io/docs/docs/overview/build_packages/</link>
-      <pubDate>Sat, 14 Dec 2019 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate>
       
       <guid>https://luet-lab.github.io/docs/docs/overview/build_packages/</guid>
       <description>
@@ -127,9 +127,9 @@ $&amp;gt; luet build --all
     </item>
     
     <item>
-      <title>Docs: Package repositories</title>
+      <title>Docs: Creating Luet repositories</title>
       <link>https://luet-lab.github.io/docs/docs/overview/repositories/</link>
-      <pubDate>Sat, 14 Dec 2019 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate>
       
       <guid>https://luet-lab.github.io/docs/docs/overview/repositories/</guid>
       <description>
@@ -233,6 +233,32 @@ foo-bar-0.1-builder.image.tar  foo-bar-0.1.image.tar  foo-bar-0.1.metadata.yaml 
 &lt;li&gt;To build a repository is not required to hold the packages artifacts, only the respective &lt;code&gt;metadata.yaml&lt;/code&gt; file is required.&lt;/li&gt;
 &lt;/ul&gt;
 
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Run Luet boxes</title>
+      <link>https://luet-lab.github.io/docs/docs/overview/run_boxes/</link>
+      <pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://luet-lab.github.io/docs/docs/overview/run_boxes/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Installing packages</title>
+      <link>https://luet-lab.github.io/docs/docs/overview/install_packages/</link>
+      <pubDate>Sat, 14 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://luet-lab.github.io/docs/docs/overview/install_packages/</guid>
+      <description>
+        
+        
+        
       </description>
     </item>
     

@@ -3,18 +3,38 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://luet-lab.github.io/docs/docs/overview/</loc>
-    <lastmod>2020-03-18T22:31:24+01:00</lastmod>
+    <loc>https://luet-lab.github.io/docs/docs/overview/build_packages/</loc>
+    <lastmod>2020-08-08T12:16:57+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://luet-lab.github.io/docs/docs/tutorials/hello_world/</loc>
+    <lastmod>2020-08-08T12:16:57+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://luet-lab.github.io/docs/docs/overview/repositories/</loc>
+    <lastmod>2020-08-08T12:16:57+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://luet-lab.github.io/docs/docs/getting-started/</loc>
-    <lastmod>2020-03-18T22:31:24+01:00</lastmod>
+    <lastmod>2020-08-08T12:16:57+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://luet-lab.github.io/docs/docs/examples/</loc>
-    <lastmod>2019-12-23T16:02:41+01:00</lastmod>
+    <loc>https://luet-lab.github.io/docs/docs/overview/run_boxes/</loc>
+    <lastmod>2020-08-08T12:16:57+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://luet-lab.github.io/docs/docs/tutorials/build_package/</loc>
+    <lastmod>2020-08-08T12:16:57+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://luet-lab.github.io/docs/docs/overview/</loc>
+    <lastmod>2020-08-08T12:16:57+02:00</lastmod>
   </url>
   
   <url>
@@ -53,23 +73,18 @@
   </url>
   
   <url>
-    <loc>https://luet-lab.github.io/docs/docs/tasks/</loc>
-    <lastmod>2019-12-23T16:02:41+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://luet-lab.github.io/docs/docs/tutorials/</loc>
-    <lastmod>2019-12-23T16:02:41+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://luet-lab.github.io/docs/docs/reference/</loc>
     <lastmod>2019-12-23T16:02:41+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://luet-lab.github.io/docs/docs/contribution-guidelines/</loc>
     <lastmod>2019-12-23T16:02:41+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://luet-lab.github.io/docs/docs/examples/</loc>
+    <lastmod>2020-08-08T12:16:57+02:00</lastmod>
   </url>
   
   <url>
@@ -98,18 +113,8 @@
   </url>
   
   <url>
-    <loc>https://luet-lab.github.io/docs/docs/overview/build_packages/</loc>
-    <lastmod>2020-04-10T19:52:02+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://luet-lab.github.io/docs/docs/getting-started/requirements/</loc>
-    <lastmod>2020-03-18T22:31:24+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://luet-lab.github.io/docs/docs/overview/repositories/</loc>
-    <lastmod>2020-04-10T19:52:02+02:00</lastmod>
+    <loc>https://luet-lab.github.io/docs/docs/overview/install_packages/</loc>
+    <lastmod>2020-08-08T12:16:57+02:00</lastmod>
   </url>
   
   <url>
