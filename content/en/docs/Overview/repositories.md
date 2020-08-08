@@ -1,7 +1,8 @@
 ---
-title: "Package repositories"
-linkTitle: "Package repositories"
-date: 2019-12-14
+title: "Creating Luet repositories"
+linkTitle: "Creating Luet repositories"
+weight: 2
+date: 2017-01-05
 description: >
   How to create Luet repositories
 ---

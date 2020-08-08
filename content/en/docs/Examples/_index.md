@@ -2,7 +2,7 @@
 ---
 title: "Examples"
 linkTitle: "Examples"
-weight: 3
+weight: 20
 date: 2017-01-05
 description: >
   Luet examples

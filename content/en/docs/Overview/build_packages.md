@@ -1,10 +1,12 @@
 ---
-title: "Build packages"
-linkTitle: "Build packages"
-date: 2019-12-14
+title: "Building packages"
+linkTitle: "Building packages"
+weight: 1
+date: 2017-01-05
 description: >
-  How to build packages with luet
+  How to build packages with Luet
 ---
+
 
 Building a package with Luet requires only a [definition](/docs/docs/concepts/specfile). This definition can be self-contained and be only composed of one [specfile](/docs/docs/concepts/specfile), or a group of them, forming a Luet tree.
 
