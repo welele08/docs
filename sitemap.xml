@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>https://luet-lab.github.io/docs/docs/overview/build_packages/</loc>
-    <lastmod>2020-08-08T12:16:57+02:00</lastmod>
+    <lastmod>2020-11-28T17:02:05+01:00</lastmod>
   </url>
   
   <url>
@@ -14,12 +14,12 @@
   
   <url>
     <loc>https://luet-lab.github.io/docs/docs/overview/repositories/</loc>
-    <lastmod>2020-08-08T12:16:57+02:00</lastmod>
+    <lastmod>2020-11-28T17:02:05+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://luet-lab.github.io/docs/docs/getting-started/</loc>
-    <lastmod>2020-08-08T12:16:57+02:00</lastmod>
+    <lastmod>2020-11-28T17:02:05+01:00</lastmod>
   </url>
   
   <url>
@@ -34,7 +34,7 @@
   
   <url>
     <loc>https://luet-lab.github.io/docs/docs/overview/</loc>
-    <lastmod>2020-08-08T12:16:57+02:00</lastmod>
+    <lastmod>2020-11-28T17:02:05+01:00</lastmod>
   </url>
   
   <url>
@@ -70,6 +70,11 @@
   <url>
     <loc>https://luet-lab.github.io/docs/docs/concepts/specfile/</loc>
     <lastmod>2020-03-22T14:49:09+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://luet-lab.github.io/docs/docs/plugins-and-extensions/</loc>
+    <lastmod>2020-11-28T17:02:05+01:00</lastmod>
   </url>
   
   <url>
@@ -113,8 +118,8 @@
   </url>
   
   <url>
-    <loc>https://luet-lab.github.io/docs/docs/overview/install_packages/</loc>
-    <lastmod>2020-08-08T12:16:57+02:00</lastmod>
+    <loc>https://luet-lab.github.io/docs/docs/overview/managing_packages/</loc>
+    <lastmod>2020-11-28T17:02:05+01:00</lastmod>
   </url>
   
   <url>

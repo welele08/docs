@@ -23,66 +23,43 @@
       <description>
         
         
-        
-
-&lt;p&gt;Here we show an example on how to build &amp;ldquo;burnable&amp;rdquo; SD images for Raspberry Pi with Luet. This approach lets you describe and version OTA upgrades for your embedded devices, delivering upgrades as layer upgrades on the Pi.&lt;/p&gt;
-
+        &lt;p&gt;Here we show an example on how to build &amp;ldquo;burnable&amp;rdquo; SD images for Raspberry Pi with Luet. This approach lets you describe and version OTA upgrades for your embedded devices, delivering upgrades as layer upgrades on the Pi.&lt;/p&gt;
 &lt;p&gt;The other good side of the medal is that you can build a Luet package repository with multiple distributions (e.g. &lt;code&gt;Raspbian&lt;/code&gt;, &lt;code&gt;OpenSUSE&lt;/code&gt;, &lt;code&gt;Gentoo&lt;/code&gt;, &amp;hellip; ) and switch among them in runtime. In the above example &lt;code&gt;Raspbian&lt;/code&gt; and &lt;code&gt;Funtoo&lt;/code&gt; (at the time of writing) are available.&lt;/p&gt;
-
 &lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
-
 &lt;p&gt;You have to run the following steps inside an ARM board to produce arm-compatible binaries. Any distribution with Docker will work. Note that the same steps could be done in a cross-compilation approach, or with qemu-binfmt in a amd64 host.&lt;/p&gt;
-
 &lt;p&gt;You will also need in your host:&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;Docker&lt;/li&gt;
 &lt;li&gt;Luet installed (+container-diff) in &lt;code&gt;/usr/bin/luet&lt;/code&gt; (arm build)&lt;/li&gt;
 &lt;li&gt;make&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;h2 id=&#34;build-the-packages&#34;&gt;Build the packages&lt;/h2&gt;
-
-&lt;p&gt;Clone the repository &lt;a href=&#34;https://github.com/Luet-lab/luet-embedded&#34; target=&#34;_blank&#34;&gt;https://github.com/Luet-lab/luet-embedded&lt;/a&gt;&lt;/p&gt;
-
+&lt;p&gt;Clone the repository &lt;a href=&#34;https://github.com/Luet-lab/luet-embedded&#34;&gt;https://github.com/Luet-lab/luet-embedded&lt;/a&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$&amp;gt; git clone https://github.com/Luet-lab/luet-embedded
 $&amp;gt; cd luet-embedded
 $&amp;gt; sudo make build-all
 ...
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;If a rebuild is needed, just do &lt;code&gt;sudo make rebuild-all&lt;/code&gt; after applying the changes.&lt;/p&gt;
-
 &lt;h2 id=&#34;create-the-repository&#34;&gt;Create the repository&lt;/h2&gt;
-
 &lt;pre&gt;&lt;code&gt;$&amp;gt; sudo make create-repo
 ...
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;h2 id=&#34;serve-the-repo-locally&#34;&gt;Serve the repo locally&lt;/h2&gt;
-
 &lt;pre&gt;&lt;code&gt;$&amp;gt; make serve-repo
 ...
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;h2 id=&#34;create-the-flashable-image&#34;&gt;Create the flashable image&lt;/h2&gt;
-
 &lt;h3 id=&#34;funtoo-based-system&#34;&gt;Funtoo based system&lt;/h3&gt;
-
 &lt;pre&gt;&lt;code&gt;$&amp;gt; sudo LUET_PACKAGES=&#39;distro/funtoo-1.4 distro/raspbian-boot-0.20191208 system/luet-develop-0.5&#39; make image
 ...
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;h3 id=&#34;raspbian-based-system&#34;&gt;Raspbian based system&lt;/h3&gt;
-
 &lt;pre&gt;&lt;code&gt;$&amp;gt; sudo LUET_PACKAGES=&#39;distro/raspbian-0.20191208 distro/raspbian-boot-0.20191208 system/luet-develop-0.5&#39; make image
 ...
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;At the end of the process, a file &lt;code&gt;luet_os.img&lt;/code&gt;, ready to be flashed to an SD card, should be present in the current directory.&lt;/p&gt;
-
 &lt;h2 id=&#34;add-packages&#34;&gt;Add packages&lt;/h2&gt;
-
 &lt;p&gt;In order to build and add &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/packages/&#34;&gt;packages&lt;/a&gt; to the exiting repository, simply add or edit the &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/specfile&#34;&gt;specfiles&lt;/a&gt; under the &lt;code&gt;distro&lt;/code&gt; folder. When doing &lt;code&gt;make rebuild-all&lt;/code&gt; the packages will be automatically compiled and made available to the local repository.&lt;/p&gt;
 
       </description>
@@ -97,12 +74,8 @@ $&amp;gt; sudo make build-all
       <description>
         
         
-        
-
-&lt;h2 id=&#34;simple-package-build&#34;&gt;Simple package build&lt;/h2&gt;
-
+        &lt;h2 id=&#34;simple-package-build&#34;&gt;Simple package build&lt;/h2&gt;
 &lt;p&gt;Creating and building a simple &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/packages/&#34;&gt;package&lt;/a&gt;:&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;$&amp;gt; mkdir package
 
 $&amp;gt; cat &amp;lt;&amp;lt;EOF &amp;gt; package/build.yaml
@@ -128,13 +101,9 @@ $&amp;gt; luet build --all
  Sending build context to Docker daemon  4.096kB
  ...
 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;build-packages&#34;&gt;Build packages&lt;/h3&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;build-packages&#34;&gt;Build packages&lt;/h3&gt;
 &lt;p&gt;In order to build a specific version, a full &lt;a href=&#34;https://luet-lab.github.io/docs/docs/docs/concepts/packages/&#34;&gt;package&lt;/a&gt; definition (triple of &lt;code&gt;category&lt;/code&gt;, &lt;code&gt;name&lt;/code&gt; and &lt;code&gt;version&lt;/code&gt;) has to be specified.
 In this example we will also enable package compression (gzip).&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;$&amp;gt; mkdir package
 
 $&amp;gt; cat &amp;lt;&amp;lt;EOF &amp;gt; package/build.yaml
@@ -162,7 +131,6 @@ $&amp;gt; luet build bar/foo-0.1 --compression gzip
  ...
 
 &lt;/code&gt;&lt;/pre&gt;
-
       </description>
     </item>
     
@@ -192,7 +160,8 @@ docker commit luet-runtime-test luet-runtime-test-image
 
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Try your new image!&lt;/span&gt;
 
-docker run -ti --entrypoint /bin/sh --rm luet-runtime-test-image&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+docker run -ti --entrypoint /bin/sh --rm luet-runtime-test-image
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       </description>
     </item>
     
