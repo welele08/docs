@@ -9,7 +9,7 @@ description: >
 
 ## Prerequisites
 
-No dependencies. Only to build packages [Docker](https://www.docker.com/) (or [Img](https://github.com/genuinetools/img)) is required.
+No dependencies. 
 
 Luet currently supports [Docker](https://www.docker.com/) and [Img](https://github.com/genuinetools/img) as backends to build packages. Both of them can be used and switched in runtime.
 
@@ -28,9 +28,11 @@ Luet supports [Img](https://github.com/genuinetools/img). To use it, simply inst
 
 Just grab a release from [the release page on GitHub](https://github.com/mudler/luet/releases). The binaries are statically compiled.
 
+Or you can install Luet also with a single command:
+
 ```bash
-wget https://github.com/mudler/luet/releases/download/0.8.3/luet-0.8.3-linux-amd64 -o luet
-```
+curl https://get.mocaccino.org/luet/get_luet_root.sh | sudo sh
+``` 
 
 ### Building Luet from source
 
@@ -50,7 +52,6 @@ $> make build # or just go build
 
 In the following section we will see how to install luet with luet itself. We will use a transient luet version that we are going to throw away right after we install it in the system.
 
-
 ```bash
 # Get a luet release. It will be used to install luet in your system
 wget https://github.com/mudler/luet/releases/download/0.8.3/luet-0.8.3-linux-amd64 -O luet
@@ -68,7 +69,7 @@ repositories:
   cached: true
   priority: 1
   urls:
-  - "https://mocaccino.keybase.pub/repository-index"
+  - "https://get.mocaccino.org/mocaccino-repository-index"
 EOF
 
 # Install the official luet repository to get always the latest luet version
@@ -85,40 +86,3 @@ mkdir -p /etc/luet
 mv .luet.yaml /etc/luet/luet.yaml
 ```
 
-
-## Installation notes for Linux Distributions
-
-### Sabayon
-
-Install golang to build from source:
-```bash
-## Install golang
-$> equo install dev-lang/go
-```
-
-Then install git and Docker:
-```bash
-## install git
-$> equo install dev-vcs/git
-
-## install docker
-$> equo install app-emulation/docker
-
-## enable docker
-$> systemctl start docker
-```
-
-Build Luet from source:
-```bash
-
-## clone the luet git repository
-$> git clone https://github.com/mudler/luet.git
-
-## compile luet
-$> cd luet && make build
-
-## Test it
-$> ./luet --version
-$> ./luet --help
-
-```

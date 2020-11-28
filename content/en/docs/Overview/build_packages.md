@@ -7,6 +7,7 @@ description: >
   How to build packages with Luet
 ---
 
+![Build packages](/tree.jpg)
 
 Building a package with Luet requires only a [definition](/docs/docs/concepts/specfile). This definition can be self-contained and be only composed of one [specfile](/docs/docs/concepts/specfile), or a group of them, forming a Luet tree.
 
@@ -43,7 +44,8 @@ Build accepts a list of packages to build, which syntax is in the `category/name
 
 Flags available for the build command:
 
-- **--all**: Boolean which instruct Luet to build all the specs contained in a tree
+- **--all**: Boolean which instruct Luet to build all the packages contained in a tree
+- **--full**: Boolean which instruct Luet to build all the leaf packages contained in a tree
 - **--backend**: String that specifies the backend to use. Currently supported are : `docker` and `img`. Defaults to `docker`
 - **--clean**: Boolean that when enabled perform a clean build without taking in consideration already existing artifacts (Enabled by default, disable with `--clean=false`)
 - **--compression**: Specify a compression algorithm. Currently available only tgz. Defaults to no compression
@@ -59,6 +61,15 @@ General flags:
 - **--config**: Indicates a config file to read
 - **--fatal**: Treats all warnings as fatal
 - **--verbose**: Enables verbose output
+
+## Environmental variables
+
+Luet builds passes its environment variable at the engine which is called during build, so for example the environment variable `DOCKER_HOST` can be setted.
+
+Every argument from the CLI can be setted via environment variable too with a `LUET_` prefix, for instance the flag `--clean`, can be setted via environment with `LUET_CLEAN`, `--privileged` can be enabled with `LUET_PRIVILEGED` and so on.
+
+Additionally, you can set:
+- `DOCKER_SQUASH`: Set to `true` to squash each image being created (Docker backend only)
 
 ## Examples
 
@@ -92,15 +103,6 @@ $> luet build --all
  ...
 
 ```
-
-For a client to consume the repository, it is sufficient to create the repository:
-
-```
-$> luet create-repo
- For repository luet creating revision 1 and last update 1580640083...
-```
-
-Which generates a `repository.yaml` file containing the repository metadata needed by the client when consuming the packages.
 
 ## Notes
 
