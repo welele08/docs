@@ -65,6 +65,7 @@ You may now invoke your extension as a luet command:
 ```bash
 $ luet foo
 I am an Extension named luet-foo
+```
 
 All args and flags are passed as-is to the executable:
 
