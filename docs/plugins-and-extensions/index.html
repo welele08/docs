@@ -574,7 +574,7 @@ $ luet foo <span style="color:#204a87">help</span>
 Extension <span style="color:#204a87">help</span>
 </code></pre></div><h2 id="plugins">Plugins</h2>
 <p>Plugins instead are expanding Luet vertically by hooking into internal events. Plugins and Extensions can be written in any language, bash included! Luet uses <a href="https://github.com/mudler/go-pluggable">go-pluggable</a> so it can dispatch events to external binaries.</p>
-<p>Similarly to <strong>Extensions</strong>, a <strong>Plugin</strong> is nothing more than a standalone executable file, whose name begins with <code>luet-</code>. To install a plugin, simply move its executable file to anywhere on your system <code>PATH</code>.</p>
+<p>Similarly to <strong>Extensions</strong>, a <strong>Plugin</strong> is nothing more than a standalone executable file, but without any special prefix. To install a plugin, simply move its executable file to anywhere on your system <code>PATH</code>.</p>
 <p>Differently from <strong>Extensions</strong>, they are not available from the <strong>CLI</strong> and cannot be invoked directly by the user, instead they are called by Luet during its lifecycle.</p>
 <h3 id="writing-a-plugin">Writing a Plugin</h3>
 <p>You can write a plugin in any programming language or script.</p>
@@ -708,7 +708,7 @@ $ luet --plugin test-foo install -y foopackage
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified November 29, 2020: <a  href="https://github.com/Luet-lab/docs/commit/9704b51edfb1b761c6b33d5ecaf16d1f3bb43944">Fix typo (9704b51)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified November 29, 2020: <a  href="https://github.com/Luet-lab/docs/commit/3be6e23891a361574148652efe86c5940e785fb2">Update plugins (3be6e23)</a>
 </div>
 </div>
 
