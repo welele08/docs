@@ -92,7 +92,7 @@ general:
 system:
   rootfs: "/" # What's our rootfs. Luet can install packages outside of "/"
   database_path: "/var/db/luet" # Where to store DB files
-  database_engine: "${LUET_DATABASE_ENGINE}"
+  database_engine: "boltdb"
   tmpdir_base: "/var/tmp/luet" # The temporary directory to be used
 ```
 
@@ -111,7 +111,7 @@ general:
 system:
   rootfs: "/" # What's our rootfs. Luet can install packages outside of "/"
   database_path: "/var/db/luet" # Where to store DB files
-  database_engine: "${LUET_DATABASE_ENGINE}"
+  database_engine: "boltdb"
   tmpdir_base: "/var/tmp/luet" # The temporary directory to be used
 repositories:
 - name: "mocaccino-desktop-stable" # Repository name
