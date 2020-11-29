@@ -13,7 +13,7 @@ Luet can be extended in 2 ways by extensions and plugins.
 
 You need to have a working `luet` binary installed.
 
-## Extentions
+## Extensions
 
 Extensions expand Luet featureset horizontally, so for example, “luet geniso” will allow you to build an iso using luet, without this needing to be part of the luet core.
 
