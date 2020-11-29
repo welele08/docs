@@ -26,13 +26,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luet-lab.github.io/docs/docs/overview/build_packages/" />
 <meta property="article:published_time" content="2017-01-05T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-11-28T17:02:05+01:00" /><meta property="og:site_name" content="Luet" />
+<meta property="article:modified_time" content="2020-11-29T22:28:52+01:00" /><meta property="og:site_name" content="Luet" />
 <meta itemprop="name" content="Building packages">
 <meta itemprop="description" content="How to build packages with Luet
 ">
 <meta itemprop="datePublished" content="2017-01-05T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2020-11-28T17:02:05+01:00" />
-<meta itemprop="wordCount" content="584">
+<meta itemprop="dateModified" content="2020-11-29T22:28:52+01:00" />
+<meta itemprop="wordCount" content="453">
 
 
 
@@ -487,9 +487,14 @@ if (!doNotTrack) {
 
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#flags">Flags</a></li>
+    <li><a href="#prerequisistes">Prerequisistes</a>
+      <ul>
+        <li><a href="#docker">Docker</a></li>
+        <li><a href="#img">Img</a></li>
+      </ul>
+    </li>
     <li><a href="#environmental-variables">Environmental variables</a></li>
-    <li><a href="#examples">Examples</a></li>
+    <li><a href="#example">Example</a></li>
     <li><a href="#notes">Notes</a></li>
   </ul>
 </nav>
@@ -540,89 +545,53 @@ if (!doNotTrack) {
 	<h1>Building packages</h1>
     <div class="lead">How to build packages with Luet</div>
 	       
-	<p><img src="/tree.jpg" alt="Build packages"></p>
+	<h2 id="prerequisistes">Prerequisistes</h2>
+<p>Luet currently supports <a href="https://www.docker.com/">Docker</a> and <a href="https://github.com/genuinetools/img">Img</a> as backends to build packages. Both of them can be used and switched in runtime with the <code>--backend</code> option, so either one of them must be present in the host system.</p>
+<h3 id="docker">Docker</h3>
+<p>Docker is the (less) experimental Luet engine supported. Be sure to have Docker installed and the daemon running. The user running <code>luet</code> commands needs the corresponding permissions to run the <code>docker</code> executable, and to connect to a <code>docker</code> daemon. The only feature needed by the daemon is the ability to build images, so it fully supports remote daemon as well (this can be specified with the <code>DOCKER_HOST</code> environment variable, that is respected by <code>luet</code>)</p>
+<h3 id="img">Img</h3>
+<p>Luet supports <a href="https://github.com/genuinetools/img">Img</a>. To use it, simply install it in your system, and while running <code>luet build</code>, you can switch the backend by providing it as a parameter: <code>luet build --backend img</code>. For small packages it is particularly powerful, as it doesn&rsquo;t require any docker daemon running in the host.</p>
+<p><img src="/tree.jpg" alt="Build packages"></p>
 <p>Building a package with Luet requires only a <a href="/docs/docs/concepts/specfile">definition</a>. This definition can be self-contained and be only composed of one <a href="/docs/docs/concepts/specfile">specfile</a>, or a group of them, forming a Luet tree.</p>
-<p>The <code>build</code> help command is as follows:</p>
-<pre><code>build packages or trees from luet tree definitions. Packages are in [category]/[name]-[version] form
-
-Usage:
-  luet build &lt;package name&gt; &lt;package name&gt; &lt;package name&gt; ... [flags]
-
-Flags:
-      --all                  Build all packages in the tree
-      --backend string       backend used (docker,img) (default &quot;docker&quot;)
-      --clean                Build all packages without considering the packages present in the build directory (default true)
-      --compression string   Compression alg: none, gzip (default &quot;none&quot;)
-      --database string      database used for solving (memory,boltdb) (default &quot;memory&quot;)
-      --destination string   Destination folder (default currentpath)
-  -h, --help                 help for build
-      --privileged           Privileged (Keep permissions)
-      --revdeps              Build with revdeps
-      --tree string          Source luet tree
-
-Global Flags:
-      --concurrency int   Concurrency (default 8)
-      --config string     config file (default is $HOME/.luet.yaml)
-      --fatal             Enables Warnings to exit
-  -v, --verbose           verbose output
-</code></pre><p>Build accepts a list of packages to build, which syntax is in the <code>category/name-version</code> notation (following Gentoo syntax).</p>
-<h2 id="flags">Flags</h2>
-<p>Flags available for the build command:</p>
-<ul>
-<li><strong>&ndash;all</strong>: Boolean which instruct Luet to build all the packages contained in a tree</li>
-<li><strong>&ndash;full</strong>: Boolean which instruct Luet to build all the leaf packages contained in a tree</li>
-<li><strong>&ndash;backend</strong>: String that specifies the backend to use. Currently supported are : <code>docker</code> and <code>img</code>. Defaults to <code>docker</code></li>
-<li><strong>&ndash;clean</strong>: Boolean that when enabled perform a clean build without taking in consideration already existing artifacts (Enabled by default, disable with <code>--clean=false</code>)</li>
-<li><strong>&ndash;compression</strong>: Specify a compression algorithm. Currently available only tgz. Defaults to no compression</li>
-<li><strong>&ndash;database</strong>: Type of database which is used for solving. This setting is particularly helpful for big trees composed of many packages on small devices where available memory is limited. Currently available <code>boltdb</code> and <code>memory</code>. Defaults to <code>memory</code>.</li>
-<li><strong>&ndash;destination</strong>: Output folder where the generated artifacts are written.</li>
-<li><strong>&ndash;privileged</strong>: Boolean which indicates that the build is privileged and file permission bits in the packages are copeid as-is.</li>
-<li><strong>&ndash;revdeps</strong>: Boolean which indicates to build also all the packages which depends on the targets</li>
-<li><strong>&ndash;tree</strong>: Path to the tree specfiles, it defaults to the current directory.</li>
-</ul>
-<p>General flags:</p>
-<ul>
-<li><strong>&ndash;concurrency</strong>: Indicates the number of concurrent package builds</li>
-<li><strong>&ndash;config</strong>: Indicates a config file to read</li>
-<li><strong>&ndash;fatal</strong>: Treats all warnings as fatal</li>
-<li><strong>&ndash;verbose</strong>: Enables verbose output</li>
-</ul>
+<p>Run <code>luet build --help</code> to get more help for each parameter.</p>
+<p>Build accepts a list of packages to build, which syntax is in the <code>category/name-version</code> notation (following Gentoo syntax).</p>
 <h2 id="environmental-variables">Environmental variables</h2>
-<p>Luet builds passes its environment variable at the engine which is called during build, so for example the environment variable <code>DOCKER_HOST</code> can be setted.</p>
+<p>Luet builds passes its environment variable at the engine which is called during build, so for example the environment variable <code>DOCKER_HOST</code> or <code>DOCKER_BUILDKIT</code> can be setted.</p>
 <p>Every argument from the CLI can be setted via environment variable too with a <code>LUET_</code> prefix, for instance the flag <code>--clean</code>, can be setted via environment with <code>LUET_CLEAN</code>, <code>--privileged</code> can be enabled with <code>LUET_PRIVILEGED</code> and so on.</p>
 <p>Additionally, you can set:</p>
 <ul>
 <li><code>DOCKER_SQUASH</code>: Set to <code>true</code> to squash each image being created (Docker backend only)</li>
 </ul>
-<h2 id="examples">Examples</h2>
-<p>Creating and building a simple <a href="/docs/docs/concepts/specfile">package definition</a>:</p>
-<pre><code>$&gt; mkdir package
+<h2 id="example">Example</h2>
+<p>A <a href="/docs/docs/concepts/specfile">package definition</a> is composed of a <code>build.yaml</code> and a <code>definition.yaml</code>:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; mkdir package
 
-$&gt; cat &lt;&lt;EOF &gt; package/build.yaml
-image: busybox
-steps:
-- echo &quot;foo&quot; &gt; /foo
-EOF
+$&gt; cat <span style="color:#4e9a06">&lt;&lt;EOF &gt; package/build.yaml
+</span><span style="color:#4e9a06">image: busybox
+</span><span style="color:#4e9a06">steps:
+</span><span style="color:#4e9a06">- echo &#34;foo&#34; &gt; /foo
+</span><span style="color:#4e9a06">EOF</span>
 
-$&gt; cat &lt;&lt;EOF &gt; package/definition.yaml
-name: &quot;foo&quot;
-version: &quot;0.1&quot;
-category: &quot;bar&quot; # optional!
-EOF
+$&gt; cat <span style="color:#4e9a06">&lt;&lt;EOF &gt; package/definition.yaml
+</span><span style="color:#4e9a06">name: &#34;foo&#34;
+</span><span style="color:#4e9a06">version: &#34;0.1&#34;
+</span><span style="color:#4e9a06">category: &#34;bar&#34; # optional!
+</span><span style="color:#4e9a06">EOF</span>
 
-$&gt; luet build --all
+</code></pre></div><p>To build it, simply run <code>luet build bar/foo</code> or <code>luet build --all</code> to build all the packages in the current directory:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; luet build --all
 
 📦  Selecting  foo 0.1
 📦  Compiling foo version 0.1 .... ☕
 🐋  Downloading image luet/cache-foo-bar-0.1-builder
 🐋  Downloading image luet/cache-foo-bar-0.1
-📦   foo Generating 🐋  definition for builder image from busybox
+📦   foo Generating 🐋  definition <span style="color:#204a87;font-weight:bold">for</span> builder image from busybox
 🐋  Building image luet/cache-foo-bar-0.1-builder
-🐋  Building image luet/cache-foo-bar-0.1-builder done
+🐋  Building image luet/cache-foo-bar-0.1-builder <span style="color:#204a87;font-weight:bold">done</span>
  Sending build context to Docker daemon  4.096kB
  ...
 
-</code></pre><h2 id="notes">Notes</h2>
+</code></pre></div><h2 id="notes">Notes</h2>
 <p>If you notice errors about disk space, mind to set the <code>TMPDIR</code> env variable to a different folder. By default luet respects the O.S. default (which in the majority of system is <code>/tmp</code>).</p>
 
 	
@@ -687,7 +656,7 @@ $&gt; luet build --all
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified November 28, 2020: <a  href="https://github.com/Luet-lab/docs/commit/feb6a383a2f70a22a05014cb6b6aca2164200e24">Add more content, and update hugo (feb6a38)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified November 29, 2020: <a  href="https://github.com/Luet-lab/docs/commit/63d2aab02753f3dcd56471f474b4a4bd52a1e13f">Reorganize getting started (63d2aab)</a>
 </div>
 </div>
 

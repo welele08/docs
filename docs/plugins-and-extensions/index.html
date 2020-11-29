@@ -22,17 +22,17 @@
 <link rel="icon" type="image/png" href="/docs/favicons/android-192x192.png" sizes="192x192">
 
 <title>Plugins and Extensions | Luet</title><meta property="og:title" content="Plugins and Extensions" />
-<meta property="og:description" content="How can be Luet expanded?
+<meta property="og:description" content="Extend luet with plugins and extensions
 " />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://luet-lab.github.io/docs/docs/plugins-and-extensions/" />
 <meta property="og:site_name" content="Luet" />
 <meta itemprop="name" content="Plugins and Extensions">
-<meta itemprop="description" content="How can be Luet expanded?
+<meta itemprop="description" content="Extend luet with plugins and extensions
 ">
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Plugins and Extensions"/>
-<meta name="twitter:description" content="How can be Luet expanded?
+<meta name="twitter:description" content="Extend luet with plugins and extensions
 "/>
 
 
@@ -478,6 +478,23 @@ if (!doNotTrack) {
 
 
 
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#extentions">Extentions</a>
+      <ul>
+        <li><a href="#writing-an-extension">Writing an Extension</a></li>
+        <li><a href="#using-an-extension">Using an Extension</a></li>
+      </ul>
+    </li>
+    <li><a href="#plugins">Plugins</a>
+      <ul>
+        <li><a href="#writing-a-plugin">Writing a Plugin</a></li>
+        <li><a href="#using-a-plugin">Using a plugin</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
 
 
           </div>
@@ -512,13 +529,71 @@ if (!doNotTrack) {
             
 <div class="td-content">
 	<h1>Plugins and Extensions</h1>
-        <div class="lead">How can be Luet expanded?</div>
+        <div class="lead">Extend luet with plugins and extensions</div>
 	
-	<p>Luet can be extended in 2 ways, by extensions and plugins.</p>
+	<p>Luet can be extended in 2 ways by extensions and plugins.</p>
+<h1 id="before-you-begin">Before you begin</h1>
+<p>You need to have a working <code>luet</code> binary installed.</p>
 <h2 id="extentions">Extentions</h2>
 <p>Extensions expand Luet featureset horizontally, so for example, “luet geniso” will allow you to build an iso using luet, without this needing to be part of the luet core.</p>
-<h2 id="plugins">Plugins</h2>
+<p>An Extension is nothing more than a standalone executable file, whose name begins with <code>luet-</code>. To install an extension, simply move its executable file to anywhere on your system <code>PATH</code>.</p>
+<p>All the plugins will be accessible to luet as <code>luet pluginname</code></p>
+<h3 id="writing-an-extension">Writing an Extension</h3>
+<p>You can write an extension in any programming language or script that allows you to write command-line commands.</p>
+<p>Executables receive the inherited environment from luet. An extension determines which command path it wishes to implement based on its name. For example, a plugin wanting to provide a new command luet foo, would simply be named luet-foo, and live somewhere in your PATH.</p>
+<h4 id="example-extension">Example Extension</h4>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic">#!/bin/bash
+</span><span style="color:#8f5902;font-style:italic"></span>
+<span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">[[</span> <span style="color:#4e9a06">&#34;</span><span style="color:#000">$1</span><span style="color:#4e9a06">&#34;</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#4e9a06">&#34;help&#34;</span> <span style="color:#ce5c00;font-weight:bold">]]</span>
+<span style="color:#204a87;font-weight:bold">then</span>
+    <span style="color:#204a87">echo</span> <span style="color:#4e9a06">&#34;Extension help&#34;</span>
+    <span style="color:#204a87">exit</span> <span style="color:#0000cf;font-weight:bold">0</span>
+<span style="color:#204a87;font-weight:bold">fi</span>
+
+<span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">[[</span> <span style="color:#4e9a06">&#34;</span><span style="color:#000">$1</span><span style="color:#4e9a06">&#34;</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#4e9a06">&#34;run&#34;</span> <span style="color:#ce5c00;font-weight:bold">]]</span>
+<span style="color:#204a87;font-weight:bold">then</span>
+    <span style="color:#8f5902;font-style:italic"># do something interesting</span>
+<span style="color:#204a87;font-weight:bold">fi</span>
+
+<span style="color:#204a87">echo</span> <span style="color:#4e9a06">&#34;I am an Extension named luet-foo&#34;</span>
+
+</code></pre></div><h3 id="using-an-extension">Using an Extension</h3>
+<p>To use the above extension, simply make it executable:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo chmod +x ./luet-foo
+</code></pre></div><p>and place it anywhere in your PATH:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo mv ./luet-foo /usr/local/bin
+</code></pre></div><p>You may now invoke your extension as a luet command:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ luet foo
+I am an Extension named luet-foo
+
+All args and flags are passed as-is to the executable:
+
+<span style="color:#4e9a06">```</span>bash
+$ luet foo <span style="color:#204a87">help</span>
+
+Extension <span style="color:#204a87">help</span>
+</code></pre></div><h2 id="plugins">Plugins</h2>
 <p>Plugins instead are expanding Luet vertically by hooking into internal events. Plugins and Extensions can be written in any language, bash included! Luet uses <a href="https://github.com/mudler/go-pluggable">go-pluggable</a> so it can dispatch events to external binaries.</p>
+<p>Similarly to <strong>Extensions</strong>, a <strong>Plugin</strong> is nothing more than a standalone executable file, whose name begins with <code>luet-</code>. To install a plugin, simply move its executable file to anywhere on your system <code>PATH</code>.</p>
+<p>Differently from <strong>Extensions</strong>, they are not available from the <strong>CLI</strong> and cannot be invoked directly by the user, instead they are called by Luet during its lifecycle.</p>
+<h3 id="writing-a-plugin">Writing a Plugin</h3>
+<p>You can write a plugin in any programming language or script.</p>
+<p>The first argument that is passed to a plugin will always be the event that was emitted by Luet in its lifecycle. You can see all the <a href="https://github.com/mudler/luet/blob/master/pkg/bus/events.go">events available here</a>. The second argument, is a <code>JSON</code> encoded payload of the object that Luet is emitting with the event. The object(s) may vary depending on the emitted event.</p>
+<h4 id="example-plugin">Example Plugin</h4>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic">#!/bin/bash
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87">echo</span> <span style="color:#4e9a06">&#34;</span><span style="color:#000">$1</span><span style="color:#4e9a06">&#34;</span> &gt;&gt; /tmp/event.txt
+<span style="color:#204a87">echo</span> <span style="color:#4e9a06">&#34;</span><span style="color:#000">$2</span><span style="color:#4e9a06">&#34;</span> &gt;&gt; /tmp/payload.txt
+
+</code></pre></div><h3 id="using-a-plugin">Using a plugin</h3>
+<p>To use the above plugin, simply make it executable:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo chmod +x ./test-foo
+</code></pre></div><p>and place it anywhere in your PATH:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo mv ./test-foo /usr/local/bin
+</code></pre></div><p>Now, when running luet, add <code>--plugin test-foo</code>:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+$ luet --plugin test-foo install -y foopackage
+
+</code></pre></div><p>And check <code>/tmp/event.txt</code> to see the event fired and <code>/tmp/payload.txt</code> to check the payloads that were emitted by Luet.</p>
 
         <div class="section-index">
     
@@ -633,7 +708,7 @@ if (!doNotTrack) {
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified November 28, 2020: <a  href="https://github.com/Luet-lab/docs/commit/feb6a383a2f70a22a05014cb6b6aca2164200e24">Add more content, and update hugo (feb6a38)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified November 29, 2020: <a  href="https://github.com/Luet-lab/docs/commit/63d2aab02753f3dcd56471f474b4a4bd52a1e13f">Reorganize getting started (63d2aab)</a>
 </div>
 </div>
 

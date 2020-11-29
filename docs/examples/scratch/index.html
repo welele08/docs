@@ -25,12 +25,12 @@
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luet-lab.github.io/docs/docs/examples/scratch/" />
-<meta property="article:modified_time" content="2020-03-18T22:31:24+01:00" /><meta property="og:site_name" content="Luet" />
+<meta property="article:modified_time" content="2020-11-29T22:28:52+01:00" /><meta property="og:site_name" content="Luet" />
 <meta itemprop="name" content="Images from scratch">
 <meta itemprop="description" content="Using Luet to compose images from scratch
 ">
-<meta itemprop="dateModified" content="2020-03-18T22:31:24+01:00" />
-<meta itemprop="wordCount" content="49">
+<meta itemprop="dateModified" content="2020-11-29T22:28:52+01:00" />
+<meta itemprop="wordCount" content="130">
 
 
 
@@ -529,25 +529,32 @@ if (!doNotTrack) {
 	<h1>Images from scratch</h1>
     <div class="lead">Using Luet to compose images from scratch</div>
 	       
-	<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat <span style="color:#4e9a06">&lt;&lt;EOF &gt; $PWD/luet.yaml  
-</span><span style="color:#4e9a06">system-repositories: 
-</span><span style="color:#4e9a06">                   - name: &#34;main&#34;
-</span><span style="color:#4e9a06">                     type: &#34;http&#34;
-</span><span style="color:#4e9a06">                     uri: &#34;https://your-repo.org/path&#34;
+	<p>The Docker image <code>quay.io/luet/base</code> is a <code>scratch</code> Docker image always kept up-to-date with the latest luet version. That image can be used to bootstrap new images with Luet repositories with the packages you want, from the repositories you prefer.</p>
+<p>For example we can mount a config file, and later on install a package:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat <span style="color:#4e9a06">&lt;&lt;EOF &gt; $PWD/luet.yaml  
+</span><span style="color:#4e9a06">repositories: 
+</span><span style="color:#4e9a06">  - name: &#34;micro-stable&#34;
+</span><span style="color:#4e9a06">    enable: true
+</span><span style="color:#4e9a06">    cached: true
+</span><span style="color:#4e9a06">    priority: 1
+</span><span style="color:#4e9a06">    type: &#34;http&#34;
+</span><span style="color:#4e9a06">    urls: 
+</span><span style="color:#4e9a06">    - &#34;https://get.mocaccino.org/moacccino-micro-stable&#34;
 </span><span style="color:#4e9a06">EOF</span>
 
 docker rm luet-runtime-test <span style="color:#ce5c00;font-weight:bold">||</span> <span style="color:#204a87">true</span>
 docker run --name luet-runtime-test <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>       -ti -v /tmp:/tmp <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>       -v <span style="color:#000">$PWD</span>/luet.yaml:/etc/luet/.luet.yaml:ro <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>       quay.io/luet/base install &lt;package&gt;
+</span><span style="color:#4e9a06"></span>       -v <span style="color:#000">$PWD</span>/luet.yaml:/etc/luet/luet.yaml:ro <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>       quay.io/luet/base install shells/bash
  
 docker commit luet-runtime-test luet-runtime-test-image
 
 <span style="color:#8f5902;font-style:italic"># Try your new image!</span>
 
-docker run -ti --entrypoint /bin/sh --rm luet-runtime-test-image
-</code></pre></div>
+docker run -ti --entrypoint /bin/bash --rm luet-runtime-test-image
+</code></pre></div><p>In this way we will create a new image, with only <code>luet</code> and <code>bash</code>, and nothing else from a scratch image.</p>
+
 	
 		<style>
   .feedback--answer {
@@ -610,7 +617,7 @@ docker run -ti --entrypoint /bin/sh --rm luet-runtime-test-image
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified March 18, 2020: <a  href="https://github.com/Luet-lab/docs/commit/92fe1bad54b59bc951b92c75b15a8f518bb028f8">Review of the content of the documentation (92fe1ba)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified November 29, 2020: <a  href="https://github.com/Luet-lab/docs/commit/63d2aab02753f3dcd56471f474b4a4bd52a1e13f">Reorganize getting started (63d2aab)</a>
 </div>
 </div>
 
