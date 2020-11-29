@@ -77,7 +77,7 @@ Extension help
 
 Plugins instead are expanding Luet vertically by hooking into internal events. Plugins and Extensions can be written in any language, bash included! Luet uses [go-pluggable](https://github.com/mudler/go-pluggable) so it can dispatch events to external binaries.
 
-Similarly to **Extensions**, a **Plugin** is nothing more than a standalone executable file, whose name begins with `luet-`. To install a plugin, simply move its executable file to anywhere on your system `PATH`. 
+Similarly to **Extensions**, a **Plugin** is nothing more than a standalone executable file, but without any special prefix. To install a plugin, simply move its executable file to anywhere on your system `PATH`. 
 
 Differently from **Extensions**, they are not available from the **CLI** and cannot be invoked directly by the user, instead they are called by Luet during its lifecycle.
 
