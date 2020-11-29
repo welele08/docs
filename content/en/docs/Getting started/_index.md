@@ -9,18 +9,7 @@ description: >
 
 ## Prerequisites
 
-No dependencies. 
-
-Luet currently supports [Docker](https://www.docker.com/) and [Img](https://github.com/genuinetools/img) as backends to build packages. Both of them can be used and switched in runtime.
-
-### Docker
-
-Docker is the (less) experimental Luet engine supported. Be sure to have Docker installed and the daemon running. The user running `luet` commands needs the corresponding permissions to run the `docker` executable, and to connect to a `docker` daemon. The only feature needed by the daemon is the ability to build images, so it fully supports remote daemon as well (this can be specified with the `DOCKER_HOST` environment variable, that is respected by `luet`)
-
-### Img
-
-Luet supports [Img](https://github.com/genuinetools/img). To use it, simply install it in your system, and while running `luet build`, you can switch the backend by providing it as a parameter: `luet build --backend img`. For small packages it is particularly powerful, as it doesn't require any docker daemon running in the host.
-
+No dependencies. For building packages [see the Build Packages section](/docs/docs/overview/build_packages/)
 
 ## Get Luet  
 
@@ -86,3 +75,71 @@ mkdir -p /etc/luet
 mv .luet.yaml /etc/luet/luet.yaml
 ```
 
+## Configuration
+
+Luet stores its configuration files in `/etc/luet`. If you wish to override its default settings, create a file `/etc/luet/luet.yaml`.
+
+A example of a `luet.yaml` file can be found [here](https://github.com/mudler/luet/blob/master/contrib/config/luet.yaml).
+
+There are a bunch of configuration settings available, but the most relevant are:
+
+```yaml
+logging:
+  color: true # Enable/Disable colored output
+  enable_emoji: true # Enable/Disable emoji from output
+general:
+  debug: false # Enable/Disable debug
+system:
+  rootfs: "/" # What's our rootfs. Luet can install packages outside of "/"
+  database_path: "/var/db/luet" # Where to store DB files
+  database_engine: "${LUET_DATABASE_ENGINE}"
+  tmpdir_base: "/var/tmp/luet" # The temporary directory to be used
+```
+
+### Adding repositories
+
+To add repositories, you can either add a `repositories` stanza in your `/etc/luet/luet.yaml` or either add one or more yaml files in `/etc/luet/repos.conf.d/`.
+
+
+#### Configuration in `/etc/luet/luet.yaml`
+```yaml
+logging:
+  color: true # Enable/Disable colored output
+  enable_emoji: true # Enable/Disable emoji from output
+general:
+  debug: false # Enable/Disable debug
+system:
+  rootfs: "/" # What's our rootfs. Luet can install packages outside of "/"
+  database_path: "/var/db/luet" # Where to store DB files
+  database_engine: "${LUET_DATABASE_ENGINE}"
+  tmpdir_base: "/var/tmp/luet" # The temporary directory to be used
+repositories:
+- name: "mocaccino-desktop-stable" # Repository name
+  description: "MocaccinoOS desktop Repository (stable)"
+  type: "http" # Repository type, disk or http are supported (disk for local path)
+  enable: true # Enable/Disable repo
+  cached: true # Enable cache for repository
+  priority: 3 # Cache priority
+  urls: # Repository URLs
+    - "https://get.mocaccino.org/mocaccino-desktop-stable"
+```
+
+#### Configuration in `/etc/luet/repos.conf.d/`
+
+A repository file can be for example:
+
+```yaml
+name: "mocaccino-desktop-stable" # Repository name
+description: "MocaccinoOS desktop Repository (stable)"
+type: "http" # Repository type, disk or http are supported (disk for local path)
+enable: true # Enable/Disable repo
+cached: true # Enable cache for repository
+priority: 3 # Cache priority
+urls: # Repository URLs
+  - "https://get.mocaccino.org/mocaccino-desktop-stable"
+```
+
+
+There is available a [collection of repositories](https://packages.mocaccino.org/repository-index), which is containing a list of repositories that can be installed in the system with `luet install`.
+
+If you installed Luet from the curl command, you just need to run `luet search repository` to see a list of all the available repository, and you can install them singularly by running `luet install repository/<name>`. Otherwise, add the repository stanzas you need to `/etc/luet/luet.yaml`.
