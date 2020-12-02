@@ -6,6 +6,11 @@ description: >-
      Exemple of custom iso creation
 ---
 
+Editing a custom iso is quite easy in luet (un yaml = liste de paquet luet à installer)
+Du coup, necessite paquet luet :
+* des depots officiels
+* d'un depot perso.
+
 ## Heading
 
 Edit this template to create your new page.
